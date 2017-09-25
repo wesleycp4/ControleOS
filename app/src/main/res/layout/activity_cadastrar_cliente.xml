@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dev.wcp4.controleos.Activity.CadastrarClienteActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/camposObrigaotiors"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:id="@+id/textInputLayout8"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+            <EditText
+                android:id="@+id/nomeCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nome_completo"
+                android:inputType="text|textCapSentences|textAutoComplete"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
+            android:id="@+id/textInputLayout9"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+            <EditText
+                android:id="@+id/emailCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout9"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/textInputLayout10">
+
+            <EditText
+                android:id="@+id/cpfCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cpf"
+                android:inputType="text|textAutoComplete"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
+            app:layout_constraintRight_toLeftOf="@+id/textInputLayout11"
+            android:layout_marginRight="8dp"
+            android:id="@+id/textInputLayout12"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+            <EditText
+                android:id="@+id/contatoCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/contato"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout11"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
+            android:layout_marginEnd="8dp"
+            tools:ignore="RtlHardcoded">
+
+            <EditText
+                android:id="@+id/contato2CadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/contato_2"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout12"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toLeftOf="@+id/textInputLayout13"
+            android:id="@+id/textInputLayout14"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+            <EditText
+                android:id="@+id/ruaCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/rua"
+                android:inputType="text|textCapSentences|textAutoComplete"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"
+            android:id="@+id/textInputLayout13"
+            android:layout_marginEnd="8dp"
+            tools:ignore="RtlHardcoded">
+
+            <EditText
+                android:id="@+id/numeroCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/numero"
+                android:inputType="number"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout15"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout13"
+            tools:ignore="RtlHardcoded">
+
+            <EditText
+                android:id="@+id/bairroCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/bairro"
+                android:inputType="text|textCapSentences|textAutoComplete"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textInputLayout20"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout14"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textInputLayout15"
+            android:layout_marginRight="8dp">
+
+            <EditText
+                android:id="@+id/complementoCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/complemento"
+                android:inputType="text|textCapSentences|textAutoComplete"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinnerCadCliente"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:entries="@array/spinner_array"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/uf"
+            android:textAlignment="textStart"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout15"
+            tools:ignore="RtlHardcoded" />
+
+        <ProgressBar
+            android:id="@+id/progressBarCadCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_cadCliente" />
+
+        <Button
+            android:id="@+id/button_cadCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/cadastrar_cliente"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout16" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout20"
+            app:layout_constraintRight_toLeftOf="@+id/spinnerCadCliente"
+            android:layout_marginRight="8dp">
+
+            <EditText
+                android:id="@+id/cidadeCadCliente"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/cidade"
+                android:inputType="text|textCapSentences|textAutoComplete"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

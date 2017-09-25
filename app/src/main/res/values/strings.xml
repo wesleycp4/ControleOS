@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">Controle O.S. ZN</string>
+
+    <string name="title_activity_base">Ordens de Serviços em Aberto</string>
+    <string name="title_activity_consultar_ordem">Pesquisar Ordens de Serviço</string>
+    <string name="title_activity_nova_os">Nova Ordem de Serviço</string>
+    <string name="title_activity_os">Detalhes Ordem de Serviço</string>
+    <string name="title_activity_consultar_cliente">Consultar Clientes</string>
+    <string name="title_activity_cadastrar_cliente">Cadastrar Novo Cliente</string>
+    <string name="title_activity_cadastrar_user">Cadastrar Novo Usuario</string>
+
+
+    <string name="navigation_drawer_open">Abrir Drawer Navegação</string>
+    <string name="navigation_drawer_close">Fechar Drawer Navegação</string>
+
+    <string name="cadastrar_cliente">Cadastrar Cliente</string>
+    <string name="consultar_cliente">Consultar Cliente</string>
+
+    <string name="novo_os">Nova O.S.</string>
+    <string name="consulta">Consultar O.S.</string>
+
+    <string name="nav_clientes">Clientes</string>
+    <string name="nav_os">Ordens de Serviço</string>
+    <string name="nav_opcs">Mais Opções</string>
+    <string name="nav_avançado">Opções Avançadas</string>
+    <string name="nav_logout">Logout do Sistema</string>
+    <string name="nav_sair">Fechar App</string>
+    <string name="sair">Sair</string>
+
+    <string name="botao_entrar">ENTRAR</string>
+
+    <string name="camposObrigaotiors">Campos com * são obrigatorios!</string>
+    <string name="campoInforme">Informe o nome do cliente ou parte dele no campo abaixo:</string>
+    <string name="campoInformeOS">Informe o numero da O.S. no campo abaixo:</string>
+    <string name="campoNOS">Nº O.S.</string>
+
+    <string name="botao_salvarCad">SALVAR</string>
+    <string name="login_senha">Senha:</string>
+    <string name="login_usuario">Usuario:</string>
+    <string name="novo_login">Criar Novo Usuario</string>
+    <string name="bairro">Bairro:</string>
+    <string name="cep">CEP:</string>
+    <string name="cpf">CPF:</string>
+    <string name="chave_administrador">Chave Administrador</string>
+    <string name="cidade">Cidade:</string>
+    <string name="complemento">Complemento:</string>
+    <string name="contato_2">Contato 2:</string>
+    <string name="contato">Contato:*</string>
+    <string name="email">Email:*</string>
+    <string name="nome_completo">Nome Completo:*</string>
+    <string name="nome">Nome:</string>
+    <string name="numero">Nº:</string>
+    <string name="rua">Rua:</string>
+    <string name="senha">Senha:*</string>
+    <string name="usuario">Usuario:*</string>
+    <string name="confirmar_senha">Confirmar Senha:*</string>
+    <string name="uf">Estado: </string>
+    <string name="pesquisar_botao">Pesquisar</string>
+    <string name="alterar_status_os">alterar status OS</string>
+    <string name="novo_acompanhamento">novo acompanhamento</string>
+
+    <string-array name="spinner_array">
+            <item>MG</item>
+            <item>AC</item>
+            <item>AL</item>
+            <item>AP</item>
+            <item>AM</item>
+            <item>BA</item>
+            <item>CE</item>
+            <item>DF</item>
+            <item>ES</item>
+            <item>GO</item>
+            <item>MA</item>
+            <item>MT</item>
+            <item>MS</item>
+            <item>PA</item>
+            <item>PB</item>
+            <item>PR</item>
+            <item>PE</item>
+            <item>PI</item>
+            <item>RJ</item>
+            <item>RN</item>
+            <item>RS</item>
+            <item>RO</item>
+            <item>RR</item>
+            <item>SC</item>
+            <item>SP</item>
+            <item>SE</item>
+            <item>TO</item>
+        </string-array>
+
+</resources>

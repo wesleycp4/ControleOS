@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/nav_os">
+        <menu>
+            <item
+                android:id="@+id/nav_novo_os"
+                android:icon="@drawable/ic_add"
+                android:title="@string/novo_os" />
+            <item
+                android:id="@+id/nav_consultar_os"
+                android:icon="@drawable/ic_search"
+                android:title="@string/consulta" />
+        </menu>
+    </item>
+
+    <item android:title="@string/nav_clientes">
+        <menu>
+            <item
+                android:id="@+id/nav_cadastro_cliente"
+                android:icon="@drawable/ic_add"
+                android:title="@string/cadastrar_cliente" />
+            <item
+                android:id="@+id/nav_consultar_cliente"
+                android:icon="@drawable/ic_search"
+                android:title="@string/consultar_cliente" />
+        </menu>
+    </item>
+
+    <item android:title="@string/nav_opcs">
+        <menu>
+            <item
+                android:id="@+id/nav_avançado"
+                android:icon="@drawable/ic_info"
+                android:title="@string/nav_avançado" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_notification_clear_all"
+                android:title="@string/nav_logout" />
+            <item
+                android:id="@+id/nav_sair"
+                android:icon="@drawable/ic_close"
+                android:title="@string/nav_sair" />
+
+        </menu>
+    </item>
+
+</menu>
