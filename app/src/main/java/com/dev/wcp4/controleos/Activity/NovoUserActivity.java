@@ -20,6 +20,9 @@ import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
 import com.dev.wcp4.controleos.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class NovoUserActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
@@ -31,13 +34,13 @@ public class NovoUserActivity extends AppCompatActivity {
     private EditText editTextSenha;
     private EditText editTextConfirmaSenha;
     private String parametros = "";
-    //final String TAG = "DATAERRO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_user);
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         editTextNome = (EditText) findViewById(R.id.nomeCad);
@@ -72,19 +75,24 @@ public class NovoUserActivity extends AppCompatActivity {
                         try {
                             if (senha.equals(confirmasenha) ) {
                                 parametros = "nome=" + nome + "&email=" + email + "&contato=" + contato + "&contato2=" + contato2 + "&usuario=" + usuario + "&senha=" + senha;
+                                progressBar.setVisibility(View.VISIBLE);
                                 new Cadastrar().execute(Rotas.CADASTRAR_USUARIO);
                             } else {
-                                exibir("Senhas não conferem!");
+                                progressBar.setVisibility(View.INVISIBLE);
+                                exibir("Senhas não conferem! Verifique e tente novamente.");
                             }
                         } catch (ParseException e) {
+                            progressBar.setVisibility(View.INVISIBLE);
                             e.printStackTrace();
                         }
                     } else {
-                        exibir("Preenchar tododos os campos");
+                        progressBar.setVisibility(View.INVISIBLE);
+                        exibir("Preencha todos os campos com *");
                     }
 
                 } else {
-                    exibir("Sem conexão a internet");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    exibir(":( Favor verificar a sua conexão com a Internet!");
                 }
             }
         });
@@ -93,10 +101,6 @@ public class NovoUserActivity extends AppCompatActivity {
 
 
     private class Cadastrar extends AsyncTask<String, Object, String> {
-        @Override
-        protected void onPreExecute() {
-            progressBar.setVisibility(View.VISIBLE);
-        }
 
         @Override
         protected void onProgressUpdate(Object... values) {
@@ -106,10 +110,21 @@ public class NovoUserActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            //exibir("Cadastro Efetuado com Sucesso!");
+            try {
+                JSONObject jsonObj = new JSONObject(s);
+                if(!jsonObj.getBoolean("error")){
+                    exibir(":D Usuario cadastrado com sucesso!");
+                    startActivity(new Intent(NovoUserActivity.this,BaseActivity.class));
+                    finish();
+                } else{
+                    progressBar.setVisibility(View.INVISIBLE);
+                    exibir(":/ Usuario ja cadastrado no sistema!");
+                }
+            } catch (JSONException e) {
+                progressBar.setVisibility(View.INVISIBLE);
+                e.printStackTrace();
+            }
 
-            startActivity(new Intent(NovoUserActivity.this,BaseActivity.class));
-            finish();
         }
 
         @Override
@@ -121,7 +136,7 @@ public class NovoUserActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish(); // Finaliza a Activity atual
+        finish();
         return true;
     }
 

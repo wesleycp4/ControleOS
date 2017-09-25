@@ -71,7 +71,7 @@ public class BaseActivity extends AppCompatActivity
             moveTaskToBack(true);
             //super.onBackPressed();
         }
-        finish();
+        BaseActivity.this.finish();
     }
 
     @Override

@@ -51,15 +51,16 @@ public class MainActivity extends AppCompatActivity {
                     String senha = editTextSenha.getText().toString().trim();
 
                     if(!usuario.isEmpty() && !senha.isEmpty()){
+                        progressBar.setVisibility(View.VISIBLE);
                         parametros = "usuario=" + usuario + "&senha=" + senha;
                         new Logar().execute(Rotas.URL_LOGIN);
 
                     } else{
-                        exibir("Preencha todos os campos");
+                        exibir("Informe o Usuario e a Senha para ter acesso ao sistema!");
                     }
 
                 } else{
-                    exibir("Sem conexão a internet");
+                    exibir(":( Favor verificar a sua conexão com a Internet!");
                 }
 
             }
@@ -69,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class Logar extends AsyncTask<String, Object, String> {
-        @Override
-        protected void onPreExecute() {
-            progressBar.setVisibility(View.VISIBLE);
-        }
 
         @Override
         protected void onProgressUpdate(Object... values) {
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }else{
                     progressBar.setVisibility(View.INVISIBLE);
-                    exibir("Usuario ou senha invalidos");
+                    exibir("Usuario ou senha Incorretos!");
 
                 }
             } catch (JSONException e) {

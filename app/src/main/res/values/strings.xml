@@ -39,7 +39,6 @@
     <string name="login_usuario">Usuario:</string>
     <string name="novo_login">Criar Novo Usuario</string>
     <string name="bairro">Bairro:</string>
-    <string name="cep">CEP:</string>
     <string name="cpf">CPF:</string>
     <string name="chave_administrador">Chave Administrador</string>
     <string name="cidade">Cidade:</string>
@@ -58,9 +57,10 @@
     <string name="pesquisar_botao">Pesquisar</string>
     <string name="alterar_status_os">alterar status OS</string>
     <string name="novo_acompanhamento">novo acompanhamento</string>
+    <string name="cep">CEP:</string>
 
     <string-array name="spinner_array">
-            <item>MG</item>
+            <item>Minas Gerais</item>
             <item>AC</item>
             <item>AL</item>
             <item>AP</item>
