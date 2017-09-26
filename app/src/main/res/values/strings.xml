@@ -29,7 +29,7 @@
 
     <string name="botao_entrar">ENTRAR</string>
 
-    <string name="camposObrigaotiors">Campos com * são obrigatorios!</string>
+    <string name="camposObrigatorios">Campos com * são obrigatorios!</string>
     <string name="campoInforme">Informe o nome do cliente ou parte dele no campo abaixo:</string>
     <string name="campoInformeOS">Informe o numero da O.S. no campo abaixo:</string>
     <string name="campoNOS">Nº O.S.</string>
@@ -39,28 +39,34 @@
     <string name="login_usuario">Usuario:</string>
     <string name="novo_login">Criar Novo Usuario</string>
     <string name="bairro">Bairro:</string>
+    <string name="bairroCadCliente">Bairro:*</string>
     <string name="cpf">CPF:</string>
     <string name="chave_administrador">Chave Administrador</string>
     <string name="cidade">Cidade:</string>
+    <string name="cidadeCadCliente">Cidade:*</string>
     <string name="complemento">Complemento:</string>
     <string name="contato_2">Contato 2:</string>
     <string name="contato">Contato:*</string>
     <string name="email">Email:*</string>
+    <string name="emailCadCliente">Email:</string>
     <string name="nome_completo">Nome Completo:*</string>
     <string name="nome">Nome:</string>
     <string name="numero">Nº:</string>
+    <string name="numeroCadCliente">Nº:*</string>
     <string name="rua">Rua:</string>
+    <string name="ruaCadCliente">Rua:*</string>
     <string name="senha">Senha:*</string>
     <string name="usuario">Usuario:*</string>
     <string name="confirmar_senha">Confirmar Senha:*</string>
-    <string name="uf">Estado: </string>
+    <string name="uf">Estado:</string>
+    <string name="ufCadCliente">Estado:*</string>
     <string name="pesquisar_botao">Pesquisar</string>
     <string name="alterar_status_os">alterar status OS</string>
     <string name="novo_acompanhamento">novo acompanhamento</string>
     <string name="cep">CEP:</string>
 
     <string-array name="spinner_array">
-            <item>Minas Gerais</item>
+            <item>MG</item>
             <item>AC</item>
             <item>AL</item>
             <item>AP</item>
