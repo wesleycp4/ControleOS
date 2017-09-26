@@ -74,8 +74,8 @@ public class NovoUserActivity extends AppCompatActivity {
                     if (!nome.isEmpty() && !email.isEmpty() && !contato.isEmpty() && !usuario.isEmpty() && !senha.isEmpty()) {
                         try {
                             if (senha.equals(confirmasenha) ) {
-                                parametros = "nome=" + nome + "&email=" + email + "&contato=" + contato + "&contato2=" + contato2 + "&usuario=" + usuario + "&senha=" + senha;
                                 progressBar.setVisibility(View.VISIBLE);
+                                parametros = "nome=" + nome + "&email=" + email + "&contato=" + contato + "&contato2=" + contato2 + "&usuario=" + usuario + "&senha=" + senha;
                                 new Cadastrar().execute(Rotas.CADASTRAR_USUARIO);
                             } else {
                                 progressBar.setVisibility(View.INVISIBLE);
@@ -132,7 +132,6 @@ public class NovoUserActivity extends AppCompatActivity {
             return Conexao.postDados(url[0],parametros);
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
