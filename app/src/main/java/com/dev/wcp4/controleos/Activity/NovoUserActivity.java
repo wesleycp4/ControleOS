@@ -114,8 +114,7 @@ public class NovoUserActivity extends AppCompatActivity {
                 JSONObject jsonObj = new JSONObject(s);
                 if(!jsonObj.getBoolean("error")){
                     exibir(":D Usuario cadastrado com sucesso!");
-                    startActivity(new Intent(NovoUserActivity.this,BaseActivity.class));
-                    finish();
+                    onBackPressed();
                 } else{
                     progressBar.setVisibility(View.INVISIBLE);
                     exibir(":/ Usuario ja cadastrado no sistema!");

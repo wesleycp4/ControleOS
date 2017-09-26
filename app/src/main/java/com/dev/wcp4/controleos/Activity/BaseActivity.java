@@ -72,6 +72,7 @@ public class BaseActivity extends AppCompatActivity
             //super.onBackPressed();
         }
         BaseActivity.this.finish();
+        finish();
     }
 
     @Override

@@ -40,7 +40,7 @@
     <string name="novo_login">Criar Novo Usuario</string>
     <string name="bairro">Bairro:</string>
     <string name="bairroCadCliente">Bairro:*</string>
-    <string name="cpf">CPF:</string>
+    <string name="cpf">CPF:*</string>
     <string name="chave_administrador">Chave Administrador</string>
     <string name="cidade">Cidade:</string>
     <string name="cidadeCadCliente">Cidade:*</string>

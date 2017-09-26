@@ -60,11 +60,10 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         editTextBairro = (EditText) findViewById(R.id.bairroCadCliente);
         editTextCidade = (EditText) findViewById(R.id.cidadeCadCliente);
         editTextEstado = (Spinner) findViewById(R.id.spinnerCadCliente);
-        //editTextCep = (EditText) findViewById(R.id.);
+        editTextCep = (EditText) findViewById(R.id.cepCadCliente);
 
         Button botaoCadastrar = (Button) findViewById(R.id.button_cadCliente);
         progressBar = (ProgressBar) findViewById(R.id.progressBarCadCliente);
-        //spinner.setOnItemSelectedListener(this);
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,23 +75,23 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                 if (networkInfo != null && networkInfo.isConnected()) {
 
                     String nome = editTextNome.getText().toString().trim();
-                    String usuario = editTextNumero.getText().toString().trim();
-                    String senha = editTextBairro.getText().toString().trim();
+                    String email = editTextEmail.getText().toString().trim();
+                    String cpf = editTextCpf.getText().toString().trim();
                     String contato = editTextContato.getText().toString().trim();
                     String contato2 = editTextContato2.getText().toString().trim();
-                    String email = editTextEmail.getText().toString().trim();
-                    String confirmasenha = editTextCpf.getText().toString().trim();
+                    String rua = editTextRua.getText().toString().trim();
+                    String numero = editTextNumero.getText().toString().trim();
+                    String complemento = editTextComplemento.getText().toString().trim();
+                    String bairro = editTextBairro.getText().toString().trim();
+                    String cidade = editTextCidade.getText().toString().trim();
+                    String cep = editTextCep.getText().toString().trim();
+                    String estado = editTextEstado.getSelectedItem().toString().trim();
 
-                    if (!nome.isEmpty() && !email.isEmpty() && !contato.isEmpty() && !usuario.isEmpty() && !senha.isEmpty()) {
+                    if (!nome.isEmpty() && !cpf.isEmpty() && !contato.isEmpty()&& ! rua.isEmpty() && !numero.isEmpty() && !bairro.isEmpty() && !cidade.isEmpty() && !estado.isEmpty()) {
                         try {
-                            if (senha.equals(confirmasenha) ) {
-                                parametros = "nome=" + nome + "&email=" + email + "&contato=" + contato + "&contato2=" + contato2 + "&usuario=" + usuario + "&senha=" + senha;
-                                progressBar.setVisibility(View.VISIBLE);
-                                new Cadastrar().execute(Rotas.CADASTRAR_USUARIO);
-                            } else {
-                                progressBar.setVisibility(View.INVISIBLE);
-                                exibir("Senhas não conferem! Verifique e tente novamente.");
-                            }
+                            progressBar.setVisibility(View.VISIBLE);
+                            parametros = "nome_cliente=" + nome + "&email_cliente=" + email + "&cpf_cliente=" + cpf + "&contato_cliente=" + contato + "&contato2_cliente=" + contato2 + "&rua_cliente=" + rua + "&numero_cliente=" + numero + "&complemento_cliente=" + complemento + "&bairro_cliente=" + bairro + "&cidade_cliente=" + cidade + "&cep_cliente=" + cep + "&estado_cliente=" + estado;
+                            new CadastrarCliente().execute(Rotas.CADASTRAR_CLIENTE);
                         } catch (ParseException e) {
                             progressBar.setVisibility(View.INVISIBLE);
                             e.printStackTrace();
@@ -112,38 +111,39 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     }
 
 
-private class Cadastrar extends AsyncTask<String, Object, String> {
+    private class CadastrarCliente extends AsyncTask<String, Object, String> {
 
-    @Override
-    protected void onProgressUpdate(Object... values) {
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-
-        try {
-            JSONObject jsonObj = new JSONObject(s);
-            if(!jsonObj.getBoolean("error")){
-                exibir(":D Usuario cadastrado com sucesso!");
-                startActivity(new Intent(CadastrarClienteActivity.this,BaseActivity.class));
-                finish();
-            } else{
-                progressBar.setVisibility(View.INVISIBLE);
-                exibir(":/ Usuario ja cadastrado no sistema!");
-            }
-        } catch (JSONException e) {
-            progressBar.setVisibility(View.INVISIBLE);
-            e.printStackTrace();
+        @Override
+        protected void onProgressUpdate(Object... values) {
         }
 
-    }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
 
-    @Override
-    protected String doInBackground(String... url) {
-        return Conexao.postDados(url[0],parametros);
+            try {
+                JSONObject jsonObj = new JSONObject(s);
+                if(!jsonObj.getBoolean("error")){
+                    exibir(":D Cliente cadastrado com sucesso!");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    onBackPressed();
+                } else{
+                    progressBar.setVisibility(View.INVISIBLE);
+                    exibir(":/ Cliente ja cadastrado no sistema!");
+                }
+            } catch (JSONException e) {
+                progressBar.setVisibility(View.INVISIBLE);
+                exibir(e.getMessage());
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        protected String doInBackground(String... url) {
+            return Conexao.postDados(url[0],parametros);
+        }
     }
-}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -157,7 +157,6 @@ private class Cadastrar extends AsyncTask<String, Object, String> {
 
     @Override
     public void onBackPressed() {
-        moveTaskToBack(true);
         finish();
     }
 
