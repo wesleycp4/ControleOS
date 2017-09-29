@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:textColorHint="@color/colorAccent"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"

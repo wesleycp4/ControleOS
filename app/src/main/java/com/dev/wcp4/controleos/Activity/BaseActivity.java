@@ -3,11 +3,14 @@ package com.dev.wcp4.controleos.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,14 +20,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dev.wcp4.controleos.Conexao.Conexao;
+import com.dev.wcp4.controleos.Conexao.Rotas;
 import com.dev.wcp4.controleos.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     final Context context = this;
+    private String parametros;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,16 +144,60 @@ public class BaseActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_avançado) {
-            exibir("opcs avançadas");
-            Intent intent = new Intent(this, NovoUserActivity.class);
-            startActivity(intent);
+
+            LayoutInflater inflater = getLayoutInflater();
+            View alertLayout = inflater.inflate(R.layout.opcoes_activity, null);
+            final EditText usuarioDialog = (EditText) alertLayout.findViewById(R.id.usuario_dialog);
+            final EditText senhaDailog = (EditText) alertLayout.findViewById(R.id.senha_dialog);
+            final CheckBox cbShowPassword = (CheckBox) alertLayout.findViewById(R.id.checkBox);
+
+            cbShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        // to encode password in dots
+                        senhaDailog.setTransformationMethod(null);
+                    } else {
+                        // to display the password in normal text
+                        senhaDailog.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    }
+                }
+            });
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Autorização necessaria!\nInforme usuario e senha:");
+            alert.setView(alertLayout);
+            alert.setCancelable(false);
+            alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    exibir("Operação Cancelada");
+                }
+            });
+
+            alert.setPositiveButton("Entrar!", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String usuario = usuarioDialog.getText().toString();
+                    String senha = senhaDailog.getText().toString();
+                    if(!usuario.isEmpty() && !senha.isEmpty()){
+                        parametros = "usuario=" + usuario + "&senha=" + senha;
+                        new Logar().execute(Rotas.URL_LOGIN);
+                    } else{
+                        exibir("Informe o Usuario e a Senha para acessar!");
+                    }
+                }
+            });
+            AlertDialog dialog = alert.create();
+            dialog.show();
 
         } else if (id == R.id.nav_sair) {
-            exibir("sair app");
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-            alertDialogBuilder.setTitle("Confirmar fechamento do aplicativo");
+            alertDialogBuilder.setTitle("Deseja fechar o aplicativo?");
             alertDialogBuilder
-                    .setMessage("Para sair do sistema clique em SIM!")
                     .setCancelable(false)
                     .setPositiveButton("Sim",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int id) {
@@ -158,6 +216,31 @@ public class BaseActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private class Logar extends AsyncTask<String, Object, String> {
+
+        @Override
+        protected void onProgressUpdate(Object... values) {
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            //exibir(s);
+            try {
+                JSONObject jsonObj = new JSONObject(s);
+                if(!jsonObj.getBoolean("error")){
+                    startActivity(new Intent(BaseActivity.this,NovoUserActivity.class));
+                }else{
+                    exibir("Usuario ou senha Incorretos!");
+                }
+            } catch (JSONException e) {
+                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        }
+        @Override
+        protected String doInBackground(String... url) {
+            return Conexao.postDados(url[0],parametros);
+        }
     }
 
     public void botoesFlutuantes(){

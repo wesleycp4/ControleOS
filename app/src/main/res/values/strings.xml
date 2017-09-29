@@ -22,7 +22,7 @@
     <string name="nav_clientes">Clientes</string>
     <string name="nav_os">Ordens de Serviço</string>
     <string name="nav_opcs">Mais Opções</string>
-    <string name="nav_avançado">Opções Avançadas</string>
+    <string name="nav_avançado">Cadastrar Usuario</string>
     <string name="nav_logout">Logout do Sistema</string>
     <string name="nav_sair">Fechar App</string>
     <string name="sair">Sair</string>
@@ -64,6 +64,7 @@
     <string name="alterar_status_os">alterar status OS</string>
     <string name="novo_acompanhamento">novo acompanhamento</string>
     <string name="cep">CEP:</string>
+    <string name="mostrar_senha">Mostrar Senha</string>
 
     <string-array name="spinner_array">
             <item>MG</item>

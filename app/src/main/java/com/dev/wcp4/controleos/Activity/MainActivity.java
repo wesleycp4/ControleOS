@@ -101,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             } catch (JSONException e) {
                 progressBar.setVisibility(View.INVISIBLE);
-                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-            }
+                exibir(e.getMessage());            }
         }
 
         @Override
