@@ -35,7 +35,7 @@
         app:fabSize="mini"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|center_horizontal"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/ic_os_add" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/botao_consultar"
@@ -49,7 +49,7 @@
         app:fabSize="mini"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@drawable/ic_search" />
+        app:srcCompat="@drawable/ic_pesq_os" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/botao_atualizar"

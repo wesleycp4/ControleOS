@@ -5,12 +5,14 @@
         <menu>
             <item
                 android:id="@+id/nav_novo_os"
-                android:icon="@drawable/ic_add"
-                android:title="@string/novo_os" />
+                android:icon="@drawable/ic_os_add"
+                android:title="@string/novo_os"
+                android:tint="@color/colorAccent"/>
             <item
                 android:id="@+id/nav_consultar_os"
-                android:icon="@drawable/ic_search"
-                android:title="@string/consulta" />
+                android:icon="@drawable/ic_pesq_os"
+                android:title="@string/consulta"
+                android:tint="@color/colorAccent"/>
         </menu>
     </item>
 
@@ -18,12 +20,14 @@
         <menu>
             <item
                 android:id="@+id/nav_cadastro_cliente"
-                android:icon="@drawable/ic_add"
-                android:title="@string/cadastrar_cliente" />
+                android:icon="@drawable/ic_cliente_add"
+                android:title="@string/cadastrar_cliente"
+                android:tint="@color/colorAccent"/>
             <item
                 android:id="@+id/nav_consultar_cliente"
-                android:icon="@drawable/ic_search"
-                android:title="@string/consultar_cliente" />
+                android:icon="@drawable/ic_pesq_cliente"
+                android:title="@string/consultar_cliente"
+                android:tint="@color/colorAccent"/>
         </menu>
     </item>
 
@@ -31,16 +35,19 @@
         <menu>
             <item
                 android:id="@+id/nav_avançado"
-                android:icon="@drawable/ic_info"
-                android:title="@string/nav_avançado" />
+                android:icon="@drawable/ic_cad_user"
+                android:title="@string/nav_avançado"
+                android:tint="@color/colorAccent"/>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@android:drawable/ic_notification_clear_all"
-                android:title="@string/nav_logout" />
+                android:icon="@drawable/ic_logout"
+                android:title="@string/nav_logout"
+                android:tint="@color/colorAccent"/>
             <item
                 android:id="@+id/nav_sair"
-                android:icon="@drawable/ic_close"
-                android:title="@string/nav_sair" />
+                android:icon="@drawable/ic_exit"
+                android:title="@string/nav_sair"
+                android:tint="@color/colorAccent"/>
 
         </menu>
     </item>
