@@ -168,7 +168,7 @@ public class BaseActivity extends AppCompatActivity
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Autorização necessaria!\nInforme usuario e senha:");
             alert.setView(alertLayout);
-            alert.setCancelable(false);
+            alert.setCancelable(true);
             alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
 
                 @Override
@@ -196,7 +196,7 @@ public class BaseActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_sair) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-            alertDialogBuilder.setTitle("Deseja fechar o aplicativo?");
+            alertDialogBuilder.setTitle("Deseja encerrar a aplicação?");
             alertDialogBuilder
                     .setCancelable(false)
                     .setPositiveButton("Sim",new DialogInterface.OnClickListener() {

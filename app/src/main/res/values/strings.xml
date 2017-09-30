@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Controle O.S. ZN</string>
 
-    <string name="title_activity_base">Ordens de Serviços em Aberto</string>
-    <string name="title_activity_consultar_ordem">Pesquisar Ordens de Serviço</string>
+    <string name="title_activity_base">Ordens de Serviço</string>
+    <string name="title_activity_consultar_ordem">Pesquisar Ordem de Serviço</string>
     <string name="title_activity_nova_os">Nova Ordem de Serviço</string>
     <string name="title_activity_os">Detalhes Ordem de Serviço</string>
-    <string name="title_activity_consultar_cliente">Consultar Clientes</string>
+    <string name="title_activity_consultar_cliente">Pesquisar Cliente</string>
     <string name="title_activity_cadastrar_cliente">Cadastrar Novo Cliente</string>
     <string name="title_activity_cadastrar_user">Cadastrar Novo Usuario</string>
 
@@ -14,7 +14,7 @@
     <string name="navigation_drawer_close">Fechar Drawer Navegação</string>
 
     <string name="cadastrar_cliente">Cadastrar Cliente</string>
-    <string name="consultar_cliente">Consultar Cliente</string>
+    <string name="consultar_cliente">Pesquisar Cliente</string>
 
     <string name="novo_os">Nova O.S.</string>
     <string name="consulta">Consultar O.S.</string>
@@ -66,35 +66,36 @@
     <string name="cep">CEP:</string>
     <string name="mostrar_senha">Mostrar Senha</string>
     <string name="administrador">Administrador</string>
+    <string name="exibir_senha">Exibir Senha</string>
 
     <string-array name="spinner_array">
-            <item>MG</item>
-            <item>AC</item>
-            <item>AL</item>
-            <item>AP</item>
-            <item>AM</item>
-            <item>BA</item>
-            <item>CE</item>
-            <item>DF</item>
-            <item>ES</item>
-            <item>GO</item>
-            <item>MA</item>
-            <item>MT</item>
-            <item>MS</item>
-            <item>PA</item>
-            <item>PB</item>
-            <item>PR</item>
-            <item>PE</item>
-            <item>PI</item>
-            <item>RJ</item>
-            <item>RN</item>
-            <item>RS</item>
-            <item>RO</item>
-            <item>RR</item>
-            <item>SC</item>
-            <item>SP</item>
-            <item>SE</item>
-            <item>TO</item>
-        </string-array>
+        <item>MG</item>
+        <item>RJ</item>
+        <item>SP</item>
+        <item>ES</item>
+        <item>DF</item>
+        <item>MT</item>
+        <item>MS</item>
+        <item>AC</item>
+        <item>AL</item>
+        <item>AP</item>
+        <item>AM</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PR</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>RN</item>
+        <item>RS</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>TO</item>
+    </string-array>
 
 </resources>
