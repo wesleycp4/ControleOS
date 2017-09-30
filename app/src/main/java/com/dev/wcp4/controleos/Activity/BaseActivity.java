@@ -1,8 +1,10 @@
 package com.dev.wcp4.controleos.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +25,7 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dev.wcp4.controleos.Conexao.Conexao;
@@ -38,30 +41,33 @@ public class BaseActivity extends AppCompatActivity
 
     final Context context = this;
     private String parametros;
+    private TextView textUsuario;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        textUsuario = (TextView) findViewById(R.id.textViewOla);
 
         //inicia os botoes flutuantes
         botoesFlutuantes();
 
+        //recupera o nome do usuario do sharedpreferences
+        SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
+        String usuario = prefs.getString("nomedoUser", null);
+        //exibir(usuario);
+        assert usuario != null;
+        usuario = usuario.substring(0,1).toUpperCase().concat(usuario.substring(1));
+        exibir("Bem vindo, "+usuario);
+
+
 
 
         //recycleview
-
-
-
-
-
-
-
-
-
 
 
 
@@ -74,6 +80,9 @@ public class BaseActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+        textUsuario = (TextView)header.findViewById(R.id.textViewOla);
+        textUsuario.setText("Ola " +usuario);
     }
 
     @Override

@@ -13,11 +13,10 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
+        android:id="@+id/textViewOla"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        android:text="Ola Nome"
-        android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp" />
 

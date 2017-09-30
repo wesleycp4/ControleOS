@@ -49,10 +49,18 @@ public class MainActivity extends AppCompatActivity {
 
                     String usuario = editTextUsuario.getText().toString().trim();
                     String senha = editTextSenha.getText().toString().trim();
+                    String us = editTextUsuario.getText().toString();
 
                     if(!usuario.isEmpty() && !senha.isEmpty()){
                         progressBar.setVisibility(View.VISIBLE);
                         parametros = "usuario=" + usuario + "&senha=" + senha;
+
+                        //salva nome do usuario nos sharedpreferences
+                        SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("nomedoUser", usuario);
+                        editor.apply();
+
                         new Logar().execute(Rotas.URL_LOGIN);
 
                     } else{
@@ -83,13 +91,6 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObj = new JSONObject(s);
                 if(!jsonObj.getBoolean("error")){
 
-                    // Getting JSON Array node
-                    JSONArray usuarios = jsonObj.getJSONArray("usuario");
-                    for (int i = 0; i < usuarios.length(); i++) {
-                        JSONObject c = usuarios.getJSONObject(i);
-                        salvaDados(c);
-                    }
-
                     startActivity(new Intent(MainActivity.this,BaseActivity.class));
                     progressBar.setVisibility(View.INVISIBLE);
                     finish();
@@ -108,18 +109,6 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... url) {
             return Conexao.postDados(url[0],parametros);
         }
-    }
-
-    //fazer botao salvar na ttela usando isso aqui
-    public void salvaDados(JSONObject c) throws JSONException {
-        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("usuario",c.getString("usuario"));
-        editor.putString("senha",c.getString("senha"));
-
-        editor.apply();
-        //exibir("salvo em preferences");
     }
 
     public void exibir(String msg){
