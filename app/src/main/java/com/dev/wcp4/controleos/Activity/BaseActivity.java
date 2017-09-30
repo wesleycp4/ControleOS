@@ -184,8 +184,8 @@ public class BaseActivity extends AppCompatActivity
                     String usuario = usuarioDialog.getText().toString();
                     String senha = senhaDailog.getText().toString();
                     if(!usuario.isEmpty() && !senha.isEmpty()){
-                        parametros = "usuario=" + usuario + "&senha=" + senha;
-                        new Logar().execute(Rotas.URL_LOGIN);
+                        parametros = "usuario=" + usuario + "&senha=" + senha + "&adm=" + 1;
+                        new Logar().execute(Rotas.URL_LOGINADM);
                     } else{
                         exibir("Informe o Usuario e a Senha para acessar!");
                     }
@@ -231,10 +231,10 @@ public class BaseActivity extends AppCompatActivity
                 if(!jsonObj.getBoolean("error")){
                     startActivity(new Intent(BaseActivity.this,NovoUserActivity.class));
                 }else{
-                    exibir("Usuario ou senha Incorretos!");
+                    exibir("Este Usuario não é Administrador!");
                 }
             } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                exibir(e.getMessage());
             }
         }
         @Override

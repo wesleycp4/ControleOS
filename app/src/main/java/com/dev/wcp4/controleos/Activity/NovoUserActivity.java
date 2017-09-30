@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ public class NovoUserActivity extends AppCompatActivity {
     private EditText editTextUsuario;
     private EditText editTextSenha;
     private EditText editTextConfirmaSenha;
+    private CheckBox checkBoxAdministrador;
+    private int intadm;
     private String parametros = "";
 
     @Override
@@ -50,6 +53,7 @@ public class NovoUserActivity extends AppCompatActivity {
         editTextSenha = (EditText) findViewById(R.id.senhaCad);
         editTextUsuario = (EditText) findViewById(R.id.usuarioCad);
         editTextConfirmaSenha = (EditText) findViewById(R.id.confirmasenhaCad);
+        checkBoxAdministrador = (CheckBox) findViewById(R.id.checkBoxAdm);
 
         Button botaoSalvar = (Button) findViewById(R.id.botao_salvarCadUser);
         progressBar = (ProgressBar) findViewById(R.id.progressBarCad);
@@ -75,7 +79,12 @@ public class NovoUserActivity extends AppCompatActivity {
                         try {
                             if (senha.equals(confirmasenha) ) {
                                 progressBar.setVisibility(View.VISIBLE);
-                                parametros = "nome=" + nome + "&email=" + email + "&contato=" + contato + "&contato2=" + contato2 + "&usuario=" + usuario + "&senha=" + senha;
+                                if ((checkBoxAdministrador).isChecked()){
+                                    intadm=1;
+                                } else{
+                                    intadm=0;
+                                }
+                                parametros = "nome=" + nome + "&email=" + email + "&contato=" + contato + "&contato2=" + contato2 + "&usuario=" + usuario + "&senha=" + senha + "&adm=" + intadm;
                                 new Cadastrar().execute(Rotas.CADASTRAR_USUARIO);
                             } else {
                                 progressBar.setVisibility(View.INVISIBLE);

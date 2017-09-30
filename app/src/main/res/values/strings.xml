@@ -65,6 +65,7 @@
     <string name="novo_acompanhamento">novo acompanhamento</string>
     <string name="cep">CEP:</string>
     <string name="mostrar_senha">Mostrar Senha</string>
+    <string name="administrador">Administrador</string>
 
     <string-array name="spinner_array">
             <item>MG</item>
