@@ -67,6 +67,14 @@
     <string name="mostrar_senha">Mostrar Senha</string>
     <string name="administrador">Administrador</string>
     <string name="exibir_senha">Exibir Senha</string>
+    <string name="endere_o">Endereço:</string>
+    <string name="_00_00_0000">00/00/0000</string>
+    <string name="data_abertura">Data Abertura:</string>
+    <string name="nome_cliente">Nome Cliente:</string>
+    <string name="none">None</string>
+    <string name="numero_da_o_s">Numero da O.S.:</string>
+    <string name="problema_informado">Problema Informado:</string>
+    <string name="status">Status:</string>
 
     <string-array name="spinner_array">
         <item>MG</item>
