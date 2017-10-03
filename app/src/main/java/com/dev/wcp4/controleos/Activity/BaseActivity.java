@@ -1,17 +1,24 @@
 package com.dev.wcp4.controleos.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.PasswordTransformationMethod;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,16 +32,22 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dev.wcp4.controleos.Adapter.Adapter;
 import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
+import com.dev.wcp4.controleos.Entidades.OrdemServico;
 import com.dev.wcp4.controleos.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +55,16 @@ public class BaseActivity extends AppCompatActivity
     final Context context = this;
     private String parametros;
     private TextView textUsuario;
+    private ProgressBar progressBar;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    //private Adapter adapter;
+    private List<OrdemServico> listOrdens;
+
+    String parametros2 = "" ;
+
+    private static final String URL_DATA = "http://localhost/document.json";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -59,16 +81,28 @@ public class BaseActivity extends AppCompatActivity
         //recupera o nome do usuario do sharedpreferences
         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
         String usuario = prefs.getString("nomedoUser", null);
-        //exibir(usuario);
         assert usuario != null;
         usuario = usuario.substring(0,1).toUpperCase().concat(usuario.substring(1));
         exibir("Bem vindo, "+usuario);
 
+        progressBar  = (ProgressBar) findViewById(R.id.progressBarBase);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerOS);
+        //recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //new carregaDados().execute(Rotas.URL_DADOS_OS);
 
+        listOrdens = new ArrayList<>();
 
-
-        //recycleview
-
+        for (int i = 0; i<6.; i++){
+            OrdemServico ordemservico = new OrdemServico(
+                    1,
+                    "teste",
+                    "equipteste",
+                    0,
+                    "usuarionome",
+                    "clientenome"
+            );
+        }
 
 
 
@@ -250,6 +284,106 @@ public class BaseActivity extends AppCompatActivity
         protected String doInBackground(String... url) {
             return Conexao.postDados(url[0],parametros);
         }
+    }
+
+    /*private class carregaDados extends AsyncTask<String, Object, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onProgressUpdate(Object... values) {
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            //Log.i(TAG,s.toString());
+            try {
+
+                JSONObject jsonObj = new JSONObject(s);
+
+                JSONArray jsonArray = jsonObj.getJSONArray("dados");
+                //SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                // String data = user.getString("data_nascimento");
+                //Date dataFormatada = formato.parse(data);
+                //int genero = Integer.parseInt( user.getString("genero"));
+                //Log.e(TAG,dataFormatada.toString());
+                for (int i=0;i<jsonArray.length();i++){
+                    try {
+
+                        JSONObject obj  = jsonArray.getJSONObject(i);
+                        OrdemServico dados = new OrdemServico(
+                                obj.getInt("idOS"),
+                                obj.getString("descricaoOS"),
+                                obj.getString("dataAberturaOS"),
+                                obj.getInt("statusOS")
+                        );
+                        list.add(dados);
+                        progressBar.setVisibility(View.GONE);
+                    }catch (JSONException e){
+                        progressBar.setVisibility(View.GONE);
+                        e.printStackTrace();
+                    }
+
+                }
+
+            } catch (JSONException e) {
+                progressBar.setVisibility(View.GONE);
+                e.printStackTrace();
+            }
+
+            adapter.notifyDataSetChanged();
+
+        }
+
+        @Override
+        protected String doInBackground(String... url) {
+
+            return Conexao.postDados(url[0],parametros);
+        }
+    }*/
+
+    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int spanCount;
+        private int spacing;
+        private boolean includeEdge;
+
+        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
+            this.spanCount = spanCount;
+            this.spacing = spacing;
+            this.includeEdge = includeEdge;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            int position = parent.getChildAdapterPosition(view); // item position
+            int column = position % spanCount; // item column
+
+            if (includeEdge) {
+                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
+                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+
+                if (position < spanCount) { // top edge
+                    outRect.top = spacing;
+                }
+                outRect.bottom = spacing; // item bottom
+            } else {
+                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
+                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                if (position >= spanCount) {
+                    outRect.top = spacing; // item top
+                }
+            }
+        }
+    }
+
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
     public void botoesFlutuantes(){

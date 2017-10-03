@@ -1,8 +1,9 @@
 package com.dev.wcp4.controleos.Entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrdemServico {
+public class OrdemServico implements Serializable {
 
     private int idOS;
     private String descricaoOS;
@@ -12,19 +13,18 @@ public class OrdemServico {
     private float valorOrcamentoOS;
     private float valorFinalOS;
     private int statusOS;
+    private String usuarioNome;
+    private String clienteNome;
 
-    public OrdemServico() {
-    }
-
-    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, Date dataAberturaOS, Date dataFechamentoOS, float valorOrcamentoOS, float valorFinalOS, int statusOS) {
+    //, Date dataAberturaOS
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, int statusOS, String usuarioNome, String clienteNome) {
         this.idOS = idOS;
         this.descricaoOS = descricaoOS;
         this.equipamentosOS = equipamentosOS;
-        this.dataAberturaOS = dataAberturaOS;
-        this.dataFechamentoOS = dataFechamentoOS;
-        this.valorOrcamentoOS = valorOrcamentoOS;
-        this.valorFinalOS = valorFinalOS;
+        //this.dataAberturaOS = dataAberturaOS;
         this.statusOS = statusOS;
+        this.usuarioNome = usuarioNome;
+        this.clienteNome = clienteNome;
     }
 
     public int getIdOS() {
@@ -89,5 +89,21 @@ public class OrdemServico {
 
     public void setStatusOS(int statusOS) {
         this.statusOS = statusOS;
+    }
+
+    public String getUsuarioNome() {
+        return usuarioNome;
+    }
+
+    public void setUsuarioNome(String usuarioNome) {
+        this.usuarioNome = usuarioNome;
+    }
+
+    public String getClienteNome() {
+        return clienteNome;
+    }
+
+    public void setClienteNome(String clienteNome) {
+        this.clienteNome = clienteNome;
     }
 }
