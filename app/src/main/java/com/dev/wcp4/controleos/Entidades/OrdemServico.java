@@ -21,7 +21,7 @@ public class OrdemServico implements Serializable {
         this.idOS = idOS;
         this.descricaoOS = descricaoOS;
         this.equipamentosOS = equipamentosOS;
-        //this.dataAberturaOS = dataAberturaOS;
+        this.dataAberturaOS = dataAberturaOS;
         this.statusOS = statusOS;
         this.usuarioNome = usuarioNome;
         this.clienteNome = clienteNome;

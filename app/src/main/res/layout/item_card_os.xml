@@ -11,10 +11,10 @@
         android:layout_gravity="center"
         android:elevation="2dp"
         card_view:cardBackgroundColor="@color/colorCard"
-        android:layout_margin="5dp"
+        android:layout_margin="3dp"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="3dp"
-        card_view:contentPadding="3dp">
+        card_view:contentPadding="0dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,133 +28,130 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/nome_cliente"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/data_abertura"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintLeft_toRightOf="@+id/textView11"
-                card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textNumeroOs"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintLeft_toRightOf="@+id/textView22"
+                android:layout_marginLeft="8dp"
+                card_view:layout_constraintRight_toLeftOf="@+id/textView12"
+                android:layout_marginRight="8dp"
+                card_view:layout_constraintHorizontal_bias="0.55"
+                android:layout_marginTop="4dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/textNomeCliente" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contato:"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="4dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/textNomeCliente" />
+
+            <TextView
+                android:id="@+id/textContato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(00)00000-0000"
+                android:layout_marginLeft="16dp"
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="0dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/textView22" />
 
             <TextView
                 android:id="@+id/textNomeCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="0dp"
                 android:text="@string/none"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
                 android:id="@+id/textDataAbertura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="2dp"
                 android:text="@string/_00_00_0000"
-                card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintLeft_toRightOf="@+id/textEndereco"
-                card_view:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="0dp"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView5"
-                tools:ignore="RtlHardcoded" />
+                android:layout_marginLeft="8dp"
+                card_view:layout_constraintLeft_toLeftOf="@+id/textView5"
+                android:layout_marginRight="8dp"
+                card_view:layout_constraintRight_toRightOf="@+id/textView5" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="19dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/problema_informado"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
+                card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textEndereco"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/textDataAbertura" />
 
             <TextView
                 android:id="@+id/textDescricao"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="1dp"
                 android:text="@string/none"
+                android:textAlignment="center"
                 android:textStyle="italic"
-                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintBottom_toTopOf="@+id/botaoImprimir"
                 card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintRight_toLeftOf="@+id/botaoNovoAcomp"
+                card_view:layout_constraintRight_toRightOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView9"
                 card_view:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/endere_o"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textNomeCliente"
-                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/status"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintLeft_toRightOf="@+id/textView9"
-                card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textDataAbertura"
-                tools:ignore="RtlHardcoded" />
-
-            <TextView
-                android:id="@+id/textEndereco"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/none"
-                card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView11"
-                tools:ignore="RtlHardcoded" />
+                android:layout_marginTop="4dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/textNumeroOs"
+                android:layout_marginRight="8dp"
+                card_view:layout_constraintRight_toRightOf="parent" />
 
             <TextView
                 android:id="@+id/textStatusOs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="2dp"
                 android:text="@string/none"
+                android:textAlignment="textEnd"
                 card_view:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="0dp"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView12"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintLeft_toRightOf="@+id/textDataAbertura"
+                android:layout_marginLeft="8dp"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginBottom="0dp"
+                card_view:layout_constraintBottom_toTopOf="@+id/textDescricao" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -164,13 +161,12 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/numero_da_o_s"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/textView4"
                 card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textNumeroOs"
@@ -178,49 +174,63 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="2dp"
                 android:text="@string/none"
                 card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/textNomeCliente"
                 card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView17"
-                tools:ignore="RtlHardcoded" />
+                android:layout_marginTop="0dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/textView17" />
 
             <ImageButton
                 android:id="@+id/botaoNovoAcomp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_toStartOf="@+id/botaoAlterStatus"
                 android:background="?selectableItemBackground"
                 android:contentDescription="@string/novo_acompanhamento"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_menu_add"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintRight_toLeftOf="@+id/botaoAlterStatus"
-                card_view:layout_constraintTop_toBottomOf="@+id/textStatusOs"
-                card_view:layout_constraintVertical_bias="1.0"
-                tools:ignore="RtlHardcoded" />
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                card_view:layout_constraintRight_toLeftOf="@+id/botaoAlterStatus" />
 
             <ImageButton
                 android:id="@+id/botaoAlterStatus"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:background="?selectableItemBackground"
                 android:contentDescription="@string/alterar_status_os"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_menu_more"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textStatusOs"
-                tools:ignore="RtlHardcoded"
-                card_view:layout_constraintVertical_bias="1.0" />
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                card_view:layout_constraintRight_toRightOf="parent" />
+
+            <ImageButton
+                android:id="@+id/botaoImprimir"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="4dp"
+
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="?selectableItemBackground"
+                android:contentDescription="@string/alterar_status_os"
+                android:padding="8dp"
+                android:src="?android:attr/actionModeFindDrawable"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.0"
+                card_view:layout_constraintLeft_toRightOf="@+id/botaoAlterStatus"
+                card_view:layout_constraintRight_toRightOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
