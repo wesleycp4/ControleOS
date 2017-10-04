@@ -56,26 +56,34 @@ public class BaseActivity extends AppCompatActivity
     private String parametros;
     private TextView textUsuario;
     private ProgressBar progressBar;
+    private ArrayList<OrdemServico> list = new ArrayList<>();
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    //private Adapter adapter;
-    private List<OrdemServico> listOrdens;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
 
-    String parametros2 = "" ;
-
-    private static final String URL_DATA = "http://localhost/document.json";
+    String param = "id_funcionario=1" ;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
+        new carregaDados().execute(Rotas.URL_DADOS_OS);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textUsuario = (TextView) findViewById(R.id.textViewOla);
 
-        //inicia os botoes flutuantes
+        textUsuario = (TextView) findViewById(R.id.textViewOla);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new Adapter(this,list);
+        recyclerView.setAdapter(adapter);
+
         botoesFlutuantes();
 
         //recupera o nome do usuario do sharedpreferences
@@ -84,27 +92,6 @@ public class BaseActivity extends AppCompatActivity
         assert usuario != null;
         usuario = usuario.substring(0,1).toUpperCase().concat(usuario.substring(1));
         exibir("Bem vindo, "+usuario);
-
-        progressBar  = (ProgressBar) findViewById(R.id.progressBarBase);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerOS);
-        //recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //new carregaDados().execute(Rotas.URL_DADOS_OS);
-
-        listOrdens = new ArrayList<>();
-
-        for (int i = 0; i<6.; i++){
-            OrdemServico ordemservico = new OrdemServico(
-                    1,
-                    "teste",
-                    "equipteste",
-                    0,
-                    "usuarionome",
-                    "clientenome"
-            );
-        }
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -286,11 +273,10 @@ public class BaseActivity extends AppCompatActivity
         }
     }
 
-    /*private class carregaDados extends AsyncTask<String, Object, String> {
+    private class carregaDados extends AsyncTask<String, Object, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -300,38 +286,32 @@ public class BaseActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(String s) {
-            //Log.i(TAG,s.toString());
             try {
 
                 JSONObject jsonObj = new JSONObject(s);
 
-                JSONArray jsonArray = jsonObj.getJSONArray("dados");
-                //SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                // String data = user.getString("data_nascimento");
-                //Date dataFormatada = formato.parse(data);
-                //int genero = Integer.parseInt( user.getString("genero"));
-                //Log.e(TAG,dataFormatada.toString());
+                JSONArray jsonArray = jsonObj.getJSONArray("osDados");
                 for (int i=0;i<jsonArray.length();i++){
                     try {
-
                         JSONObject obj  = jsonArray.getJSONObject(i);
-                        OrdemServico dados = new OrdemServico(
-                                obj.getInt("idOS"),
-                                obj.getString("descricaoOS"),
-                                obj.getString("dataAberturaOS"),
-                                obj.getInt("statusOS")
+                        OrdemServico os = new OrdemServico(
+                                obj.getInt("idos"),
+                                obj.getString("descricao"),
+                                obj.getString("equipamentos"),
+                                obj.getInt("status"),
+                                obj.getString("nome"),
+                                obj.getString("nome_cliente")
+
                         );
-                        list.add(dados);
-                        progressBar.setVisibility(View.GONE);
+                        list.add(os);
                     }catch (JSONException e){
-                        progressBar.setVisibility(View.GONE);
+
                         e.printStackTrace();
                     }
 
                 }
 
             } catch (JSONException e) {
-                progressBar.setVisibility(View.GONE);
                 e.printStackTrace();
             }
 
@@ -342,9 +322,9 @@ public class BaseActivity extends AppCompatActivity
         @Override
         protected String doInBackground(String... url) {
 
-            return Conexao.postDados(url[0],parametros);
+            return Conexao.postDados(url[0],param);
         }
-    }*/
+    }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 

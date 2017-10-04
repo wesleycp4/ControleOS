@@ -9,10 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/cardview_default_radius"
-        android:elevation="3dp"
+        android:elevation="2dp"
         card_view:cardBackgroundColor="@color/colorCard"
-        card_view:cardCornerRadius="@dimen/cardview_default_radius">
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="3dp"
+        card_view:contentPadding="3dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -53,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/none"
                 card_view:layout_constraintLeft_toLeftOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView4"
@@ -65,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/_00_00_0000"
                 card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/textEndereco"
@@ -93,7 +95,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/none"
                 android:textStyle="italic"
                 card_view:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/none"
                 card_view:layout_constraintLeft_toLeftOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView11"
@@ -148,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/none"
                 card_view:layout_constraintRight_toRightOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -176,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/none"
                 card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/textNomeCliente"
@@ -199,7 +201,7 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintRight_toLeftOf="@+id/botaoAlterStatus"
                 card_view:layout_constraintTop_toBottomOf="@+id/textStatusOs"
-                card_view:layout_constraintVertical_bias="0.666"
+                card_view:layout_constraintVertical_bias="1.0"
                 tools:ignore="RtlHardcoded" />
 
             <ImageButton
@@ -217,7 +219,8 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintRight_toRightOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/textStatusOs"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                card_view:layout_constraintVertical_bias="1.0" />
 
         </android.support.constraint.ConstraintLayout>
 

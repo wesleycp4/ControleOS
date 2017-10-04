@@ -125,12 +125,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         OrdemServico ordemservico = list.get(position);
-        //holder.textNomeCl.setText(ordemservico.getClienteNome());
-        holder.textNumOs.setText(ordemservico.getIdOS());
-        //holder.textEnd.setText(ordemservico.getClienteNome());
+        //esses holder que vai pra recyclerview******************************************
+        holder.textNomeCl.setText(ordemservico.getClienteNome());
+        // holder.textNumOs.setText(ordemservico.getIdOS());
+        holder.textEnd.setText(ordemservico.getUsuarioNome());
         //holder.textDataAb.setText(ordemservico.getDataAberturaOS());
         holder.textDesc.setText(ordemservico.getDescricaoOS());
-        holder.textStatOs.setText(ordemservico.getStatusOS());
+        //  holder.textStatOs.setText(ordemservico.getStatusOS());
+
+        //viewHolder.itemTitle.setText(titles[i]);
+        // viewHolder.itemDetail.setText(details[i]);
+        //viewHolder.itemImage.setImageResource(images[i]);
 
         // loading album cover using Glide library
         // Glide.with(mContext).load(user.getImg()).into(holder.thumbnail);
