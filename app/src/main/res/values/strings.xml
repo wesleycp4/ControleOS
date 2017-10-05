@@ -75,6 +75,8 @@
     <string name="numero_da_o_s">Numero da O.S.:</string>
     <string name="problema_informado">Problema Informado:</string>
     <string name="status">Status:</string>
+    <string name="filtrar">Filtrar</string>
+    <string name="atualizar">Atualizar</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

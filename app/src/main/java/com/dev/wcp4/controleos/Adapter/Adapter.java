@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.dev.wcp4.controleos.Entidades.OrdemServico;
 import com.dev.wcp4.controleos.Entidades.Cliente;
 import com.dev.wcp4.controleos.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,11 +32,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private Context mContext;
     private List<OrdemServico> list = new ArrayList<>();
     String status;
-    String data = "";
     String id;
+    ImageButton btn1, btn2, btn3;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView textNomeCl, textDataAb, textDesc, textEnd, textStatOs, textNumOs;
+        public TextView textNomeCl, textDataAb, textDesc, textEnd, textStatOs, textNumOs, textContatoOs;
 
         public MyViewHolder(View view) {
             super(view);
@@ -44,6 +46,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             textDataAb = (TextView) view.findViewById(R.id.textDataAbertura);
             textDesc = (TextView) view.findViewById(R.id.textDescricao);
             textStatOs = (TextView) view.findViewById(R.id.textStatusOs);
+            textContatoOs = (TextView) view.findViewById(R.id.textContato);
+
+            btn1 = (ImageButton) view.findViewById(R.id.botaoNovoAcomp);
+            btn2 = (ImageButton) view.findViewById(R.id.botaoAlterStatus);
+            btn3 = (ImageButton) view.findViewById(R.id.botaoAbrir);
+
             view.setOnClickListener(this);
         }
 
@@ -70,7 +78,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
 
             final TextView textDataAb = new TextView(mContext);
-            textDataAb.setText("Aberta em: " +ordemservico.getDataAberturaOS());
+            String data = ordemservico.getDataAberturaOS().replaceAll("-", "/");
+            String[] s = data.split("/");
+            String novaData = s[2]+"/"+s[1]+"/"+s[0];
+            textDataAb.setText("Aberta em: " +novaData);
 
             final TextView textDesc = new TextView(mContext);
             textDesc.setText("Descrição: " + ordemservico.getDescricaoOS());
@@ -140,6 +151,26 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         OrdemServico ordemservico = list.get(position);
+
+        btn1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "bt add acompanhamento", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "bt alter status", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "bt abrir em nova tela", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         if (ordemservico.getStatusOS() == 0){
             status = "Aberto";
         }
@@ -166,8 +197,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         id = Integer.toString(ordemservico.getIdOS());
         holder.textNumOs.setText(id);
         //holder.textEnd.setText(ordemservico.getUsuarioNome());
-        //holder.textDataAb.setText(ordemservico.getDataAberturaOS());
+
+        String data = ordemservico.getDataAberturaOS().replaceAll("-", "/");
+        String[] s = data.split("/");
+        String novaData = s[2]+"/"+s[1]+"/"+s[0];
+
+        holder.textDataAb.setText(novaData);
         holder.textDesc.setText(ordemservico.getDescricaoOS());
+        holder.textContatoOs.setText(ordemservico.getContato());
         holder.textStatOs.setText(status);
 
     }
@@ -193,6 +230,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     public int getItemCount() {
         return list.size();
     }
+
 
 
 }

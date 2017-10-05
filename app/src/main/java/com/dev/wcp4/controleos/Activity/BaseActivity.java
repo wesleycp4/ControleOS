@@ -1,24 +1,18 @@
 package com.dev.wcp4.controleos.Activity;
 
 import android.annotation.SuppressLint;
-import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.PasswordTransformationMethod;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -29,9 +23,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +43,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import static com.dev.wcp4.controleos.R.id.progressBar;
+import static com.dev.wcp4.controleos.R.id.snackbar_action;
+import static com.dev.wcp4.controleos.R.id.snackbar_text;
 
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -55,8 +54,8 @@ public class BaseActivity extends AppCompatActivity
     final Context context = this;
     private String parametros;
     private TextView textUsuario;
-    private ProgressBar progressBar;
     private ArrayList<OrdemServico> list = new ArrayList<>();
+    private ProgressBar progressBar;
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -69,6 +68,9 @@ public class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBarBase) ;
+        progressBar.setVisibility(View.VISIBLE);
 
         new carregaDados().execute(Rotas.URL_DADOS_OS);
 
@@ -134,9 +136,15 @@ public class BaseActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.acao_menu) {
-            return true;
+        if (id == R.id.acao_filtrar) {
+            exibir("bt filtrar");
         }
+        if (id == R.id.acao_atualizar){
+            progressBar.setVisibility(View.VISIBLE);
+            new carregaDados().execute(Rotas.URL_DADOS_OS);
+            exibir("Atualizado!");
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -274,14 +282,16 @@ public class BaseActivity extends AppCompatActivity
     }
 
     private class carregaDados extends AsyncTask<String, Object, String> {
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onProgressUpdate(Object... values) {
-
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -291,6 +301,7 @@ public class BaseActivity extends AppCompatActivity
                 JSONObject jsonObj = new JSONObject(s);
 
                 JSONArray jsonArray = jsonObj.getJSONArray("osDados");
+                list.clear();
                 for (int i=0;i<jsonArray.length();i++){
                     try {
                         JSONObject obj  = jsonArray.getJSONObject(i);
@@ -298,7 +309,9 @@ public class BaseActivity extends AppCompatActivity
                                 obj.getInt("idos"),
                                 obj.getString("descricao"),
                                 obj.getString("equipamentos"),
+                                obj.getString("dataabertura"),
                                 obj.getInt("status"),
+                                obj.getString("contato_cliente"),
                                 obj.getString("nome"),
                                 obj.getString("nome_cliente")
                         );
@@ -311,6 +324,7 @@ public class BaseActivity extends AppCompatActivity
                 e.printStackTrace();
             }
             adapter.notifyDataSetChanged();
+            progressBar.setVisibility(View.INVISIBLE);
         }
 
         @Override
@@ -329,14 +343,15 @@ public class BaseActivity extends AppCompatActivity
             }
         });*/
 
-        FloatingActionButton botao_cons = (FloatingActionButton) findViewById(R.id.botao_consultar);
+     /*   FloatingActionButton botao_cons = (FloatingActionButton) findViewById(R.id.botao_consultar);
         botao_cons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent consult = new Intent(getContexto(),ConsultarOrdemActivity.class);
                 startActivity(consult);
+
             }
-        });
+        });*/
 
         FloatingActionButton botao_add = (FloatingActionButton) findViewById(R.id.botao_addos);
         botao_add.setOnClickListener(new View.OnClickListener() {

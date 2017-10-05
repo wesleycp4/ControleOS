@@ -8,8 +8,10 @@ public class OrdemServico implements Serializable {
     private int idOS;
     private String descricaoOS;
     private String equipamentosOS;
-    private Date dataAberturaOS;
-    private Date dataFechamentoOS;
+    private String dataAberturaOS;
+    private String dataFechamentoOS;
+    private String contato;
+    private String contato2;
     private float valorOrcamentoOS;
     private float valorFinalOS;
     private int statusOS;
@@ -17,12 +19,23 @@ public class OrdemServico implements Serializable {
     private String clienteNome;
 
     //, Date dataAberturaOS
-    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, int statusOS, String usuarioNome, String clienteNome) {
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, int statusOS, String usuarioNome, String clienteNome ) {
         this.idOS = idOS;
         this.descricaoOS = descricaoOS;
         this.equipamentosOS = equipamentosOS;
         this.dataAberturaOS = dataAberturaOS;
         this.statusOS = statusOS;
+        this.usuarioNome = usuarioNome;
+        this.clienteNome = clienteNome;
+    }
+
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, int statusOS, String contato, String usuarioNome, String clienteNome) {
+        this.idOS = idOS;
+        this.descricaoOS = descricaoOS;
+        this.equipamentosOS = equipamentosOS;
+        this.dataAberturaOS = dataAberturaOS;
+        this.statusOS = statusOS;
+        this.contato = contato;
         this.usuarioNome = usuarioNome;
         this.clienteNome = clienteNome;
     }
@@ -39,6 +52,22 @@ public class OrdemServico implements Serializable {
         return descricaoOS;
     }
 
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
+    public String getContato2() {
+        return contato2;
+    }
+
+    public void setContato2(String contato2) {
+        this.contato2 = contato2;
+    }
+
     public void setDescricaoOS(String descricaoOS) {
         this.descricaoOS = descricaoOS;
     }
@@ -51,19 +80,19 @@ public class OrdemServico implements Serializable {
         this.equipamentosOS = equipamentosOS;
     }
 
-    public Date getDataAberturaOS() {
+    public String getDataAberturaOS() {
         return dataAberturaOS;
     }
 
-    public void setDataAberturaOS(Date dataAberturaOS) {
+    public void setDataAberturaOS(String dataAberturaOS) {
         this.dataAberturaOS = dataAberturaOS;
     }
 
-    public Date getDataFechamentoOS() {
+    public String getDataFechamentoOS() {
         return dataFechamentoOS;
     }
 
-    public void setDataFechamentoOS(Date dataFechamentoOS) {
+    public void setDataFechamentoOS(String dataFechamentoOS) {
         this.dataFechamentoOS = dataFechamentoOS;
     }
 

@@ -2,9 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/acao_menu"
+        android:id="@+id/acao_filtrar"
+        android:icon="@drawable/ic_filter"
         android:orderInCategory="100"
-        android:title="@string/sair"
-        android:visible="false"
-        app:showAsAction="never" />
+        android:title="@string/filtrar"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/acao_atualizar"
+        android:icon="@drawable/ic_refresh"
+        android:orderInCategory="0"
+        android:title="@string/atualizar"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
 </menu>

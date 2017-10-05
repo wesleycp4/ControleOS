@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString("nomedoUser", usuario);
+                        //editor.putString("nomedoUser", usuario);
                         editor.apply();
 
                         new Logar().execute(Rotas.URL_LOGIN);

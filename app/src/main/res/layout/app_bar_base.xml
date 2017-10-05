@@ -31,25 +31,11 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_margin="@dimen/fab_margin"
         android:tint="@color/cor_icone"
-        app:backgroundTint="@android:color/holo_green_light"
-        app:fabSize="mini"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|left"
-        app:srcCompat="@drawable/ic_os_add" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/botao_consultar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_margin="@dimen/fab_margin"
-        android:clickable="true"
-        android:tint="@color/cor_icone"
-        app:backgroundTint="@android:color/holo_blue_light"
+        app:backgroundTint="@color/colorAccent2"
         app:fabSize="mini"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@drawable/ic_pesq_os" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 
 
