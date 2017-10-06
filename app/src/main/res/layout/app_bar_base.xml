@@ -31,7 +31,7 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_margin="@dimen/fab_margin"
         android:tint="@color/cor_icone"
-        app:backgroundTint="@color/colorAccent2"
+        app:backgroundTint="@color/colorPrimary"
         app:fabSize="mini"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"

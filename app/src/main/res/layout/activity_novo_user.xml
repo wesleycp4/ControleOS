@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/nome_completo"
             android:inputType="text|textCapSentences|textAutoComplete"
+            android:maxLength="45"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
@@ -85,6 +86,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textAutoComplete|textEmailAddress"
+            android:maxLength="45"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
@@ -107,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/contato"
                 android:inputType="phone"
+                android:maxLength="14"
                 android:maxLines="1" />
 
         </android.support.design.widget.TextInputLayout>
@@ -131,6 +134,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/contato_2"
             android:inputType="phone"
+            android:maxLength="14"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
@@ -152,7 +156,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/usuario"
-                android:inputType="text|textNoSuggestions" />
+                android:inputType="text|textNoSuggestions"
+                android:maxLength="15" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -176,6 +181,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/senha"
             android:inputType="textPassword"
+            android:maxLength="20"
             android:maxLines="1" />
 
     </android.support.design.widget.TextInputLayout>
@@ -196,7 +202,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/confirmar_senha"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:maxLength="20" />
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox

@@ -11,9 +11,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -44,6 +46,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.dev.wcp4.controleos.R.id.acao_filtrar;
 import static com.dev.wcp4.controleos.R.id.progressBar;
 import static com.dev.wcp4.controleos.R.id.snackbar_action;
 import static com.dev.wcp4.controleos.R.id.snackbar_text;
@@ -135,16 +138,24 @@ public class BaseActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        View filtrar = findViewById(R.id.acao_filtrar);
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.acao_filtrar) {
-            exibir("bt filtrar");
+            filtrar.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    showPopupMenu(v);
+                }
+            });
+            //exibir("bt filtrar");
         }
+
         if (id == R.id.acao_atualizar){
             progressBar.setVisibility(View.VISIBLE);
             new carregaDados().execute(Rotas.URL_DADOS_OS);
             exibir("Atualizado!");
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -390,5 +401,36 @@ public class BaseActivity extends AppCompatActivity
 
     public void exibir(String msg){
         Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showPopupMenu(View view) {
+        // inflate menu
+        PopupMenu popup = new PopupMenu(getContexto(), view);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.base_filtro, popup.getMenu());
+        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
+        popup.show();
+    }
+
+    private class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
+
+        MyMenuItemClickListener() {
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            /*
+            switch (menuItem.getItemId()) {
+                case R.id.action_add_favourite:
+                    Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.action_play_next:
+                    Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
+                    return true;
+                default:
+            }
+            */
+            return false;
+        }
     }
 }

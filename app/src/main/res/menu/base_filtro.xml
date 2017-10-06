@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/filtro0"
+        android:title="Adicionar/Atualiza"/>
+
+    <item
+        android:id="@+id/filtro1"
+        android:title="Adicionar/Atualiza"/>
+
+    <item
+        android:id="@+id/filtro2"
+        android:title="Adicionar/Atualiza"/>
+
+    <item
+        android:id="@+id/filtro3"
+        android:title="Adicionar/Atualiza"/>
+
+    <item
+        android:id="@+id/filtro4"
+        android:title="Adicionar/Atualiza"/>
+
+    <item
+        android:id="@+id/filtro5"
+        android:title="Adicionar/Atualiza"/>
+
+    <item
+        android:id="@+id/filtro6"
+        android:title="Adicionar/Atualiza"/>
+
+</menu>

@@ -108,4 +108,14 @@
         <item>TO</item>
     </string-array>
 
+    <string-array name="spinner_status">
+        <item>Aberto</item>
+        <item>Em Analise</item>
+        <item>Aguardando autorização</item>
+        <item>Orçamento Aprovado</item>
+        <item>Em reparo</item>
+        <item>Pronto para Entrega/Retirada</item>
+        <item>Finalizado</item>
+    </string-array>
+
 </resources>

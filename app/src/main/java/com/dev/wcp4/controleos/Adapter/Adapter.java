@@ -2,6 +2,9 @@ package com.dev.wcp4.controleos.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.PopupMenu;
@@ -11,10 +14,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,26 +38,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     private Context mContext;
     private List<OrdemServico> list = new ArrayList<>();
-    String status;
-    String id;
-    ImageButton btn1, btn2, btn3;
+    private String status;
+    private ImageButton btn1, btn2, btn3;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView textNomeCl, textDataAb, textDesc, textEnd, textStatOs, textNumOs, textContatoOs;
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView textNomeCl, textDataAb, textDesc, textStatOs, textNumOs, textContatoOs;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
             textNomeCl = (TextView) view.findViewById(R.id.textNomeCliente);
             textNumOs = (TextView) view.findViewById(R.id.textNumeroOs);
-            //textEnd = (TextView) view.findViewById(R.id.textEndereco);
             textDataAb = (TextView) view.findViewById(R.id.textDataAbertura);
             textDesc = (TextView) view.findViewById(R.id.textDescricao);
             textStatOs = (TextView) view.findViewById(R.id.textStatusOs);
             textContatoOs = (TextView) view.findViewById(R.id.textContato);
 
             btn1 = (ImageButton) view.findViewById(R.id.botaoNovoAcomp);
-            btn2 = (ImageButton) view.findViewById(R.id.botaoAlterStatus);
-            btn3 = (ImageButton) view.findViewById(R.id.botaoAbrir);
+            //btn2 = (ImageButton) view.findViewById(R.id.botaoAlterStatus);
+            btn2 = (ImageButton) view.findViewById(R.id.botaoAbrir);
 
             view.setOnClickListener(this);
         }
@@ -61,72 +66,64 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         }
 
         @SuppressLint("SetTextI18n")
-        public void criaAlertDialog(View view, int position) {
+        void criaAlertDialog(View view, int position) {
             OrdemServico ordemservico = list.get(position);
-
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-            alertDialog.setTitle("Dados Adicionais: ");
-
-            final TextView textNomeCl = new TextView(mContext);
-            textNomeCl.setText("Nome Cliente: " +ordemservico.getClienteNome());
+            alertDialog.setTitle("Informações: ");
 
             final TextView textNumOs = new TextView(mContext);
-            textNumOs.setText("Numero da O.S.: " + ordemservico.getIdOS());
-
-            //final TextView textEnd = new TextView(mContext);
-            //textEnd.setText("Endereço: " + ordemservico.getClienteNome());
-
+            textNumOs.setText("Numero da O. S.:  " + ordemservico.getIdOS());
 
             final TextView textDataAb = new TextView(mContext);
             String data = ordemservico.getDataAberturaOS().replaceAll("-", "/");
             String[] s = data.split("/");
             String novaData = s[2]+"/"+s[1]+"/"+s[0];
-            textDataAb.setText("Aberta em: " +novaData);
+            textDataAb.setText("Aberta em:  " +novaData);
+
+            final TextView textNomeCl = new TextView(mContext);
+            textNomeCl.setText("\nCliente:  " +ordemservico.getClienteNome());
+
+            //final TextView textEnd = new TextView(mContext);
+            //textEnd.setText("Endereço: " + end);
 
             final TextView textDesc = new TextView(mContext);
-            textDesc.setText("Descrição: " + ordemservico.getDescricaoOS());
+            textDesc.setText("\nDescrição:  " + ordemservico.getDescricaoOS());
 
             final TextView textStatOs = new TextView(mContext);
             if (ordemservico.getStatusOS() == 0){
                 status = "Aberto";
-            }
-            if (ordemservico.getStatusOS() == 1) {
+            } else if (ordemservico.getStatusOS() == 1) {
                 status = "Em Analise";
-            }
-            if (ordemservico.getStatusOS() == 2) {
-                status = "Aguardando autorização do Cliente";
-            }
-            if (ordemservico.getStatusOS() == 3) {
+            } else if (ordemservico.getStatusOS() == 2) {
+                status = "Aguardando autorização";
+            } else if (ordemservico.getStatusOS() == 3) {
                 status = "Orçamento Aprovado";
-            }
-            if (ordemservico.getStatusOS() == 4) {
+            } else if (ordemservico.getStatusOS() == 4) {
                 status = "Em reparo";
-            }
-            if (ordemservico.getStatusOS() == 5) {
+            } else if (ordemservico.getStatusOS() == 5) {
                 status = "Pronto para Entrega/Retirada";
-            }
-            if (ordemservico.getStatusOS() == 6) {
+            } else if (ordemservico.getStatusOS() == 6) {
                 status = "Finalizado";
             }
-            textStatOs.setText("Status: " +status);
+            textStatOs.setText("\nStatus:  " +status);
 
             final TextView textEquip = new TextView(mContext);
-            textEquip.setText("Equipamento(s): " + ordemservico.getEquipamentosOS());
+            textEquip.setText("Equipamento(s):  " + ordemservico.getEquipamentosOS());
 
             final TextView textUsuario = new TextView(mContext);
-            textUsuario.setText("O.S. Aberta por: " + ordemservico.getUsuarioNome());
+            textUsuario.setText("\nO. S. Aberta por:  " + ordemservico.getUsuarioNome());
 
             LinearLayout linearLayout = new LinearLayout(mContext);
             linearLayout.addView(textNumOs);
             linearLayout.addView(textDataAb);
             linearLayout.addView(textNomeCl);
-            linearLayout.addView(textEquip);
             linearLayout.addView(textDesc);
             linearLayout.addView(textStatOs);
+            linearLayout.addView(textEquip);
             linearLayout.addView(textUsuario);
 
             linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setGravity(LinearLayout.TEXT_ALIGNMENT_CENTER);
+            //linearLayout.setGravity(LinearLayout.TEXT_ALIGNMENT_CENTER);
             linearLayout.setPadding(16, 16, 16, 16);
 
             alertDialog.setView(linearLayout);
@@ -155,49 +152,60 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "bt add acompanhamento", Toast.LENGTH_SHORT).show();
+
+                LayoutInflater inflater=(LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layout = inflater.inflate(R.layout.base_add_acomp_status,null);
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(layout.getRootView().getContext());
+                alertbox.setMessage("Atualizar O.S.");
+                alertbox.setView(layout);
+                alertbox.setPositiveButton("Atualizar",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //to do
+                        exibir("atualizar");
+                    }
+                });
+                alertbox.setNeutralButton("Cancelar",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //to do
+                        exibir("Operação Cancelada!");
+                    }
+                });
+                alertbox.show();
             }
         });
+
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "bt alter status", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, "bt abrir em nova tela", Toast.LENGTH_SHORT).show();
+
+                exibir("abrir tela os");
+                //abre intent jogando tudo pra nova tela todos os dados etc***********************************///********000000000000000000000000000000
+
             }
         });
 
         if (ordemservico.getStatusOS() == 0){
             status = "Aberto";
-        }
-        if (ordemservico.getStatusOS() == 1) {
+        } else if (ordemservico.getStatusOS() == 1) {
             status = "Em Analise";
-        }
-        if (ordemservico.getStatusOS() == 2) {
+        } else if (ordemservico.getStatusOS() == 2) {
             status = "Aguardando autorização";
-        }
-        if (ordemservico.getStatusOS() == 3) {
+        } else if (ordemservico.getStatusOS() == 3) {
             status = "Orçamento Aprovado";
-        }
-        if (ordemservico.getStatusOS() == 4) {
+        } else if (ordemservico.getStatusOS() == 4) {
             status = "Em reparo";
-        }
-        if (ordemservico.getStatusOS() == 5) {
+        } else if (ordemservico.getStatusOS() == 5) {
             status = "Pronto para Entrega/Retirada";
-        }
-        if (ordemservico.getStatusOS() == 6) {
+        } else if (ordemservico.getStatusOS() == 6) {
             status = "Finalizado";
         }
-        //esses holder que vai pra recyclerview******************************************
-        holder.textNomeCl.setText(ordemservico.getClienteNome());
-        id = Integer.toString(ordemservico.getIdOS());
-        holder.textNumOs.setText(id);
-        //holder.textEnd.setText(ordemservico.getUsuarioNome());
 
+        //dados do card da recyvlerview
+        holder.textNomeCl.setText(ordemservico.getClienteNome());
+        String id = Integer.toString(ordemservico.getIdOS());
+        holder.textNumOs.setText(id);
+
+        //converte data xxxx-xx-xx para xx/xx/xxxx
         String data = ordemservico.getDataAberturaOS().replaceAll("-", "/");
         String[] s = data.split("/");
         String novaData = s[2]+"/"+s[1]+"/"+s[0];
@@ -209,28 +217,67 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     }
 
-    private void showPopupMenu(View view) {
+    //menu que abre
+    /*private void showPopupMenu(View view) {
         PopupMenu popup = new PopupMenu(mContext, view);
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.activity_base_drawer, popup.getMenu());
+        inflater.inflate(R.menu.base_filtro, popup.getMenu());
         popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
         popup.show();
     }
 
-    class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
-        public MyMenuItemClickListener() {
+    private class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
+        MyMenuItemClickListener() {
         }
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
-            return false;
+            int id = menuItem.getItemId();
+
+            if (id == R.id.filtro0) {
+                LayoutInflater inflater=(LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layout = inflater.inflate(R.layout.base_add_acomp_status,null);
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(layout.getRootView().getContext());
+                alertbox.setMessage("Atualizar O.S.");
+                alertbox.setView(layout);
+                alertbox.setPositiveButton("Atualizar",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //to do
+                        exibir("att");
+                    }
+                });
+                alertbox.setNeutralButton("Cancelar",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //to do
+                        exibir("can");
+                    }
+                });
+                alertbox.show();
+            } //else if (id == R.id.filtro1) {
+                //exibir("filtro1");
+            //}
+            return true;
         }
     }
+
+    public void showPopup(View v) {
+        //View popupView = LayoutInflater.from(mContext).inflate(R.layout.opcoes_activity, null);
+        //PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+        //popupView.callOnClick();
+        //popupView.setBackgroundColor(1);
+        //popupWindow.showAsDropDown(popupView, 0, 0);
+        //popupWindow.getBackground();
+
+
+    }*/
 
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-
+    public void exibir(String msg){
+        Toast.makeText(mContext,msg, Toast.LENGTH_SHORT).show();
+    }
 
 }
