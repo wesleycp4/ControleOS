@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/acao_filtrar"
-        android:icon="@drawable/ic_filter"
-        android:orderInCategory="100"
-        android:title="@string/filtrar"
-        android:visible="true"
-        app:showAsAction="always" />
+
+    <item android:title="@string/nav_os">
+        <item
+            android:id="@+id/filtro0"
+            android:title="0"/>
+
+        <item
+            android:id="@+id/filtro1"
+            android:title="1"/>
+
+        <item
+            android:id="@+id/filtro2"
+            android:title="2"/>
+
+        <item
+            android:id="@+id/filtro3"
+            android:title="3"/>
+
+        <item
+            android:id="@+id/filtro4"
+            android:title="4"/>
+
+        <item
+            android:id="@+id/filtro5"
+            android:title="5"/>
+
+        <item
+            android:id="@+id/filtro6"
+            android:title="6"/>
+    </item>
+
+
 
     <item
         android:id="@+id/acao_atualizar"
@@ -16,4 +41,6 @@
         android:title="@string/atualizar"
         android:visible="true"
         app:showAsAction="ifRoom" />
+
+
 </menu>

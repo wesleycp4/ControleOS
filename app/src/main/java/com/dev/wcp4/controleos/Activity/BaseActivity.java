@@ -46,7 +46,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static com.dev.wcp4.controleos.R.id.acao_filtrar;
 import static com.dev.wcp4.controleos.R.id.progressBar;
 import static com.dev.wcp4.controleos.R.id.snackbar_action;
 import static com.dev.wcp4.controleos.R.id.snackbar_text;
@@ -138,26 +137,37 @@ public class BaseActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        View filtrar = findViewById(R.id.acao_filtrar);
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.acao_filtrar) {
-            filtrar.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    showPopupMenu(v);
-                }
-            });
-            //exibir("bt filtrar");
+        switch (item.getItemId()) {
+            case R.id.acao_atualizar:
+                progressBar.setVisibility(View.VISIBLE);
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                exibir("Atualizado!");
+                return true;
+            case R.id.filtro0:
+                exibir("0");
+                return true;
+            case R.id.filtro1:
+                exibir("1");
+                return true;
+            case R.id.filtro2:
+                exibir("2");
+                return true;
+            case R.id.filtro3:
+                exibir("3");
+                return true;
+            case R.id.filtro4:
+                exibir("4");
+                return true;
+            case R.id.filtro5:
+                exibir("5");
+                return true;
+            case R.id.filtro6:
+                exibir("6");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        if (id == R.id.acao_atualizar){
-            progressBar.setVisibility(View.VISIBLE);
-            new carregaDados().execute(Rotas.URL_DADOS_OS);
-            exibir("Atualizado!");
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
