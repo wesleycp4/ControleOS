@@ -8,5 +8,7 @@
     <color name="full_branco">#ffffff</color>
     <color name="cor_icone">#ffffff</color>
     <color name="cor_sair">#ff2800</color>
+    <color name="cor_desfoque">#a0ffffff</color>
+
 </resources>
 

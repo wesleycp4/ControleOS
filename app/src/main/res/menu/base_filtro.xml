@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/filtro0"
-        android:title="Adicionar/Atualiza"/>
 
-    <item
-        android:id="@+id/filtro1"
-        android:title="Adicionar/Atualiza"/>
+        <item
+            android:id="@+id/filtro0"
+            android:title="0"/>
 
-    <item
-        android:id="@+id/filtro2"
-        android:title="Adicionar/Atualiza"/>
+        <item
+            android:id="@+id/filtro1"
+            android:title="1"/>
 
-    <item
-        android:id="@+id/filtro3"
-        android:title="Adicionar/Atualiza"/>
+        <item
+            android:id="@+id/filtro2"
+            android:title="2"/>
 
-    <item
-        android:id="@+id/filtro4"
-        android:title="Adicionar/Atualiza"/>
+        <item
+            android:id="@+id/filtro3"
+            android:title="3"/>
 
-    <item
-        android:id="@+id/filtro5"
-        android:title="Adicionar/Atualiza"/>
+        <item
+            android:id="@+id/filtro4"
+            android:title="4"/>
 
-    <item
-        android:id="@+id/filtro6"
-        android:title="Adicionar/Atualiza"/>
+        <item
+            android:id="@+id/filtro5"
+            android:title="5"/>
+
+        <item
+            android:id="@+id/filtro6"
+            android:title="6"/>
 
 </menu>

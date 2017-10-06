@@ -39,6 +39,7 @@ import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
 import com.dev.wcp4.controleos.Entidades.OrdemServico;
 import com.dev.wcp4.controleos.R;
+import com.github.clans.fab.FloatingActionMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +47,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.dev.wcp4.controleos.R.id.menu_flutuante;
 import static com.dev.wcp4.controleos.R.id.progressBar;
 import static com.dev.wcp4.controleos.R.id.snackbar_action;
 import static com.dev.wcp4.controleos.R.id.snackbar_text;
@@ -88,7 +90,7 @@ public class BaseActivity extends AppCompatActivity
         adapter = new Adapter(this,list);
         recyclerView.setAdapter(adapter);
 
-        botoesFlutuantes();
+        botaoflutuante();
 
         //recupera o nome do usuario do sharedpreferences
         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
@@ -142,6 +144,7 @@ public class BaseActivity extends AppCompatActivity
                 progressBar.setVisibility(View.VISIBLE);
                 new carregaDados().execute(Rotas.URL_DADOS_OS);
                 exibir("Atualizado!");
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro0:
                 exibir("0");
@@ -354,31 +357,36 @@ public class BaseActivity extends AppCompatActivity
         }
     }
 
-    public void botoesFlutuantes(){
-        /*FloatingActionButton botao_atualizar = (FloatingActionButton) findViewById(R.id.botao_filtro);
-        botao_atualizar.setOnClickListener(new View.OnClickListener() {
+    public void botaoflutuante(){
+        //menuFlutuante.setClosedOnTouchOutside(true);
+        com.github.clans.fab.FloatingActionMenu menuFlutuante = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_flutuante);
+        com.github.clans.fab.FloatingActionButton itemMenuAtualizar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAtualizar);
+        com.github.clans.fab.FloatingActionButton itemMenuFiltrar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoFiltroLista);
+        com.github.clans.fab.FloatingActionButton itemMenuAdicionarOs = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAddOs);
+        com.github.clans.fab.FloatingActionButton itemMenuPequisarOs = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoPesquisar);
+        menuFlutuante.setClosedOnTouchOutside(true);
+
+        itemMenuAtualizar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "filtro", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                exibir("Atualizado!");
+                progressBar.setVisibility(View.INVISIBLE);
+                menuFlutuante.close(true);
             }
-        });*/
+        });
 
-     /*   FloatingActionButton botao_cons = (FloatingActionButton) findViewById(R.id.botao_consultar);
-        botao_cons.setOnClickListener(new View.OnClickListener() {
+        itemMenuFiltrar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent consult = new Intent(getContexto(),ConsultarOrdemActivity.class);
-                startActivity(consult);
-
+            public void onClick(View v) {
+                showPopupMenu(v);
             }
-        });*/
+        });
 
-        FloatingActionButton botao_add = (FloatingActionButton) findViewById(R.id.botao_addos);
-        botao_add.setOnClickListener(new View.OnClickListener() {
+        itemMenuAdicionarOs.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                 alertDialogBuilder.setTitle("Cliente ja cadastrado no sistema?");
                 alertDialogBuilder
@@ -400,10 +408,21 @@ public class BaseActivity extends AppCompatActivity
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
-
+                menuFlutuante.close(true);
             }
         });
+
+        itemMenuPequisarOs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exibir("pesquisar");
+                menuFlutuante.close(true);
+            }
+        });
+
     }
+
+
 
     public Context getContexto(){
         return this;
@@ -430,6 +449,7 @@ public class BaseActivity extends AppCompatActivity
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
             /*
+            menuFlutuante.close(true);
             switch (menuItem.getItemId()) {
                 case R.id.action_add_favourite:
                     Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();

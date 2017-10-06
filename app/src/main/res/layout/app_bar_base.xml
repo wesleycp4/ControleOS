@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="com.dev.wcp4.controleos.Activity.BaseActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -24,19 +25,53 @@
         android:id="@+id/include"
         layout="@layout/content_base" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/botao_addos"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_margin="@dimen/fab_margin"
-        android:tint="@color/cor_icone"
-        app:backgroundTint="@color/colorPrimary"
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_flutuante"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:fabSize="mini"
+        android:layout_gravity="center_vertical|center_horizontal"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_singleLine="true"
+        fab:menu_backgroundColor="@color/cor_desfoque">
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/botaoAtualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_refresh"
+            fab:fab_size="mini"
+            fab:fab_label="Atualizar Lista" />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/botaoFiltroLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_filter"
+            fab:fab_size="mini"
+            fab:fab_label="Filtrar Ordens" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/botaoPesquisar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            fab:fab_size="mini"
+            fab:fab_label="Buscar O.S." />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/botaoAddOs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fab_add"
+            fab:fab_size="mini"
+            fab:fab_label="Nova O.S." />
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>
