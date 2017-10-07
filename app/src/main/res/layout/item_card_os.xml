@@ -193,7 +193,7 @@
                 android:contentDescription="@string/novo_acompanhamento"
                 android:elevation="1dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_action_add_circl_outline"
                 android:tint="@color/cardview_shadow_start_color"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintLeft_toLeftOf="parent" />
@@ -211,7 +211,7 @@
                 android:contentDescription="@string/alterar_status_os"
                 android:elevation="1dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_open"
+                android:src="@drawable/ic_action_open"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/botaoNovoAcomp"

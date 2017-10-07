@@ -126,7 +126,8 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                 if(!jsonObj.getBoolean("error")){
                     exibir(":D Cliente cadastrado com sucesso!");
                     progressBar.setVisibility(View.INVISIBLE);
-                    onBackPressed();
+                    startActivity(new Intent(CadastrarClienteActivity.this,NovaOSActivity.class));
+                    finish();
                 } else{
                     progressBar.setVisibility(View.INVISIBLE);
                     exibir(":/ Cliente ja cadastrado no sistema!");
