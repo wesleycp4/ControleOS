@@ -39,7 +39,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private Context mContext;
     private List<OrdemServico> list = new ArrayList<>();
     private String status;
-    private ImageButton btn1, btn2, btn3;
+    private ImageButton btn1, btn2;
+    String endereco1, endereco2,endereco3,endereco4,endereco5,endereco6,endereco7;
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView textNomeCl, textDataAb, textDesc, textStatOs, textNumOs, textContatoOs;
@@ -54,7 +55,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             textContatoOs = (TextView) view.findViewById(R.id.textContato);
 
             btn1 = (ImageButton) view.findViewById(R.id.botaoNovoAcomp);
-            //btn2 = (ImageButton) view.findViewById(R.id.botaoAlterStatus);
             btn2 = (ImageButton) view.findViewById(R.id.botaoAbrir);
 
             view.setOnClickListener(this);
@@ -83,8 +83,42 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             final TextView textNomeCl = new TextView(mContext);
             textNomeCl.setText("\nCliente:  " +ordemservico.getClienteNome());
 
-            //final TextView textEnd = new TextView(mContext);
-            //textEnd.setText("Endereço: " + end);
+            final TextView textEmail = new TextView(mContext);
+            String emailC = ordemservico.getClienteEmail();
+            if (emailC == null || emailC.equals("") || emailC.length()==0 || emailC == "null"){
+                textEmail.setText("Email:  Não Informado!");
+            } else{
+                textEmail.setText("Email:  " + emailC);
+            }
+
+            final TextView textContato2 = new TextView(mContext);
+            String cont2 = ordemservico.getContato2();
+            if (cont2 == null || cont2.equals("") || cont2.length()==0 || cont2 == "null"){
+                textContato2.setText("Contato 2:  Não Informado!");
+            } else{
+                textContato2.setText("Contato 2:  " + cont2 );
+            }
+
+            final TextView textEnd = new TextView(mContext);
+            String compl = ordemservico.getClienteComplemento();
+            if (compl == null || compl.equals("") || compl.length()==0 || compl == "null"){
+                endereco3 = "NC";
+            } else{
+                endereco3 = compl;
+            }
+            String cp = ordemservico.getClienteCep();
+            if (cp == null || cp.equals("") || cp.length()==0 || cp == "null"){
+                endereco7 = "NC";
+            } else{
+                endereco7 = cp;
+            }
+            endereco1 = ordemservico.getClienteRua();
+            endereco2 = Integer.toString(ordemservico.getClienteNumero());
+            endereco4 = ordemservico.getClienteBairro();
+            endereco5 = ordemservico.getClienteCidade();
+            endereco6 = ordemservico.getClienteEstado();
+
+            textEnd.setText("Endereço:  " +endereco1+ ", Nº " +endereco2+", "+endereco3+", Bairro: "+endereco4+", Cidade: "+endereco5+", "+endereco6+", CEP: "+endereco7);
 
             final TextView textDesc = new TextView(mContext);
             textDesc.setText("\nDescrição:  " + ordemservico.getDescricaoOS());
@@ -117,6 +151,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             linearLayout.addView(textNumOs);
             linearLayout.addView(textDataAb);
             linearLayout.addView(textNomeCl);
+            linearLayout.addView(textEmail);
+            linearLayout.addView(textContato2);
+            linearLayout.addView(textEnd);
             linearLayout.addView(textDesc);
             linearLayout.addView(textStatOs);
             linearLayout.addView(textEquip);
@@ -216,60 +253,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.textStatOs.setText(status);
 
     }
-
-    //menu que abre
-    /*private void showPopupMenu(View view) {
-        PopupMenu popup = new PopupMenu(mContext, view);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.base_filtro, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
-        popup.show();
-    }
-
-    private class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
-        MyMenuItemClickListener() {
-        }
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            int id = menuItem.getItemId();
-
-            if (id == R.id.filtro0) {
-                LayoutInflater inflater=(LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View layout = inflater.inflate(R.layout.base_add_acomp_status,null);
-                AlertDialog.Builder alertbox = new AlertDialog.Builder(layout.getRootView().getContext());
-                alertbox.setMessage("Atualizar O.S.");
-                alertbox.setView(layout);
-                alertbox.setPositiveButton("Atualizar",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        //to do
-                        exibir("att");
-                    }
-                });
-                alertbox.setNeutralButton("Cancelar",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        //to do
-                        exibir("can");
-                    }
-                });
-                alertbox.show();
-            } //else if (id == R.id.filtro1) {
-                //exibir("filtro1");
-            //}
-            return true;
-        }
-    }
-
-    public void showPopup(View v) {
-        //View popupView = LayoutInflater.from(mContext).inflate(R.layout.opcoes_activity, null);
-        //PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-
-        //popupView.callOnClick();
-        //popupView.setBackgroundColor(1);
-        //popupWindow.showAsDropDown(popupView, 0, 0);
-        //popupWindow.getBackground();
-
-
-    }*/
 
     @Override
     public int getItemCount() {

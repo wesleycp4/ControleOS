@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                     if(!usuario.isEmpty() && !senha.isEmpty()){
                         progressBar.setVisibility(View.VISIBLE);
                         parametros = "usuario=" + usuario + "&senha=" + senha;
-
                         //salva nome do usuario nos sharedpreferences
                         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
                         SharedPreferences.Editor editor = prefs.edit();
@@ -108,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... url) {
+
             return Conexao.postDados(url[0],parametros);
         }
     }

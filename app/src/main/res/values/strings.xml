@@ -21,7 +21,7 @@
 
     <string name="nav_clientes">Clientes</string>
     <string name="nav_os">Ordens de Serviço</string>
-    <string name="nav_opcs">Mais Opções</string>
+    <string name="nav_opcs">Mais Opções A</string>
     <string name="nav_avançado">Cadastrar Usuario</string>
     <string name="nav_logout">Logout do Sistema</string>
     <string name="nav_sair">Fechar App</string>
@@ -77,6 +77,14 @@
     <string name="status">Status:</string>
     <string name="filtrar">Filtrar</string>
     <string name="atualizar">Atualizar</string>
+    <string name="o_s_s_aberta_s">O.S.(s) Aberta(s)</string>
+    <string name="o_s_s_aguardando_autoriza_o">O.S.(s) Aguardando autorização</string>
+    <string name="o_s_s_em_analise">O.S.(s) Em Analise</string>
+    <string name="o_s_s_em_reparo">O.S.(s) Em reparo</string>
+    <string name="o_s_s_finalizada_s">O.S.(s) Finalizada(s)</string>
+    <string name="o_s_s_pronta_s_para_entrega_retirada">O.S.(s) Pronta(s) para Entrega/Retirada</string>
+    <string name="o_s_s_com_or_amento_aprovado">O.S.(s) com Orçamento Aprovado</string>
+    <string name="vizualiza_o_padrao">Vizualização Padrao</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

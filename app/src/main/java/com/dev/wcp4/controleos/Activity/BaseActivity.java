@@ -47,6 +47,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.dev.wcp4.controleos.R.id.filtro0;
 import static com.dev.wcp4.controleos.R.id.menu_flutuante;
 import static com.dev.wcp4.controleos.R.id.progressBar;
 import static com.dev.wcp4.controleos.R.id.snackbar_action;
@@ -57,15 +58,13 @@ public class BaseActivity extends AppCompatActivity
 
     final Context context = this;
     private String parametros;
-    private TextView textUsuario;
     private ArrayList<OrdemServico> list = new ArrayList<>();
     private ProgressBar progressBar;
+    String param = "";
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-
-    String param = "id_funcionario=1";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -76,12 +75,14 @@ public class BaseActivity extends AppCompatActivity
         progressBar = (ProgressBar) findViewById(R.id.progressBarBase) ;
         progressBar.setVisibility(View.VISIBLE);
 
+        //7 no caso e tratado no servidor web para exibir tudo menos as o.s. fechadas
+        param = "status=7";
         new carregaDados().execute(Rotas.URL_DADOS_OS);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        textUsuario = (TextView) findViewById(R.id.textViewOla);
+        TextView textUsuario = (TextView) findViewById(R.id.textViewOla);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         layoutManager = new LinearLayoutManager(this);
@@ -147,25 +148,68 @@ public class BaseActivity extends AppCompatActivity
                 progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro0:
-                exibir("0");
+                exibir("O.S. Abertar");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=0";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro1:
                 exibir("1");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=1";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro2:
                 exibir("2");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=2";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro3:
                 exibir("3");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=3";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro4:
                 exibir("4");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=4";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro5:
                 exibir("5");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=5";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.filtro6:
                 exibir("6");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=6";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
+                return true;
+            case R.id.filtro7:
+                exibir("6");
+                progressBar.setVisibility(View.VISIBLE);
+                list.clear();
+                param = "status=7";
+                new carregaDados().execute(Rotas.URL_DADOS_OS);
+                progressBar.setVisibility(View.INVISIBLE);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -334,10 +378,19 @@ public class BaseActivity extends AppCompatActivity
                                 obj.getString("descricao"),
                                 obj.getString("equipamentos"),
                                 obj.getString("dataabertura"),
-                                obj.getInt("status"),
                                 obj.getString("contato_cliente"),
+                                obj.getString("contato2_cliente"),
+                                obj.getInt("status"),
                                 obj.getString("nome"),
-                                obj.getString("nome_cliente")
+                                obj.getString("nome_cliente"),
+                                obj.getString("email_cliente"),
+                                obj.getString("rua_cliente"),
+                                obj.getInt("numero_cliente"),
+                                obj.getString("complemento_cliente"),
+                                obj.getString("bairro_cliente"),
+                                obj.getString("cidade_cliente"),
+                                obj.getString("estado_cliente"),
+                                obj.getString("cep_cliente")
                         );
                         list.add(os);
                     }catch (JSONException e){
@@ -363,7 +416,6 @@ public class BaseActivity extends AppCompatActivity
         com.github.clans.fab.FloatingActionButton itemMenuAtualizar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAtualizar);
         com.github.clans.fab.FloatingActionButton itemMenuFiltrar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoFiltroLista);
         com.github.clans.fab.FloatingActionButton itemMenuAdicionarOs = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAddOs);
-        com.github.clans.fab.FloatingActionButton itemMenuPequisarOs = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoPesquisar);
         menuFlutuante.setClosedOnTouchOutside(true);
 
         itemMenuAtualizar.setOnClickListener(new View.OnClickListener() {
@@ -412,17 +464,7 @@ public class BaseActivity extends AppCompatActivity
             }
         });
 
-        itemMenuPequisarOs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exibir("pesquisar");
-                menuFlutuante.close(true);
-            }
-        });
-
     }
-
-
 
     public Context getContexto(){
         return this;
@@ -439,6 +481,7 @@ public class BaseActivity extends AppCompatActivity
         inflater.inflate(R.menu.base_filtro, popup.getMenu());
         popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
         popup.show();
+
     }
 
     private class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
@@ -448,19 +491,77 @@ public class BaseActivity extends AppCompatActivity
 
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
-            /*
-            menuFlutuante.close(true);
             switch (menuItem.getItemId()) {
-                case R.id.action_add_favourite:
-                    Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();
+                case R.id.filtro0:
+                    exibir("O.S. Abertas");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=0";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
                     return true;
-                case R.id.action_play_next:
-                    Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
+                case R.id.filtro1:
+                    exibir("1");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=1";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.filtro2:
+                    exibir("2");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=2";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.filtro3:
+                    exibir("3");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=3";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.filtro4:
+                    exibir("4");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=4";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.filtro5:
+                    exibir("5");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=5";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.filtro6:
+                    exibir("6");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=6";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.filtro7:
+                    exibir("6");
+                    progressBar.setVisibility(View.VISIBLE);
+                    list.clear();
+                    param = "status=7";
+                    new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 default:
             }
-            */
+
             return false;
         }
+
     }
+
 }

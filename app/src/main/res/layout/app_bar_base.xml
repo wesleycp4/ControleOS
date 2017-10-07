@@ -52,17 +52,9 @@
             android:id="@+id/botaoFiltroLista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_filter"
+            android:src="@drawable/ic_filtro"
             fab:fab_size="mini"
             fab:fab_label="Filtrar Ordens" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/botaoPesquisar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_search"
-            fab:fab_size="mini"
-            fab:fab_label="Buscar O.S." />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/botaoAddOs"

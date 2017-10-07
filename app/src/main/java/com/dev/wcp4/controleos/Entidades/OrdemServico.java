@@ -17,27 +17,97 @@ public class OrdemServico implements Serializable {
     private int statusOS;
     private String usuarioNome;
     private String clienteNome;
+    private String clienteEmail;
+    private String clienteRua;
+    private int clienteNumero;
+    private String clienteComplemento;
+    private String clienteBairro;
+    private String clienteCidade;
+    private String clienteEstado;
+    private String clienteCep;
 
-    //, Date dataAberturaOS
-    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, int statusOS, String usuarioNome, String clienteNome ) {
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, String contato, String contato2, int statusOS, String usuarioNome, String clienteNome, String clienteEmail, String clienteRua, int clienteNumero, String clienteComplemento, String clienteBairro, String clienteCidade, String clienteEstado, String clienteCep) {
         this.idOS = idOS;
         this.descricaoOS = descricaoOS;
         this.equipamentosOS = equipamentosOS;
         this.dataAberturaOS = dataAberturaOS;
+        this.contato = contato;
+        this.contato2 = contato2;
         this.statusOS = statusOS;
         this.usuarioNome = usuarioNome;
         this.clienteNome = clienteNome;
+        this.clienteEmail = clienteEmail;
+        this.clienteRua = clienteRua;
+        this.clienteNumero = clienteNumero;
+        this.clienteComplemento = clienteComplemento;
+        this.clienteBairro = clienteBairro;
+        this.clienteCidade = clienteCidade;
+        this.clienteEstado = clienteEstado;
+        this.clienteCep = clienteCep;
     }
 
-    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, int statusOS, String contato, String usuarioNome, String clienteNome) {
-        this.idOS = idOS;
-        this.descricaoOS = descricaoOS;
-        this.equipamentosOS = equipamentosOS;
-        this.dataAberturaOS = dataAberturaOS;
-        this.statusOS = statusOS;
-        this.contato = contato;
-        this.usuarioNome = usuarioNome;
-        this.clienteNome = clienteNome;
+    public String getClienteEmail() {
+        return clienteEmail;
+    }
+
+    public void setClienteEmail(String clienteEmail) {
+        this.clienteEmail = clienteEmail;
+    }
+
+    public String getClienteRua() {
+        return clienteRua;
+    }
+
+    public void setClienteRua(String clienteRua) {
+        this.clienteRua = clienteRua;
+    }
+
+    public int getClienteNumero() {
+        return clienteNumero;
+    }
+
+    public void setClienteNumero(int clienteNumero) {
+        this.clienteNumero = clienteNumero;
+    }
+
+    public String getClienteComplemento() {
+        return clienteComplemento;
+    }
+
+    public void setClienteComplemento(String clienteComplemento) {
+        this.clienteComplemento = clienteComplemento;
+    }
+
+    public String getClienteBairro() {
+        return clienteBairro;
+    }
+
+    public void setClienteBairro(String clienteBairro) {
+        this.clienteBairro = clienteBairro;
+    }
+
+    public String getClienteCidade() {
+        return clienteCidade;
+    }
+
+    public void setClienteCidade(String clienteCidade) {
+        this.clienteCidade = clienteCidade;
+    }
+
+    public String getClienteEstado() {
+        return clienteEstado;
+    }
+
+    public void setClienteEstado(String clienteEstado) {
+        this.clienteEstado = clienteEstado;
+    }
+
+    public String getClienteCep() {
+        return clienteCep;
+    }
+
+    public void setClienteCep(String clienteCep) {
+        this.clienteCep = clienteCep;
     }
 
     public int getIdOS() {
