@@ -16,6 +16,11 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String nomeCliente, String contato1Cliente) {
+        this.nomeCliente = nomeCliente;
+        this.contato1Cliente = contato1Cliente;
+    }
+
     public String getCpfCliente() {
         return cpfCliente;
     }

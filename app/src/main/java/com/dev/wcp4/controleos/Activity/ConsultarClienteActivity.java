@@ -17,16 +17,21 @@ import android.widget.Toast;
 
 import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
+import com.dev.wcp4.controleos.Entidades.Cliente;
 import com.dev.wcp4.controleos.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static android.R.id.list;
 
 public class ConsultarClienteActivity extends AppCompatActivity {
 
     private String parametros = "";
     private ProgressBar progressBar;
     private EditText editTextPesq;
+    String param="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +53,9 @@ public class ConsultarClienteActivity extends AppCompatActivity {
 
                 if (networkInfo != null && networkInfo.isConnected()) {
 
-                    String pesq = editTextPesq.getText().toString().trim();
-
-                    if (!pesq.isEmpty()) {
+                    //String pesq = editTextPesq.getText().toString().trim();
+                    exibir("ok");
+                    /*if (!pesq.isEmpty()) {
                         try {
                             progressBar.setVisibility(View.VISIBLE);
                             parametros = "nome_cliente=" + pesq;
@@ -62,7 +67,7 @@ public class ConsultarClienteActivity extends AppCompatActivity {
                     } else {
                         progressBar.setVisibility(View.INVISIBLE);
                         exibir("Preencha todos os campos com *");
-                    }
+                    }*/
 
                 } else {
                     progressBar.setVisibility(View.INVISIBLE);
@@ -71,40 +76,6 @@ public class ConsultarClienteActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private class CadastrarCliente extends AsyncTask<String, Object, String> {
-
-        @Override
-        protected void onProgressUpdate(Object... values) {
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-            try {
-                JSONObject jsonObj = new JSONObject(s);
-                if(!jsonObj.getBoolean("error")){
-                    exibir(":D Cliente cadastrado com sucesso!");
-                    progressBar.setVisibility(View.INVISIBLE);
-                    onBackPressed();
-                } else{
-                    progressBar.setVisibility(View.INVISIBLE);
-                    exibir(":/ Cliente ja cadastrado no sistema!");
-                }
-            } catch (JSONException e) {
-                progressBar.setVisibility(View.INVISIBLE);
-                exibir(e.getMessage());
-                e.printStackTrace();
-            }
-
-        }
-
-        @Override
-        protected String doInBackground(String... url) {
-            return Conexao.postDados(url[0],parametros);
-        }
     }
 
     public void exibir(String msg){

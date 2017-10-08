@@ -5,12 +5,12 @@
         <menu>
             <item
                 android:id="@+id/nav_novo_os"
-                android:icon="@drawable/ic_os_add"
+                android:icon="@drawable/ic_add"
                 android:title="@string/novo_os"
                 android:tint="@color/colorAccent"/>
             <item
                 android:id="@+id/nav_consultar_os"
-                android:icon="@drawable/ic_pesq_os"
+                android:icon="@drawable/ic_search"
                 android:title="@string/consulta"
                 android:tint="@color/colorAccent"/>
         </menu>

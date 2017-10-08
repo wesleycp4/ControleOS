@@ -8,12 +8,6 @@
     tools:context="com.dev.wcp4.controleos.Activity.BaseActivity"
     tools:showIn="@layout/app_bar_base">
 
-
-    <include
-        layout="@layout/activity_os"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -34,4 +28,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:visibility="invisible" />
+
 </RelativeLayout>
