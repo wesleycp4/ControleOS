@@ -98,6 +98,7 @@ public class BaseActivity extends AppCompatActivity
         String usuario = prefs.getString("nomedoUser", null);
         assert usuario != null;
         usuario = usuario.substring(0,1).toUpperCase().concat(usuario.substring(1));
+
         exibir("Bem vindo, "+usuario);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -110,7 +111,7 @@ public class BaseActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View header=navigationView.getHeaderView(0);
         textUsuario = (TextView)header.findViewById(R.id.textViewOla);
-        textUsuario.setText("Ola " +usuario);
+        textUsuario.setText("Olá, " +usuario);
     }
 
     @Override
@@ -143,8 +144,8 @@ public class BaseActivity extends AppCompatActivity
             case R.id.acao_atualizar:
                 progressBar.setVisibility(View.VISIBLE);
                 new carregaDados().execute(Rotas.URL_DADOS_OS);
-                exibir("Atualizado!");
                 progressBar.setVisibility(View.INVISIBLE);
+                exibir("Atualizado!");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -310,7 +311,7 @@ public class BaseActivity extends AppCompatActivity
                         OrdemServico os = new OrdemServico(
                                 obj.getInt("idos"),
                                 obj.getString("descricao"),
-                                obj.getString("equipamentos"),
+                                obj.getString("equipamento"),
                                 obj.getString("dataabertura"),
                                 obj.getString("contato_cliente"),
                                 obj.getString("contato2_cliente"),
@@ -356,7 +357,8 @@ public class BaseActivity extends AppCompatActivity
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
                 new carregaDados().execute(Rotas.URL_DADOS_OS);
-                exibir("Atualizado!");
+                //exibir("Atualizado!");
+                Snackbar.make(v, "Atualizado!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 progressBar.setVisibility(View.INVISIBLE);
                 menuFlutuante.close(true);
             }
@@ -367,6 +369,7 @@ public class BaseActivity extends AppCompatActivity
             public void onClick(View v) {
                 showPopupMenu(v);
                 menuFlutuante.close(true);
+                exibir("Escolha uma opção de filtro!");
             }
         });
 
@@ -427,7 +430,7 @@ public class BaseActivity extends AppCompatActivity
 
             switch (menuItem.getItemId()) {
                 case R.id.filtro0:
-                    exibir("O.S. Abertas");
+                    exibir("Somente O.S.(s) Abertas");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=0";
@@ -435,7 +438,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro1:
-                    exibir("1");
+                    exibir("Somente O.S.(s) Em Analise");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=1";
@@ -443,7 +446,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro2:
-                    exibir("2");
+                    exibir("Somente O.S.(s) Aguardando Autorição");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=2";
@@ -451,7 +454,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro3:
-                    exibir("3");
+                    exibir("Somente O.S.(s) com Orçamento Aprovado");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=3";
@@ -459,7 +462,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro4:
-                    exibir("4");
+                    exibir("Somente O.S.(s) Em Reparo");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=4";
@@ -467,7 +470,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro5:
-                    exibir("5");
+                    exibir("Somente O.S.(s) Prontas para entrega ou retirada");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=5";
@@ -475,7 +478,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro6:
-                    exibir("6");
+                    exibir("Somente O.S.(s) Finalizadas");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=6";
@@ -483,7 +486,7 @@ public class BaseActivity extends AppCompatActivity
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro7:
-                    exibir("6");
+                    exibir("Vizualização Padrão");
                     progressBar.setVisibility(View.VISIBLE);
                     list.clear();
                     param = "status=7";
@@ -497,8 +500,5 @@ public class BaseActivity extends AppCompatActivity
         }
 
     }
-
-
-
 
 }

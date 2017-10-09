@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +24,14 @@ public class NovaOSActivity extends AppCompatActivity {
     //private Button botaoFoto;
     //private Button botaoFoto2;
 
+
+    private static final String[] ESTADOS = new String[]{"Acre", "Alagoas", "Amapá", "Amazonas",
+            "Bahia", "Ceará", "Distrito Federal", "Goiás", "Espírito Santo", "Maranhão", "Mato Grosso",
+            "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí",
+            "Rio de Janeiro", "Rio Grandedo Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
+            "São Paulo", "Santa Catarina", "Sergipe", "Tocantins"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +39,27 @@ public class NovaOSActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Button botaoNovaOs = (Button) findViewById(R.id.botao_ok_novaos);
         botoesFlutuantes();
 
         this.imagemEquip = (ImageView) findViewById(R.id.fotoPreview);
 
+
+        AutoCompleteTextView estados = (AutoCompleteTextView) findViewById(R.id.antoCompleteClientes);
+        // ArrayAdapter para preencher com os estados
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, ESTADOS);
+        estados.setAdapter(adaptador);
+
+
+
+        botaoNovaOs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //exibir(selecionado);
+                //exibir(selecionado2);
+            }
+        });
 
 
 

@@ -2,31 +2,55 @@ package com.dev.wcp4.controleos.Entidades;
 
 public class Cliente {
 
+    private int idCliente;
     private String nomeCliente;
     private String emailCliente;
     private String cpfCliente;
-    private String contato1Cliente;
+    private String contatoCliente;
     private String contato2Cliente;
     private String ruaCliente;
-    private String numeroCliente;
+    private int numeroCliente;
+    private String complementoCliente;
     private String bairroCliente;
     private String cidadeCliente;
     private String cepCliente;
+    private String estadoCliente;
 
     public Cliente() {
     }
 
-    public Cliente(String nomeCliente, String contato1Cliente) {
+    public Cliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Cliente(int idCliente, String nomeCliente, String contatoCliente) {
+        this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
-        this.contato1Cliente = contato1Cliente;
+        this.contatoCliente = contatoCliente;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
-    }
-
-    public void setCpfCliente(String cpfCliente) {
+    public Cliente(int idCliente, String nomeCliente, String emailCliente, String cpfCliente, String contatoCliente, String contato2Cliente, String ruaCliente, int numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String cepCliente, String estadoCliente) {
+        this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
+        this.emailCliente = emailCliente;
         this.cpfCliente = cpfCliente;
+        this.contatoCliente = contatoCliente;
+        this.contato2Cliente = contato2Cliente;
+        this.ruaCliente = ruaCliente;
+        this.numeroCliente = numeroCliente;
+        this.complementoCliente = complementoCliente;
+        this.bairroCliente = bairroCliente;
+        this.cidadeCliente = cidadeCliente;
+        this.cepCliente = cepCliente;
+        this.estadoCliente = estadoCliente;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNomeCliente() {
@@ -45,12 +69,20 @@ public class Cliente {
         this.emailCliente = emailCliente;
     }
 
-    public String getContato1Cliente() {
-        return contato1Cliente;
+    public String getCpfCliente() {
+        return cpfCliente;
     }
 
-    public void setContato1Cliente(String contato1Cliente) {
-        this.contato1Cliente = contato1Cliente;
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+    }
+
+    public String getContatoCliente() {
+        return contatoCliente;
+    }
+
+    public void setContatoCliente(String contatoCliente) {
+        this.contatoCliente = contatoCliente;
     }
 
     public String getContato2Cliente() {
@@ -69,12 +101,20 @@ public class Cliente {
         this.ruaCliente = ruaCliente;
     }
 
-    public String getNumeroCliente() {
+    public int getNumeroCliente() {
         return numeroCliente;
     }
 
-    public void setNumeroCliente(String numeroCliente) {
+    public void setNumeroCliente(int numeroCliente) {
         this.numeroCliente = numeroCliente;
+    }
+
+    public String getComplementoCliente() {
+        return complementoCliente;
+    }
+
+    public void setComplementoCliente(String complementoCliente) {
+        this.complementoCliente = complementoCliente;
     }
 
     public String getBairroCliente() {
@@ -101,4 +141,11 @@ public class Cliente {
         this.cepCliente = cepCliente;
     }
 
+    public String getEstadoCliente() {
+        return estadoCliente;
+    }
+
+    public void setEstadoCliente(String estadoCliente) {
+        this.estadoCliente = estadoCliente;
+    }
 }

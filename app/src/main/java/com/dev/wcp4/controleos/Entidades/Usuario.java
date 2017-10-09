@@ -2,12 +2,43 @@ package com.dev.wcp4.controleos.Entidades;
 
 public class Usuario {
 
+    private int idfuncionario;
     private String nome;
     private String email;
     private String contato1;
     private String contato2;
     private String usuario;
     private String senha;
+    private int adm;
+
+    public Usuario() {
+    }
+
+    public Usuario(String usuario, String senha) {
+        super();
+        this.usuario = usuario;
+        this.senha = senha;
+    }
+
+    public Usuario(String nome, String email, String contato1, String contato2, String usuario, String senha, int genero) {
+        this.nome = nome;
+        this.email = email;
+        this.contato1 = contato1;
+        this.contato2 = contato2;
+        this.usuario = usuario;
+        this.senha = senha;
+    }
+
+    public Usuario(int idfuncionario, String nome, String email, String contato1, String contato2, String usuario, String senha, int adm) {
+        this.idfuncionario = idfuncionario;
+        this.nome = nome;
+        this.email = email;
+        this.contato1 = contato1;
+        this.contato2 = contato2;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.adm = adm;
+    }
 
     public String getNome() {
         return nome;
@@ -41,24 +72,6 @@ public class Usuario {
         this.contato2 = contato2;
     }
 
-    public Usuario() {
-    }
-
-    public Usuario(String usuario, String senha) {
-        super();
-        this.usuario = usuario;
-        this.senha = senha;
-    }
-
-    public Usuario(String nome, String email, String contato1, String contato2, String usuario, String senha, int genero) {
-        this.nome = nome;
-        this.email = email;
-        this.contato1 = contato1;
-        this.contato2 = contato2;
-        this.usuario = usuario;
-        this.senha = senha;
-    }
-
     public String getUsuario() {
         return usuario;
     }
@@ -75,4 +88,19 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public int getIdfuncionario() {
+        return idfuncionario;
+    }
+
+    public void setIdfuncionario(int idfuncionario) {
+        this.idfuncionario = idfuncionario;
+    }
+
+    public int getAdm() {
+        return adm;
+    }
+
+    public void setAdm(int adm) {
+        this.adm = adm;
+    }
 }

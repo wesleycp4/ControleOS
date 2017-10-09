@@ -15,7 +15,7 @@ public class OrdemServico implements Serializable {
     private float valorOrcamentoOS;
     private float valorFinalOS;
     private int statusOS;
-    private String usuarioNome;
+    private String usuarioNome; //nome usuario sistema
     private String clienteNome;
     private String clienteEmail;
     private String clienteRua;
@@ -44,6 +44,102 @@ public class OrdemServico implements Serializable {
         this.clienteCidade = clienteCidade;
         this.clienteEstado = clienteEstado;
         this.clienteCep = clienteCep;
+    }
+
+    public int getIdOS() {
+        return idOS;
+    }
+
+    public void setIdOS(int idOS) {
+        this.idOS = idOS;
+    }
+
+    public String getDescricaoOS() {
+        return descricaoOS;
+    }
+
+    public void setDescricaoOS(String descricaoOS) {
+        this.descricaoOS = descricaoOS;
+    }
+
+    public String getEquipamentosOS() {
+        return equipamentosOS;
+    }
+
+    public void setEquipamentosOS(String equipamentosOS) {
+        this.equipamentosOS = equipamentosOS;
+    }
+
+    public String getDataAberturaOS() {
+        return dataAberturaOS;
+    }
+
+    public void setDataAberturaOS(String dataAberturaOS) {
+        this.dataAberturaOS = dataAberturaOS;
+    }
+
+    public String getDataFechamentoOS() {
+        return dataFechamentoOS;
+    }
+
+    public void setDataFechamentoOS(String dataFechamentoOS) {
+        this.dataFechamentoOS = dataFechamentoOS;
+    }
+
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
+    public String getContato2() {
+        return contato2;
+    }
+
+    public void setContato2(String contato2) {
+        this.contato2 = contato2;
+    }
+
+    public float getValorOrcamentoOS() {
+        return valorOrcamentoOS;
+    }
+
+    public void setValorOrcamentoOS(float valorOrcamentoOS) {
+        this.valorOrcamentoOS = valorOrcamentoOS;
+    }
+
+    public float getValorFinalOS() {
+        return valorFinalOS;
+    }
+
+    public void setValorFinalOS(float valorFinalOS) {
+        this.valorFinalOS = valorFinalOS;
+    }
+
+    public int getStatusOS() {
+        return statusOS;
+    }
+
+    public void setStatusOS(int statusOS) {
+        this.statusOS = statusOS;
+    }
+
+    public String getUsuarioNome() {
+        return usuarioNome;
+    }
+
+    public void setUsuarioNome(String usuarioNome) {
+        this.usuarioNome = usuarioNome;
+    }
+
+    public String getClienteNome() {
+        return clienteNome;
+    }
+
+    public void setClienteNome(String clienteNome) {
+        this.clienteNome = clienteNome;
     }
 
     public String getClienteEmail() {
@@ -108,101 +204,5 @@ public class OrdemServico implements Serializable {
 
     public void setClienteCep(String clienteCep) {
         this.clienteCep = clienteCep;
-    }
-
-    public int getIdOS() {
-        return idOS;
-    }
-
-    public void setIdOS(int idOS) {
-        this.idOS = idOS;
-    }
-
-    public String getDescricaoOS() {
-        return descricaoOS;
-    }
-
-    public String getContato() {
-        return contato;
-    }
-
-    public void setContato(String contato) {
-        this.contato = contato;
-    }
-
-    public String getContato2() {
-        return contato2;
-    }
-
-    public void setContato2(String contato2) {
-        this.contato2 = contato2;
-    }
-
-    public void setDescricaoOS(String descricaoOS) {
-        this.descricaoOS = descricaoOS;
-    }
-
-    public String getEquipamentosOS() {
-        return equipamentosOS;
-    }
-
-    public void setEquipamentosOS(String equipamentosOS) {
-        this.equipamentosOS = equipamentosOS;
-    }
-
-    public String getDataAberturaOS() {
-        return dataAberturaOS;
-    }
-
-    public void setDataAberturaOS(String dataAberturaOS) {
-        this.dataAberturaOS = dataAberturaOS;
-    }
-
-    public String getDataFechamentoOS() {
-        return dataFechamentoOS;
-    }
-
-    public void setDataFechamentoOS(String dataFechamentoOS) {
-        this.dataFechamentoOS = dataFechamentoOS;
-    }
-
-    public float getValorOrcamentoOS() {
-        return valorOrcamentoOS;
-    }
-
-    public void setValorOrcamentoOS(float valorOrcamentoOS) {
-        this.valorOrcamentoOS = valorOrcamentoOS;
-    }
-
-    public float getValorFinalOS() {
-        return valorFinalOS;
-    }
-
-    public void setValorFinalOS(float valorFinalOS) {
-        this.valorFinalOS = valorFinalOS;
-    }
-
-    public int getStatusOS() {
-        return statusOS;
-    }
-
-    public void setStatusOS(int statusOS) {
-        this.statusOS = statusOS;
-    }
-
-    public String getUsuarioNome() {
-        return usuarioNome;
-    }
-
-    public void setUsuarioNome(String usuarioNome) {
-        this.usuarioNome = usuarioNome;
-    }
-
-    public String getClienteNome() {
-        return clienteNome;
-    }
-
-    public void setClienteNome(String clienteNome) {
-        this.clienteNome = clienteNome;
     }
 }
