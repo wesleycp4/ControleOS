@@ -14,6 +14,7 @@ public class Rotas {
     public static final String URL_DADOS_OS = ROOT_URL+"osDados.php";
     public static final String URL_DADOS_OS_TUDO = ROOT_URL+"os.php";
     public static final String URL_DADOS_CLIENTE = ROOT_URL+"clienteDados.php";
+    public static final String URL_DADOS_CLIENTE_TUDO = ROOT_URL+"cliente.php";
     public static final String URL_DADOS_ACOMPANHAMENTO = ROOT_URL+"acompanhamentoDados.php";
 
     public static final String URL_UPDATE_CLIENTE = ROOT_URL+"clienteUpdate.php";

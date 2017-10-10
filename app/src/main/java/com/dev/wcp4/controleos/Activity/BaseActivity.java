@@ -83,6 +83,7 @@ public class BaseActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         TextView textUsuario = (TextView) findViewById(R.id.textViewOla);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         layoutManager = new LinearLayoutManager(this);
