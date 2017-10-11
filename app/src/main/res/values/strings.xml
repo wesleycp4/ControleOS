@@ -7,6 +7,7 @@
     <string name="title_activity_os">Detalhes Ordem de Serviço</string>
     <string name="title_activity_consultar_cliente">Pesquisar Cliente</string>
     <string name="title_activity_cadastrar_cliente">Cadastrar Novo Cliente</string>
+    <string name="title_activity_atualizar_cliente">Atualizar Cadastro do Cliente</string>
     <string name="title_activity_cadastrar_user">Cadastrar Novo Usuario</string>
 
 
@@ -21,7 +22,7 @@
 
     <string name="nav_clientes">Clientes</string>
     <string name="nav_os">Ordens de Serviço</string>
-    <string name="nav_opcs">Mais Opções A</string>
+    <string name="nav_opcs">Mais Opções</string>
     <string name="nav_avançado">Cadastrar Usuario</string>
     <string name="nav_logout">Logout do Sistema</string>
     <string name="nav_sair">Fechar App</string>
@@ -85,6 +86,7 @@
     <string name="o_s_s_pronta_s_para_entrega_retirada">O.S.(s) Pronta(s) para Entrega/Retirada</string>
     <string name="o_s_s_com_or_amento_aprovado">O.S.(s) com Orçamento Aprovado</string>
     <string name="vizualiza_o_padrao">Vizualização Padrao</string>
+    <string name="atualizar_cadastro">Atualizar Cadastro</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

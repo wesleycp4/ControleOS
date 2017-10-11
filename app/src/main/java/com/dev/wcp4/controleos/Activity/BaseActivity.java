@@ -179,7 +179,12 @@ public class BaseActivity extends AppCompatActivity
             Intent consc = new Intent(getContexto(),ConsultarClienteActivity.class);
             startActivity(consc);
 
-        } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_atualizar_cliente) {
+            //Toast.makeText(this,"Consultar cliente",Toast.LENGTH_SHORT).show();
+            Intent att = new Intent(getContexto(),AtualizarClienteActivity.class);
+            startActivity(att);
+
+        }else if (id == R.id.nav_logout) {
             exibir("Logout feito com sucesso.");
             Intent intent = new Intent(this, MainActivity.class);
             BaseActivity.this.finish();
