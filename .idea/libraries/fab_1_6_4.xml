@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="fab-1.6.4">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/764a13deb59f3c9511ce9833c99905c95e29edbd/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/764a13deb59f3c9511ce9833c99905c95e29edbd/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/cfaeef8b61aa6c4039dc1b639db710890f5e520c/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/cfaeef8b61aa6c4039dc1b639db710890f5e520c/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
