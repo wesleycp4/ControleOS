@@ -3,8 +3,6 @@ package com.dev.wcp4.controleos.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.ParseException;
-import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,16 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.dev.wcp4.controleos.Conexao.Conexao;
-import com.dev.wcp4.controleos.Conexao.Rotas;
-import com.dev.wcp4.controleos.Entidades.Cliente;
 import com.dev.wcp4.controleos.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import static android.R.id.list;
 
 public class ConsultarClienteActivity extends AppCompatActivity {
 

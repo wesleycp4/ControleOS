@@ -1,54 +1,16 @@
 package com.dev.wcp4.controleos.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.TextView;
 
-import com.dev.wcp4.controleos.Entidades.Cliente;
-import com.dev.wcp4.controleos.R;
+import com.dev.wcp4.controleos.Entidade.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.widget.PopupWindowCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AlertDialogLayout;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RatingBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.dev.wcp4.controleos.Entidades.Cliente;
-import com.dev.wcp4.controleos.R;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class ClienteAdapter extends ArrayAdapter {
 

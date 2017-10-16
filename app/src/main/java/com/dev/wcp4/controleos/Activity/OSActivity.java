@@ -5,26 +5,18 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.system.Os;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
-import com.dev.wcp4.controleos.Entidades.Cliente;
-import com.dev.wcp4.controleos.Entidades.OrdemServico;
+import com.dev.wcp4.controleos.Entidade.OrdemServico;
 import com.dev.wcp4.controleos.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

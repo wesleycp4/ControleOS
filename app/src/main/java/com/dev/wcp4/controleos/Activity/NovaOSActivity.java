@@ -1,19 +1,12 @@
 package com.dev.wcp4.controleos.Activity;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.PixelFormat;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,11 +18,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dev.wcp4.controleos.Adapter.Adapter;
 import com.dev.wcp4.controleos.Adapter.ClienteAdapter;
 import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
-import com.dev.wcp4.controleos.Entidades.Cliente;
+import com.dev.wcp4.controleos.Entidade.Cliente;
 import com.dev.wcp4.controleos.R;
 
 import org.json.JSONArray;
@@ -37,7 +29,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NovaOSActivity extends AppCompatActivity {
 

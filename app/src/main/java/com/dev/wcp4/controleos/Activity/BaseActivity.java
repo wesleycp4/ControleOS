@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
@@ -25,33 +23,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dev.wcp4.controleos.Adapter.Adapter;
+import com.dev.wcp4.controleos.Adapter.BaseAdapter;
 import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
-import com.dev.wcp4.controleos.Entidades.OrdemServico;
+import com.dev.wcp4.controleos.Entidade.OrdemServico;
 import com.dev.wcp4.controleos.R;
-import com.github.clans.fab.FloatingActionMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import static com.dev.wcp4.controleos.R.id.filtro0;
-import static com.dev.wcp4.controleos.R.id.menu_flutuante;
-import static com.dev.wcp4.controleos.R.id.progressBar;
-import static com.dev.wcp4.controleos.R.id.snackbar_action;
-import static com.dev.wcp4.controleos.R.id.snackbar_text;
 
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -89,7 +78,7 @@ public class BaseActivity extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new Adapter(this,list);
+        adapter = new BaseAdapter(this,list);
         recyclerView.setAdapter(adapter);
 
         botaoflutuante();
@@ -363,8 +352,8 @@ public class BaseActivity extends AppCompatActivity
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
                 new carregaDados().execute(Rotas.URL_DADOS_OS);
-                //exibir("Atualizado!");
-                Snackbar.make(v, "Atualizado!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                exibir("Atualizado!");
+                //Snackbar.make(v, "Atualizado!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 progressBar.setVisibility(View.INVISIBLE);
                 menuFlutuante.close(true);
             }

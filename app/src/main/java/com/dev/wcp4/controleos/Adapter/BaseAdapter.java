@@ -3,38 +3,23 @@ package com.dev.wcp4.controleos.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AlertDialogLayout;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RatingBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dev.wcp4.controleos.Entidades.OrdemServico;
-import com.dev.wcp4.controleos.Entidades.Cliente;
+import com.dev.wcp4.controleos.Entidade.OrdemServico;
 import com.dev.wcp4.controleos.R;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
+public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<OrdemServico> list = new ArrayList<>();
@@ -170,7 +155,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         }
     }
 
-    public Adapter(Context mContext, List<OrdemServico> ordemservico) {
+    public BaseAdapter(Context mContext, List<OrdemServico> ordemservico) {
         this.mContext = mContext;
         this.list = ordemservico;
     }

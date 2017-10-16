@@ -1,4 +1,4 @@
-package com.dev.wcp4.controleos.Entidades;
+package com.dev.wcp4.controleos.Entidade;
 
 public class Cliente {
 

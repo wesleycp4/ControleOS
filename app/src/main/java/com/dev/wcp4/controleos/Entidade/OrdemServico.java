@@ -1,7 +1,6 @@
-package com.dev.wcp4.controleos.Entidades;
+package com.dev.wcp4.controleos.Entidade;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class OrdemServico implements Serializable {
 
