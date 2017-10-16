@@ -153,4 +153,9 @@ public class Cliente {
     public void setEstadoCliente(String estadoCliente) {
         this.estadoCliente = estadoCliente;
     }
+
+    @Override
+    public String toString() {
+        return getNomeCliente();
+    }
 }

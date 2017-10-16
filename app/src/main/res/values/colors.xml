@@ -4,11 +4,13 @@
     <color name="colorPrimaryDark">#7f0000</color>
     <color name="colorAccent">#000000</color>
     <color name="colorCard">#eeeeee</color>
+    <color name="colorCardEscuro">#bdbdbd</color>
     <color name="colorAccent2">#e53935</color>
     <color name="full_branco">#ffffff</color>
     <color name="cor_icone">#ffffff</color>
     <color name="cor_sair">#ff2800</color>
     <color name="cor_desfoque">#a0ffffff</color>
+
 
 </resources>
 

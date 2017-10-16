@@ -1,7 +1,7 @@
 package com.dev.wcp4.controleos.Conexao;
 
 public class Rotas {
-    private static final String ROOT_URL = "http://192.168.1.250/ControleOS/SERVICOS/";
+    private static final String ROOT_URL = "http://192.168.1.104/ControleOS/SERVICOS/";
 
     public static final String URL_LOGIN = ROOT_URL+"usuarioLogin.php";
     public static final String URL_LOGINADM = ROOT_URL+"usuarioLoginAdm.php";

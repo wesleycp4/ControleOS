@@ -10,21 +10,34 @@ public class OrdemServico implements Serializable {
     private String equipamentosOS;
     private String dataAberturaOS;
     private String dataFechamentoOS;
-    private String contato;
-    private String contato2;
+    private String contato;//*
+    private String contato2;//*
     private float valorOrcamentoOS;
     private float valorFinalOS;
     private int statusOS;
     private String usuarioNome; //nome usuario sistema
-    private String clienteNome;
-    private String clienteEmail;
-    private String clienteRua;
-    private int clienteNumero;
-    private String clienteComplemento;
-    private String clienteBairro;
-    private String clienteCidade;
-    private String clienteEstado;
-    private String clienteCep;
+    private String clienteNome;//*
+    private String clienteEmail;//*
+    private String clienteRua;//*
+    private int clienteNumero;//*
+    private String clienteComplemento;//*
+    private String clienteBairro;//*
+    private String clienteCidade;//*
+    private String clienteEstado;//*
+    private String clienteCep;//*
+    private String imagem;
+
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS,String imagem, String dataAberturaOS, String dataFechamentoOS, float valorOrcamentoOS, float valorFinalOS, int statusOS) {
+        this.idOS = idOS;
+        this.descricaoOS = descricaoOS;
+        this.equipamentosOS = equipamentosOS;
+        this.imagem = imagem;
+        this.dataAberturaOS = dataAberturaOS;
+        this.dataFechamentoOS = dataFechamentoOS;
+        this.valorOrcamentoOS = valorOrcamentoOS;
+        this.valorFinalOS = valorFinalOS;
+        this.statusOS = statusOS;
+    }
 
     public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, String contato, String contato2, int statusOS, String usuarioNome, String clienteNome, String clienteEmail, String clienteRua, int clienteNumero, String clienteComplemento, String clienteBairro, String clienteCidade, String clienteEstado, String clienteCep) {
         this.idOS = idOS;
@@ -44,6 +57,14 @@ public class OrdemServico implements Serializable {
         this.clienteCidade = clienteCidade;
         this.clienteEstado = clienteEstado;
         this.clienteCep = clienteCep;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public int getIdOS() {

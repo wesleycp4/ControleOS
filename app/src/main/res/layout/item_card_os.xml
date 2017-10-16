@@ -31,7 +31,8 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -52,23 +53,25 @@
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contato:"
+                android:text="@string/contatoCard"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 card_view:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="4dp"
-                card_view:layout_constraintTop_toBottomOf="@+id/textNomeCliente" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textNomeCliente"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textContato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(00)00000-0000"
+                android:text="@string/_00_00000_0000"
                 android:layout_marginLeft="16dp"
                 card_view:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="0dp"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView22" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textView22"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textNomeCliente"
@@ -78,7 +81,8 @@
                 android:layout_marginTop="0dp"
                 android:text="@string/none"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView4" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textDataAbertura"
@@ -135,7 +139,8 @@
                 android:layout_marginTop="4dp"
                 card_view:layout_constraintTop_toBottomOf="@+id/textNumeroOs"
                 android:layout_marginRight="16dp"
-                card_view:layout_constraintRight_toRightOf="parent" />
+                card_view:layout_constraintRight_toRightOf="parent"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textStatusOs"
@@ -151,7 +156,8 @@
                 android:layout_marginLeft="8dp"
                 card_view:layout_constraintHorizontal_bias="1.0"
                 android:layout_marginBottom="0dp"
-                card_view:layout_constraintBottom_toTopOf="@+id/textDescricao" />
+                card_view:layout_constraintBottom_toTopOf="@+id/textDescricao"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -166,7 +172,8 @@
                 card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/textView4"
                 card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textNumeroOs"
@@ -179,7 +186,8 @@
                 card_view:layout_constraintLeft_toRightOf="@+id/textNomeCliente"
                 card_view:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="0dp"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView17" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textView17"
+                tools:ignore="RtlHardcoded" />
 
             <ImageButton
                 android:id="@+id/botaoNovoAcomp"
@@ -196,7 +204,8 @@
                 android:src="@drawable/ic_action_add_circl_outline"
                 android:tint="@color/cardview_shadow_start_color"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintLeft_toLeftOf="parent" />
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                tools:ignore="RtlHardcoded" />
 
             <ImageButton
                 android:id="@+id/botaoAbrir"
@@ -215,7 +224,8 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintLeft_toRightOf="@+id/botaoNovoAcomp"
-                card_view:layout_constraintRight_toRightOf="parent" />
+                card_view:layout_constraintRight_toRightOf="parent"
+                tools:ignore="RtlHardcoded" />
 
         </android.support.constraint.ConstraintLayout>
 

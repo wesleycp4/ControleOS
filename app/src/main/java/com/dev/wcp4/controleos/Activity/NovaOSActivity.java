@@ -1,21 +1,28 @@
 package com.dev.wcp4.controleos.Activity;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dev.wcp4.controleos.Adapter.Adapter;
@@ -42,9 +49,14 @@ public class NovaOSActivity extends AppCompatActivity {
     final Context context = this;
     private String parametros;
     private ArrayList<Cliente> list = new ArrayList<>();
+    private ArrayList<Cliente> listCliente = new ArrayList<>();
     private ProgressBar progressBar;
-    String param = "nome_cliente=w";
+    private TextView txtEmailCliente;
+    private TextView txtNomeCliente;
+    private String param = "cliente=cliente";
    // ArrayAdapter adapter;
+    String TAG = "DADOS";
+   private int controle = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +68,17 @@ public class NovaOSActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBarNOs) ;
         Button botaoNovaOs = (Button) findViewById(R.id.botao_ok_novaos);
         botoesFlutuantes();
+        txtEmailCliente =(TextView) findViewById(R.id.txtEmailCliente);
+        txtNomeCliente =(TextView) findViewById(R.id.txtNomeCliente);
 
         this.imagemEquip = (ImageView) findViewById(R.id.fotoPreview);
 
-        AutoCompleteTextView mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteClientes);
-        mAutoCompleteTextView.setThreshold(1);
+
         //new carregaDados().execute();
         new carregaDados().execute(Rotas.URL_DADOS_CLIENTE_TUDO);
        // AutoCompleteTextView estados = (AutoCompleteTextView) findViewById(R.id.antoCompleteClientes);
         // ArrayAdapter para preencher com os estados
-       // ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, ESTADOS);
-        //mAutoCompleteTextView.setAdapter(adaptador);
+
 
 
         botaoNovaOs.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +92,34 @@ public class NovaOSActivity extends AppCompatActivity {
 
 
     }
+
+    public void preencheArray(ArrayList<Cliente> clientes){
+
+            AutoCompleteTextView mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteClientes);
+            ArrayAdapter<Cliente> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, clientes);
+            mAutoCompleteTextView.setAdapter(adaptador);
+            mAutoCompleteTextView.setThreshold(3);
+            mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Cliente someObject = (Cliente) parent.getItemAtPosition (position);
+                   //pegando id cliente tranformar em global
+                    int idCliente = someObject.getIdCliente ();
+                    param = "idcliente="+idCliente;
+                    controle=1;
+                    new carregaDados().execute(Rotas.URL_DADOS_CLIENTE);
+                }
+            });
+
+    }
+
+
+    public void setaDadosCliente(Cliente cliente){
+        txtNomeCliente.setText(cliente.getNomeCliente());
+        txtEmailCliente.setText(cliente.getEmailCliente());
+    }
+
 
     public void botoesFlutuantes() {
         FloatingActionButton botao_add_img = (FloatingActionButton) findViewById(R.id.botaoAddImg);
@@ -139,23 +179,56 @@ public class NovaOSActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             try {
-
                 JSONObject jsonObj = new JSONObject(s);
+                if (controle == 0 ){
 
-                JSONArray jsonArray = jsonObj.getJSONArray("cliente");
-                //list.clear();
-                for (int i=0;i<jsonArray.length();i++){
-                    try {
-                        JSONObject obj  = jsonArray.getJSONObject(i);
-                        Cliente cl = new Cliente(
-                                obj.getInt("idcliente"),
-                                obj.getString("nome_cliente")
-                        );
-                        list.add(cl);
-                    }catch (JSONException e){
-                        e.printStackTrace();
+                    list.clear();
+                    JSONArray jsonArray = jsonObj.getJSONArray("cliente");
+                    //list.clear();
+                    for (int i=0;i<jsonArray.length();i++){
+                        try {
+                            JSONObject obj  = jsonArray.getJSONObject(i);
+                            Cliente c2 = new Cliente(
+                                    obj.getInt("idcliente"),
+                                    obj.getString("nome_cliente")
+                            );
+                            list.add(c2);
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
                     }
+                }else {
+                    listCliente.clear();
+                    JSONArray jsonArray = jsonObj.getJSONArray("cliente");
+                    for (int i=0;i<jsonArray.length();i++){
+                        try {
+                            JSONObject obj  = jsonArray.getJSONObject(i);
+
+                            Cliente cl = new Cliente(
+                                    obj.getInt("idcliente"),
+                                    obj.getString("nome_cliente"),
+                                    obj.getString("email_cliente"),
+                                    obj.getString("cpf_cliente"),
+                                    obj.getString("contato_cliente"),
+                                    obj.getString("contato2_cliente"),
+                                    obj.getString("rua_cliente"),
+                                    obj.getInt("numero_cliente"),
+                                    obj.getString("complemento_cliente"),
+                                    obj.getString("bairro_cliente"),
+                                    obj.getString("cidade_cliente"),
+                                    obj.getString("cep_cliente"),
+                                    obj.getString("estado_cliente")
+                            );
+
+                            listCliente.add(cl);
+                            setaDadosCliente(listCliente.get(0));
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+
                 }
+                preencheArray(list);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

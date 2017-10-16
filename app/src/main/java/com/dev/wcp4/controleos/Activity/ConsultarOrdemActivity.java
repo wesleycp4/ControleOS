@@ -1,6 +1,7 @@
 package com.dev.wcp4.controleos.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.ActionBar;
@@ -17,12 +18,13 @@ import android.widget.Toast;
 import com.dev.wcp4.controleos.R;
 
 import static com.dev.wcp4.controleos.R.id.progressBar;
+import static com.dev.wcp4.controleos.R.id.start;
 
 public class ConsultarOrdemActivity extends AppCompatActivity {
 
     private String parametros = "";
     private ProgressBar progressBar;
-    private EditText editTextPesq;
+    private EditText numeroConsultaOS;
     String param="";
 
     @Override
@@ -35,10 +37,27 @@ public class ConsultarOrdemActivity extends AppCompatActivity {
 
         Button botaoBuscarOs = (Button) findViewById(R.id.botaoPesquisarOS);
         progressBar = (ProgressBar) findViewById(R.id.progressBarConOs);
+        numeroConsultaOS = (EditText) findViewById(R.id.numeroConsultaOS);
 
         botaoBuscarOs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String idos =  numeroConsultaOS.getText().toString().trim();
+
+                Intent intent = new Intent();
+                intent.putExtra("id",idos);
+                intent.setClass(getApplicationContext(),OSActivity.class);
+                startActivity(intent);
+                finish();
+
+
+
+
+
+
+
+
+
                 ConnectivityManager connMgr = (ConnectivityManager)
                         getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
