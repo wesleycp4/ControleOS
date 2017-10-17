@@ -26,122 +26,290 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/fotoPreview"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/colorCard"
-            android:visibility="visible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmailCliente" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/botaoAddImg"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:clickable="true"
-            android:contentDescription="Adicionar Imagem Equipamento"
-            android:tint="@color/colorAccent"
-            android:visibility="visible"
-            app:backgroundTint="@color/full_branco"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toBottomOf="@+id/fotoPreview"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="@+id/fotoPreview"
-            app:layout_constraintRight_toRightOf="@+id/fotoPreview"
-            app:layout_constraintTop_toTopOf="@+id/fotoPreview"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@android:drawable/ic_menu_camera" />
-
-        <android.support.design.widget.TextInputLayout
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteClientes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:completionHint="Selecione o nome do cliente"
+            android:completionThreshold="1"
+            android:maxLines="1"
+            android:popupBackground="@color/colorCard"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/textInputLayout12"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteClientes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:completionHint="Digite o nome do cliente"
-                android:completionThreshold="1" />
-        </android.support.design.widget.TextInputLayout>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"
+            tools:ignore="LabelFor" />
 
 
         <Button
             android:id="@+id/botao_ok_novaos"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:text="Ok"
+            android:text="@string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fotoPreview" />
+            app:layout_constraintTop_toBottomOf="@+id/edtDescricao"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Endereço:"
+            android:text="@string/nome_completo_novaOs"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/autoCompleteClientes"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/txtNomeCliente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:layout_marginLeft="8dp"
+            android:text="@string/none"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            android:layout_marginStart="8dp"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/txtEmailCliente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintLeft_toRightOf="@+id/txtNomeCliente"
-            android:layout_marginLeft="5dp"
-            app:layout_constraintTop_toTopOf="@+id/txtNomeCliente"
-            android:layout_marginTop="-6dp" />
+            android:layout_marginLeft="8dp"
+            android:text="@string/none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            android:layout_marginStart="8dp"
+            tools:ignore="RtlHardcoded" />
 
         <ProgressBar
             android:id="@+id/progressBarNOs"
-            style="?android:attr/progressBarStyle"
+            style="@android:style/Widget.Material.Light.ProgressBar.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botao_ok_novaos"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/endere_o_completo"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNomeCliente"
+            android:layout_marginStart="8dp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/txtEnderecoCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@string/none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/contatoCard"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEnderecoCliente"
+            android:layout_marginStart="8dp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/txtContatoCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@string/none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"
+            android:layout_marginStart="8dp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/emailCadCliente"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtContatoCliente"
+            android:layout_marginStart="8dp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/contato_2"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/txtContatoCliente"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEnderecoCliente"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/txtContato2Cliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/none"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toRightOf="@+id/txtContatoCliente"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/cpfNovaOs"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/txtNomeCliente"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/autoCompleteClientes" />
+
+        <TextView
+            android:id="@+id/txtCpfCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/none"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/informe_o_nome_do_cliente_min_3_letras"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/informe_os_equipamento_s"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmailCliente"
+            tools:ignore="RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/edtEquipamentos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView25"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/edtDescricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/descri_o_do_problema"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtEquipamentos"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
 
     </android.support.constraint.ConstraintLayout>
 

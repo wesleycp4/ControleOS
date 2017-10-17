@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -68,6 +69,9 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                 ConnectivityManager connMgr = (ConnectivityManager)
                         getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -91,7 +95,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                         try {
                             progressBar.setVisibility(View.VISIBLE);
                             parametros = "nome_cliente=" + nome + "&email_cliente=" + email + "&cpf_cliente=" + cpf + "&contato_cliente=" + contato + "&contato2_cliente=" + contato2 + "&rua_cliente=" + rua + "&numero_cliente=" + numero + "&complemento_cliente=" + complemento + "&bairro_cliente=" + bairro + "&cidade_cliente=" + cidade + "&cep_cliente=" + cep + "&estado_cliente=" + estado;
-                            new CadastrarCliente().execute(Rotas.CADASTRAR_CLIENTE);
+                            new cadastrarCliente().execute(Rotas.CADASTRAR_CLIENTE);
                         } catch (ParseException e) {
                             progressBar.setVisibility(View.INVISIBLE);
                             e.printStackTrace();
@@ -111,7 +115,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     }
 
 
-    private class CadastrarCliente extends AsyncTask<String, Object, String> {
+    private class cadastrarCliente extends AsyncTask<String, Object, String> {
 
         @Override
         protected void onProgressUpdate(Object... values) {

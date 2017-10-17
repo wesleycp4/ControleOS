@@ -87,10 +87,17 @@
     <string name="o_s_s_com_or_amento_aprovado">O.S.(s) com Orçamento Aprovado</string>
     <string name="vizualiza_o_padrao">Vizualização Padrao</string>
     <string name="atualizar_cadastro">Atualizar Cadastro</string>
-    <string name="data_acompanhamento">Data Acompanhamento:</string>
-    <string name="descricao_acompanhamento">Descricao Acompanhamento:</string>
+    <string name="data_acompanhamento">Data Acompanhamento: </string>
+    <string name="descricao_acompanhamento">Descricao Acompanhamento: </string>
     <string name="_00_00000_0000">(00)00000-0000</string>
-    <string name="contatoCard">Contato:</string>
+    <string name="contatoCard">Contato: </string>
+    <string name="cpfNovaOs">CPF: </string>
+    <string name="descri_o_do_problema">Descrição do Problema: *</string>
+    <string name="endere_o_completo">Endereço Completo:</string>
+    <string name="informe_o_nome_do_cliente_min_3_letras">Informe o Nome do cliente (Min. 3 Letras): *</string>
+    <string name="informe_os_equipamento_s">Informe o (s) equipamento (s): *</string>
+    <string name="nome_completo_novaOs">Nome Completo: </string>
+    <string name="ok">Ok</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

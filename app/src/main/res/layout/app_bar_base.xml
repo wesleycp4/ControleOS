@@ -29,7 +29,7 @@
         android:id="@+id/menu_flutuante"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:fabSize="mini"
+        app:fabSize="auto"
         android:layout_gravity="center_vertical|center_horizontal"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"
@@ -38,6 +38,7 @@
         android:paddingLeft="10dp"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_singleLine="true"
+        fab:menu_colorNormal="@color/colorPrimary"
         fab:menu_backgroundColor="@color/cor_desfoque">
 
         <com.github.clans.fab.FloatingActionButton

@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private String parametros;
 
+    private EditText editTextUsuario;
+    private EditText editTextSenha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText editTextUsuario = (EditText) findViewById(R.id.usuario_login);
-                EditText editTextSenha = (EditText) findViewById(R.id.senha_login);
+                editTextUsuario = (EditText) findViewById(R.id.usuario_login);
+                editTextSenha = (EditText) findViewById(R.id.senha_login);
 
                 ConnectivityManager connMgr = (ConnectivityManager)
                         getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.VISIBLE);
                         parametros = "usuario=" + usuario + "&senha=" + senha;
                         //salva nome do usuario nos sharedpreferences
+                        //salvar o id para usar em outra tela ********************************************++++++++++++++++
                         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString("nomedoUser", usuario);

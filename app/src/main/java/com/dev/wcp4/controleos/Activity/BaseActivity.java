@@ -23,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -54,6 +55,11 @@ public class BaseActivity extends AppCompatActivity
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
+
+    private com.github.clans.fab.FloatingActionMenu menuFlutuante;
+    private com.github.clans.fab.FloatingActionButton itemMenuAtualizar;
+    private com.github.clans.fab.FloatingActionButton itemMenuFiltrar;
+    private com.github.clans.fab.FloatingActionButton itemMenuAdicionarOs;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -88,8 +94,6 @@ public class BaseActivity extends AppCompatActivity
         String usuario = prefs.getString("nomedoUser", null);
         assert usuario != null;
         usuario = usuario.substring(0,1).toUpperCase().concat(usuario.substring(1));
-
-        exibir("Bem vindo, "+usuario);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -217,6 +221,7 @@ public class BaseActivity extends AppCompatActivity
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+
                     String usuario = usuarioDialog.getText().toString();
                     String senha = senhaDailog.getText().toString();
                     if(!usuario.isEmpty() && !senha.isEmpty()){
@@ -341,10 +346,10 @@ public class BaseActivity extends AppCompatActivity
     }
 
     public void botaoflutuante(){
-        com.github.clans.fab.FloatingActionMenu menuFlutuante = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_flutuante);
-        com.github.clans.fab.FloatingActionButton itemMenuAtualizar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAtualizar);
-        com.github.clans.fab.FloatingActionButton itemMenuFiltrar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoFiltroLista);
-        com.github.clans.fab.FloatingActionButton itemMenuAdicionarOs = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAddOs);
+        menuFlutuante = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_flutuante);
+        itemMenuAtualizar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAtualizar);
+        itemMenuFiltrar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoFiltroLista);
+        itemMenuAdicionarOs = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAddOs);
         menuFlutuante.setClosedOnTouchOutside(true);
 
         itemMenuAtualizar.setOnClickListener(new View.OnClickListener() {
@@ -363,7 +368,6 @@ public class BaseActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 showPopupMenu(v);
-                menuFlutuante.close(true);
                 exibir("Escolha uma opção de filtro!");
             }
         });
@@ -430,6 +434,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=0";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro1:
@@ -438,6 +443,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=1";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro2:
@@ -446,6 +452,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=2";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro3:
@@ -454,6 +461,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=3";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro4:
@@ -462,6 +470,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=4";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro5:
@@ -470,6 +479,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=5";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro6:
@@ -478,6 +488,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=6";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 case R.id.filtro7:
@@ -486,6 +497,7 @@ public class BaseActivity extends AppCompatActivity
                     list.clear();
                     param = "status=7";
                     new carregaDados().execute(Rotas.URL_DADOS_OS);
+                    menuFlutuante.close(true);
                     progressBar.setVisibility(View.INVISIBLE);
                     return true;
                 default:

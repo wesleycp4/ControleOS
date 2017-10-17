@@ -53,7 +53,7 @@
                 android:inputType="textNoSuggestions|textVisiblePassword"
                 android:maxLength="15"
                 android:maxLines="1"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textAppearance="@android:style/TextAppearance.Material.Caption"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -73,7 +73,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            app:passwordToggleDrawable="@drawable/ic_show_pass"
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/senha_login"
@@ -83,7 +85,7 @@
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:maxLines="1"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textAppearance="@android:style/TextAppearance.Material.Caption"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -91,8 +93,9 @@
 
         <Button
             android:id="@+id/botao_login"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="128dp"
             android:layout_marginLeft="128dp"
             android:layout_marginRight="128dp"
@@ -100,13 +103,14 @@
             android:layout_marginTop="32dp"
             android:text="@string/botao_entrar"
             android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
+            style="@android:style/Widget.Material.ProgressBar.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -120,7 +124,8 @@
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botao_login" />
+            app:layout_constraintTop_toBottomOf="@+id/login_logo"
+            app:layout_constraintVertical_bias="0.35000002" />
 
     </android.support.constraint.ConstraintLayout>
 
