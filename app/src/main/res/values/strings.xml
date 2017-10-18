@@ -98,6 +98,14 @@
     <string name="informe_os_equipamento_s">Informe o (s) equipamento (s): *</string>
     <string name="nome_completo_novaOs">Nome Completo: </string>
     <string name="ok">Ok</string>
+    <string name="aberta_por">Aberta por:</string>
+    <string name="acompanhamentos">Acompanhamentos:</string>
+    <string name="data_fechamento">Data Fechamento:</string>
+    <string name="descri_o_problema">Descrição Problema:</string>
+    <string name="equipamento_s">Equipamento(s):</string>
+    <string name="valor_final">Valor Final:</string>
+    <string name="valor_or_amento">Valor Orçamento:</string>
+    <string name="imagem_equipamento">Imagem Equipamento</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

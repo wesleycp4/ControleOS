@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -25,7 +26,7 @@ public class ConsultarOrdemActivity extends AppCompatActivity {
     private String parametros = "";
     private ProgressBar progressBar;
     private EditText numeroConsultaOS;
-    String param="";
+    String param = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +43,9 @@ public class ConsultarOrdemActivity extends AppCompatActivity {
         botaoBuscarOs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idos =  numeroConsultaOS.getText().toString().trim();
+                progressBar.setVisibility(View.VISIBLE);
 
-                Intent intent = new Intent();
-                intent.putExtra("id",idos);
-                intent.setClass(getApplicationContext(),OSActivity.class);
-                startActivity(intent);
-                finish();
-
-
-
-
-
-
-
-
+                String idos = numeroConsultaOS.getText().toString().trim();
 
                 ConnectivityManager connMgr = (ConnectivityManager)
                         getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -64,33 +53,26 @@ public class ConsultarOrdemActivity extends AppCompatActivity {
 
                 if (networkInfo != null && networkInfo.isConnected()) {
 
-                    //String pesq = editTextPesq.getText().toString().trim();
-                    exibir("ok");
-                    /*if (!pesq.isEmpty()) {
-                        try {
-                            progressBar.setVisibility(View.VISIBLE);
-                            parametros = "nome_cliente=" + pesq;
-                            //new Pesquisar().execute(Rotas.CADASTRAR_CLIENTE);
-                        } catch (ParseException e) {
-                            progressBar.setVisibility(View.INVISIBLE);
-                            e.printStackTrace();
-                        }
-                    } else {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        exibir("Preencha todos os campos com *");
-                    }*/
+                    Intent intent = new Intent();
+                    intent.putExtra("id", idos);
+                    intent.setClass(getApplicationContext(), OSActivity.class);
+                    startActivity(intent);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    //finish();
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
                 } else {
                     progressBar.setVisibility(View.INVISIBLE);
-                    exibir(":( Favor verificar a sua conexão com a Internet!");
+                    exibir("Favor verificar a sua conexão com a Internet!");
                 }
             }
         });
 
     }
 
-    public void exibir(String msg){
-        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();
+    public void exibir(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -99,7 +81,7 @@ public class ConsultarOrdemActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
 

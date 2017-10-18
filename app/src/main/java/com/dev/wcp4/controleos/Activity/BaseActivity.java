@@ -67,7 +67,7 @@ public class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBarBase) ;
+        progressBar = (ProgressBar) findViewById(R.id.progressBarBase);
         progressBar.setVisibility(View.VISIBLE);
 
         //7 é tratado no servidor web para exibir tudo menos as o.s. fechadas
@@ -84,7 +84,7 @@ public class BaseActivity extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new BaseAdapter(this,list);
+        adapter = new BaseAdapter(this, list);
         recyclerView.setAdapter(adapter);
 
         botaoflutuante();
@@ -93,7 +93,7 @@ public class BaseActivity extends AppCompatActivity
         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
         String usuario = prefs.getString("nomedoUser", null);
         assert usuario != null;
-        usuario = usuario.substring(0,1).toUpperCase().concat(usuario.substring(1));
+        usuario = usuario.substring(0, 1).toUpperCase().concat(usuario.substring(1));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -103,9 +103,9 @@ public class BaseActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header=navigationView.getHeaderView(0);
-        textUsuario = (TextView)header.findViewById(R.id.textViewOla);
-        textUsuario.setText("Olá, " +usuario);
+        View header = navigationView.getHeaderView(0);
+        textUsuario = (TextView) header.findViewById(R.id.textViewOla);
+        textUsuario.setText("Olá, " + usuario);
     }
 
     @Override
@@ -113,11 +113,11 @@ public class BaseActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if  (menuFlutuante.isOpened()) {
+            menuFlutuante.close(true);
         } else {
-            moveTaskToBack(true);
+            menuSair();
         }
-        BaseActivity.this.finish();
-        finish();
     }
 
     @Override
@@ -154,30 +154,31 @@ public class BaseActivity extends AppCompatActivity
 
         if (id == R.id.nav_novo_os) {
             //Toast.makeText(this,"novo os",Toast.LENGTH_SHORT).show();
-            Intent novaos = new Intent(getContexto(),NovaOSActivity.class);
+            Intent novaos = new Intent(getContexto(), NovaOSActivity.class);
             startActivity(novaos);
 
         } else if (id == R.id.nav_consultar_os) {
             //Toast.makeText(this,"Consultar O.S.",Toast.LENGTH_SHORT).show();
-            Intent consult = new Intent(getContexto(),ConsultarOrdemActivity.class);
+            Intent consult = new Intent(getContexto(), ConsultarOrdemActivity.class);
             startActivity(consult);
 
         } else if (id == R.id.nav_cadastro_cliente) {
             //Toast.makeText(this,"Cadastrar Novo Cliente",Toast.LENGTH_SHORT).show();
-            Intent cadast = new Intent(getContexto(),CadastrarClienteActivity.class);
+            Intent cadast = new Intent(getContexto(), CadastrarClienteActivity.class);
             startActivity(cadast);
 
         } else if (id == R.id.nav_consultar_cliente) {
             //Toast.makeText(this,"Consultar cliente",Toast.LENGTH_SHORT).show();
-            Intent consc = new Intent(getContexto(),ConsultarClienteActivity.class);
+            Intent consc = new Intent(getContexto(), ConsultarClienteActivity.class);
             startActivity(consc);
 
         } else if (id == R.id.nav_atualizar_cliente) {
             //Toast.makeText(this,"Consultar cliente",Toast.LENGTH_SHORT).show();
-            Intent att = new Intent(getContexto(),AtualizarClienteActivity.class);
+            Intent att = new Intent(getContexto(), AtualizarClienteActivity.class);
             startActivity(att);
 
-        }else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
+            //limpar sharedprefs
             exibir("Logout feito com sucesso.");
             Intent intent = new Intent(this, MainActivity.class);
             BaseActivity.this.finish();
@@ -224,10 +225,10 @@ public class BaseActivity extends AppCompatActivity
 
                     String usuario = usuarioDialog.getText().toString();
                     String senha = senhaDailog.getText().toString();
-                    if(!usuario.isEmpty() && !senha.isEmpty()){
+                    if (!usuario.isEmpty() && !senha.isEmpty()) {
                         parametros = "usuario=" + usuario + "&senha=" + senha + "&adm=" + 1;
                         new Logar().execute(Rotas.URL_LOGINADM);
-                    } else{
+                    } else {
                         exibir("Informe o Usuario e a Senha para acessar!");
                     }
                 }
@@ -236,22 +237,7 @@ public class BaseActivity extends AppCompatActivity
             dialog.show();
 
         } else if (id == R.id.nav_sair) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-            alertDialogBuilder.setTitle("Deseja encerrar a aplicação?");
-            alertDialogBuilder
-                    .setCancelable(false)
-                    .setPositiveButton("Sim",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int id) {
-                            BaseActivity.this.finish();
-                        }
-                    })
-                    .setNegativeButton("Não",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+           menuSair();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -264,23 +250,25 @@ public class BaseActivity extends AppCompatActivity
         @Override
         protected void onProgressUpdate(Object... values) {
         }
+
         @Override
         protected void onPostExecute(String s) {
             //exibir(s);
             try {
                 JSONObject jsonObj = new JSONObject(s);
-                if(!jsonObj.getBoolean("error")){
-                    startActivity(new Intent(BaseActivity.this,NovoUserActivity.class));
-                }else{
+                if (!jsonObj.getBoolean("error")) {
+                    startActivity(new Intent(BaseActivity.this, NovoUserActivity.class));
+                } else {
                     exibir("Este Usuario não é Administrador!");
                 }
             } catch (JSONException e) {
                 exibir(e.getMessage());
             }
         }
+
         @Override
         protected String doInBackground(String... url) {
-            return Conexao.postDados(url[0],parametros);
+            return Conexao.postDados(url[0], parametros);
         }
     }
 
@@ -305,9 +293,9 @@ public class BaseActivity extends AppCompatActivity
 
                 JSONArray jsonArray = jsonObj.getJSONArray("osDados");
                 list.clear();
-                for (int i=0;i<jsonArray.length();i++){
+                for (int i = 0; i < jsonArray.length(); i++) {
                     try {
-                        JSONObject obj  = jsonArray.getJSONObject(i);
+                        JSONObject obj = jsonArray.getJSONObject(i);
                         OrdemServico os = new OrdemServico(
                                 obj.getInt("idos"),
                                 obj.getString("descricao"),
@@ -328,7 +316,7 @@ public class BaseActivity extends AppCompatActivity
                                 obj.getString("cep_cliente")
                         );
                         list.add(os);
-                    }catch (JSONException e){
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -341,11 +329,11 @@ public class BaseActivity extends AppCompatActivity
 
         @Override
         protected String doInBackground(String... url) {
-            return Conexao.postDados(url[0],param);
+            return Conexao.postDados(url[0], param);
         }
     }
 
-    public void botaoflutuante(){
+    public void botaoflutuante() {
         menuFlutuante = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_flutuante);
         itemMenuAtualizar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoAtualizar);
         itemMenuFiltrar = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.botaoFiltroLista);
@@ -380,16 +368,16 @@ public class BaseActivity extends AppCompatActivity
                 alertDialogBuilder
                         //.setMessage("Cliente ja cadastrado no sistema?")
                         .setCancelable(true)
-                        .setNeutralButton("Sim",new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog,int id) {
-                                Intent novaos = new Intent(getContexto(),NovaOSActivity.class);
+                        .setNeutralButton("Sim", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent novaos = new Intent(getContexto(), NovaOSActivity.class);
                                 startActivity(novaos);
                             }
                         })
 
-                        .setNegativeButton("Não",new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog,int id) {
-                                Intent cadast = new Intent(getContexto(),CadastrarClienteActivity.class);
+                        .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent cadast = new Intent(getContexto(), CadastrarClienteActivity.class);
                                 startActivity(cadast);
                             }
                         });
@@ -402,12 +390,12 @@ public class BaseActivity extends AppCompatActivity
 
     }
 
-    public Context getContexto(){
+    public Context getContexto() {
         return this;
     }
 
-    public void exibir(String msg){
-        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();
+    public void exibir(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     private void showPopupMenu(View view) {
@@ -506,6 +494,31 @@ public class BaseActivity extends AppCompatActivity
             return false;
         }
 
+    }
+
+    public void menuSair(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setTitle("Deseja encerrar a aplicação?");
+        alertDialogBuilder
+                .setCancelable(true)
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        System.exit(0);
+                    }
+                })
+                .setNeutralButton("Minimizar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        moveTaskToBack(true);
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

@@ -16,6 +16,7 @@ public class OrdemServico implements Serializable {
     private int statusOS;
     private String usuarioNome; //nome usuario sistema
     private String clienteNome;//*
+    private String clienteCpf;//*
     private String clienteEmail;//*
     private String clienteRua;//*
     private int clienteNumero;//*
@@ -56,6 +57,39 @@ public class OrdemServico implements Serializable {
         this.clienteCidade = clienteCidade;
         this.clienteEstado = clienteEstado;
         this.clienteCep = clienteCep;
+    }
+
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, String dataFechamentoOS, String contato, String contato2, float valorOrcamentoOS, float valorFinalOS, int statusOS, String usuarioNome, String clienteNome, String clienteCpf, String clienteEmail, String clienteRua, int clienteNumero, String clienteComplemento, String clienteBairro, String clienteCidade, String clienteEstado, String clienteCep, String imagem) {
+        this.idOS = idOS;
+        this.descricaoOS = descricaoOS;
+        this.equipamentosOS = equipamentosOS;
+        this.dataAberturaOS = dataAberturaOS;
+        this.dataFechamentoOS = dataFechamentoOS;
+        this.contato = contato;
+        this.contato2 = contato2;
+        this.valorOrcamentoOS = valorOrcamentoOS;
+        this.valorFinalOS = valorFinalOS;
+        this.statusOS = statusOS;
+        this.usuarioNome = usuarioNome;
+        this.clienteNome = clienteNome;
+        this.clienteCpf = clienteCpf;
+        this.clienteEmail = clienteEmail;
+        this.clienteRua = clienteRua;
+        this.clienteNumero = clienteNumero;
+        this.clienteComplemento = clienteComplemento;
+        this.clienteBairro = clienteBairro;
+        this.clienteCidade = clienteCidade;
+        this.clienteEstado = clienteEstado;
+        this.clienteCep = clienteCep;
+        this.imagem = imagem;
+    }
+
+    public String getClienteCpf() {
+        return clienteCpf;
+    }
+
+    public void setClienteCpf(String clienteCpf) {
+        this.clienteCpf = clienteCpf;
     }
 
     public String getImagem() {
