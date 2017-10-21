@@ -29,6 +29,14 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario(int idfuncionario, String nome, String email, String usuario, int adm) {
+        this.idfuncionario = idfuncionario;
+        this.nome = nome;
+        this.email = email;
+        this.usuario = usuario;
+        this.adm = adm;
+    }
+
     public Usuario(int idfuncionario, String nome, String email, String contato1, String contato2, String usuario, String senha, int adm) {
         this.idfuncionario = idfuncionario;
         this.nome = nome;

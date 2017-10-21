@@ -74,7 +74,7 @@
             tools:ignore="RtlHardcoded" />
 
         <TextView
-            android:id="@+id/txtNomeCliente"
+            android:id="@+id/txtAlterNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -122,12 +122,12 @@
             android:text="@string/endere_o_completo"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNomeCliente"
+            app:layout_constraintTop_toBottomOf="@+id/txtAlterNome"
             android:layout_marginStart="8dp"
             tools:ignore="RtlHardcoded" />
 
         <TextView
-            android:id="@+id/txtEnderecoCliente"
+            android:id="@+id/txtAlterNumero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -149,12 +149,12 @@
             android:text="@string/contatoCard"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEnderecoCliente"
+            app:layout_constraintTop_toBottomOf="@+id/txtAlterNumero"
             android:layout_marginStart="8dp"
             tools:ignore="RtlHardcoded" />
 
         <TextView
-            android:id="@+id/txtContatoCliente"
+            android:id="@+id/txtAlterCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -173,7 +173,7 @@
             android:text="@string/emailCadCliente"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtContatoCliente"
+            app:layout_constraintTop_toBottomOf="@+id/txtAlterCont"
             android:layout_marginStart="8dp"
             tools:ignore="RtlHardcoded" />
 
@@ -186,9 +186,9 @@
             android:layout_marginTop="8dp"
             android:text="@string/contato_2"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/txtContatoCliente"
+            app:layout_constraintLeft_toRightOf="@+id/txtAlterCont"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEnderecoCliente"
+            app:layout_constraintTop_toBottomOf="@+id/txtAlterNumero"
             app:layout_constraintHorizontal_bias="1.0"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" />
@@ -203,7 +203,7 @@
             android:layout_marginStart="8dp"
             android:text="@string/none"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="@+id/txtContatoCliente"
+            app:layout_constraintLeft_toRightOf="@+id/txtAlterCont"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -215,7 +215,7 @@
             android:layout_marginRight="8dp"
             android:text="@string/cpfNovaOs"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/txtNomeCliente"
+            app:layout_constraintLeft_toRightOf="@+id/txtAlterNome"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             android:layout_marginStart="8dp"
@@ -224,7 +224,7 @@
             app:layout_constraintTop_toBottomOf="@+id/autoCompleteClientes" />
 
         <TextView
-            android:id="@+id/txtCpfCliente"
+            android:id="@+id/txtAlterEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"

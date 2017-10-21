@@ -24,11 +24,6 @@
                 android:title="@string/cadastrar_cliente"
                 android:tint="@color/colorAccent"/>
             <item
-                android:id="@+id/nav_consultar_cliente"
-                android:icon="@drawable/ic_pesq_cliente"
-                android:title="@string/consultar_cliente"
-                android:tint="@color/colorAccent"/>
-            <item
                 android:id="@+id/nav_atualizar_cliente"
                 android:icon="@drawable/ic_cliente_editar"
                 android:tint="@color/colorAccent"

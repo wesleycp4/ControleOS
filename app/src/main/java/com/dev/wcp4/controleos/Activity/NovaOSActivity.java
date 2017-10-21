@@ -2,12 +2,11 @@ package com.dev.wcp4.controleos.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.ParseException;
 import android.os.AsyncTask;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +53,7 @@ public class NovaOSActivity extends AppCompatActivity {
     private TextView txtEnderecoCliente;
     private TextView txtCpfCliente;
     private String param = "cliente=cliente";
-   // ArrayAdapter adapter;
+    // ArrayAdapter adapter;
     String TAG = "DADOS"; //debug
     private int controle = 0;
     private int idCliente;
@@ -69,15 +67,15 @@ public class NovaOSActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
-        progressBar = (ProgressBar) findViewById(R.id.progressBarNOs) ;
+        progressBar = (ProgressBar) findViewById(R.id.progressBarNOs);
         Button botaoNovaOs = (Button) findViewById(R.id.botao_ok_novaos);
         //botoesFlutuantes();
-        txtEmailCliente =(TextView) findViewById(R.id.txtEmailCliente);
-        txtNomeCliente =(TextView) findViewById(R.id.txtNomeCliente);
-        txtContatoCliente =(TextView) findViewById(R.id.txtContatoCliente);
-        txtContato2Cliente =(TextView) findViewById(R.id.txtContato2Cliente);
-        txtEnderecoCliente =(TextView) findViewById(R.id.txtEnderecoCliente);
-        txtCpfCliente =(TextView) findViewById(R.id.txtCpfCliente);
+        txtEmailCliente = (TextView) findViewById(R.id.txtEmailCliente);
+        txtNomeCliente = (TextView) findViewById(R.id.txtAlterNome);
+        txtContatoCliente = (TextView) findViewById(R.id.txtAlterCont);
+        txtContato2Cliente = (TextView) findViewById(R.id.txtContato2Cliente);
+        txtEnderecoCliente = (TextView) findViewById(R.id.txtAlterNumero);
+        txtCpfCliente = (TextView) findViewById(R.id.txtAlterEmail);
 
         //this.imagemEquip = (ImageView) findViewById(R.id.fotoPreview);
 
@@ -100,8 +98,12 @@ public class NovaOSActivity extends AppCompatActivity {
 
                     String equip = editTextEquip.getText().toString().trim();
                     String desc = editTextDesc.getText().toString().trim();
-                    String idc = "&"+param;
-                    String idf = "&"+"idfuncionario=3";
+                    String idc = "&" + param;
+
+                    SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
+                    int funcid = prefs.getInt("id", 0);
+
+                    String idf = "&idfuncionario=" + funcid;
 
                     if (!equip.isEmpty() && !desc.isEmpty()) {
                         try {
@@ -126,47 +128,47 @@ public class NovaOSActivity extends AppCompatActivity {
         });
     }
 
-    public void preencheArray(ArrayList<Cliente> clientes){
+    public void preencheArray(ArrayList<Cliente> clientes) {
 
-            AutoCompleteTextView mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteClientes);
-            ArrayAdapter<Cliente> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, clientes);
-            mAutoCompleteTextView.setAdapter(adaptador);
-            mAutoCompleteTextView.setThreshold(3);
-            mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        AutoCompleteTextView mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteClientes);
+        ArrayAdapter<Cliente> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, clientes);
+        mAutoCompleteTextView.setAdapter(adaptador);
+        mAutoCompleteTextView.setThreshold(3);
+        mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    Cliente someObject = (Cliente) parent.getItemAtPosition (position);
-                    idCliente = someObject.getIdCliente ();
-                    param = "idcliente="+idCliente;
-                    controle=1;
-                    new carregaDados().execute(Rotas.URL_DADOS_CLIENTE);
+                Cliente someObject = (Cliente) parent.getItemAtPosition(position);
+                idCliente = someObject.getIdCliente();
+                param = "idcliente=" + idCliente;
+                controle = 1;
+                new carregaDados().execute(Rotas.URL_DADOS_CLIENTE);
 
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                }
-            });
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        });
 
     }
 
 
-    public void setaDadosCliente(Cliente cliente){
+    public void setaDadosCliente(Cliente cliente) {
         txtNomeCliente.setText(cliente.getNomeCliente());
         txtEmailCliente.setText(cliente.getEmailCliente());
         String cont2 = cliente.getContato2Cliente();
-        if (cont2 == null || cont2.equals("") || cont2.length()==0 || cont2 == "null"){
+        if (cont2 == null || cont2.equals("") || cont2.length() == 0 || cont2 == "null") {
             cont2 = "Não Informado";
-        } else{
+        } else {
             cont2 = cont2;
         }
         txtContato2Cliente.setText(cont2);
         txtContatoCliente.setText(cliente.getContatoCliente());
         txtCpfCliente.setText(cliente.getCpfCliente());
         String comp = cliente.getComplementoCliente();
-        if (comp == null || comp.equals("") || comp.length()==0 || comp == "null"){
+        if (comp == null || comp.equals("") || comp.length() == 0 || comp == "null") {
             comp = "Sem Comp.";
-        } else{
-            comp = "Comp.: "+ comp;
+        } else {
+            comp = "Comp.: " + comp;
         }
         String end = cliente.getRuaCliente() + ", " + cliente.getNumeroCliente() + ", " + comp + ", Bairro: " + cliente.getBairroCliente() + "\n" + cliente.getCidadeCliente() + ", " + cliente.getEstadoCliente() + ", CEP: " + cliente.getCepCliente();
         txtEnderecoCliente.setText(end);
@@ -193,8 +195,8 @@ public class NovaOSActivity extends AppCompatActivity {
         });*/
     }
 
-    public void exibir(String msg){
-        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();
+    public void exibir(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -203,7 +205,7 @@ public class NovaOSActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
 
@@ -232,29 +234,29 @@ public class NovaOSActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             try {
                 JSONObject jsonObj = new JSONObject(s);
-                if (controle == 0 ){
+                if (controle == 0) {
 
                     list.clear();
                     JSONArray jsonArray = jsonObj.getJSONArray("cliente");
                     //list.clear();
-                    for (int i=0;i<jsonArray.length();i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         try {
-                            JSONObject obj  = jsonArray.getJSONObject(i);
+                            JSONObject obj = jsonArray.getJSONObject(i);
                             Cliente c2 = new Cliente(
                                     obj.getInt("idcliente"),
                                     obj.getString("nome_cliente")
                             );
                             list.add(c2);
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                }else {
+                } else {
                     listCliente.clear();
                     JSONArray jsonArray = jsonObj.getJSONArray("cliente");
-                    for (int i=0;i<jsonArray.length();i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         try {
-                            JSONObject obj  = jsonArray.getJSONObject(i);
+                            JSONObject obj = jsonArray.getJSONObject(i);
 
                             Cliente cl = new Cliente(
                                     obj.getInt("idcliente"),
@@ -274,7 +276,7 @@ public class NovaOSActivity extends AppCompatActivity {
 
                             listCliente.add(cl);
                             setaDadosCliente(listCliente.get(0));
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
@@ -290,7 +292,7 @@ public class NovaOSActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... url) {
-            return Conexao.postDados(url[0],param);
+            return Conexao.postDados(url[0], param);
         }
     }
 
@@ -306,12 +308,12 @@ public class NovaOSActivity extends AppCompatActivity {
 
             try {
                 JSONObject jsonObj = new JSONObject(s);
-                if(!jsonObj.getBoolean("error")){
+                if (!jsonObj.getBoolean("error")) {
                     exibir("Nova O.S. Cadastrada com sucesso!");
                     progressBar.setVisibility(View.INVISIBLE);
-                    startActivity(new Intent(NovaOSActivity.this,BaseActivity.class));
+                    startActivity(new Intent(NovaOSActivity.this, BaseActivity.class));
                     finish();
-                } else{
+                } else {
                     progressBar.setVisibility(View.INVISIBLE);
                     exibir(":/ Ocorreu um erro!");
                 }
@@ -325,7 +327,7 @@ public class NovaOSActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... url) {
-            return Conexao.postDados(url[0],parametros);
+            return Conexao.postDados(url[0], parametros);
         }
     }
 

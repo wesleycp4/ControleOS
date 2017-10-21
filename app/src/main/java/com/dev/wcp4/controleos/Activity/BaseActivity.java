@@ -56,6 +56,8 @@ public class BaseActivity extends AppCompatActivity
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
 
+    private int adm;
+
     private com.github.clans.fab.FloatingActionMenu menuFlutuante;
     private com.github.clans.fab.FloatingActionButton itemMenuAtualizar;
     private com.github.clans.fab.FloatingActionButton itemMenuFiltrar;
@@ -91,9 +93,13 @@ public class BaseActivity extends AppCompatActivity
 
         //recupera o nome do usuario do sharedpreferences
         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
-        String usuario = prefs.getString("nomedoUser", null);
-        assert usuario != null;
-        usuario = usuario.substring(0, 1).toUpperCase().concat(usuario.substring(1));
+        String usuario = prefs.getString("nome", null);
+        String[] s = usuario.split(" ");
+        String usuario2 = s[0];
+        //String usuario2 = s[0]+ " " +s[1];
+
+        /*assert usuario != null;
+        usuario = usuario.substring(0, 1).toUpperCase().concat(usuario.substring(1));*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -105,7 +111,7 @@ public class BaseActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         textUsuario = (TextView) header.findViewById(R.id.textViewOla);
-        textUsuario.setText("Olá, " + usuario);
+        textUsuario.setText("Olá, " + usuario2);
     }
 
     @Override
@@ -113,7 +119,7 @@ public class BaseActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if  (menuFlutuante.isOpened()) {
+        } else if (menuFlutuante.isOpened()) {
             menuFlutuante.close(true);
         } else {
             menuSair();
@@ -167,12 +173,12 @@ public class BaseActivity extends AppCompatActivity
             Intent cadast = new Intent(getContexto(), CadastrarClienteActivity.class);
             startActivity(cadast);
 
-        } else if (id == R.id.nav_consultar_cliente) {
+        } /*else if (id == R.id.nav_consultar_cliente) {
             //Toast.makeText(this,"Consultar cliente",Toast.LENGTH_SHORT).show();
             Intent consc = new Intent(getContexto(), ConsultarClienteActivity.class);
             startActivity(consc);
 
-        } else if (id == R.id.nav_atualizar_cliente) {
+        }*/ else if (id == R.id.nav_atualizar_cliente) {
             //Toast.makeText(this,"Consultar cliente",Toast.LENGTH_SHORT).show();
             Intent att = new Intent(getContexto(), AtualizarClienteActivity.class);
             startActivity(att);
@@ -185,91 +191,21 @@ public class BaseActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_avançado) {
-
-            LayoutInflater inflater = getLayoutInflater();
-            View alertLayout = inflater.inflate(R.layout.opcoes_activity, null);
-            final EditText usuarioDialog = (EditText) alertLayout.findViewById(R.id.usuario_dialog);
-            final EditText senhaDailog = (EditText) alertLayout.findViewById(R.id.senha_dialog);
-            final CheckBox cbShowPassword = (CheckBox) alertLayout.findViewById(R.id.checkBox);
-
-            cbShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        // to encode password in dots
-                        senhaDailog.setTransformationMethod(null);
-                    } else {
-                        // to display the password in normal text
-                        senhaDailog.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    }
-                }
-            });
-
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Autorização necessaria!\nInforme usuario e senha:");
-            alert.setView(alertLayout);
-            alert.setCancelable(true);
-            alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    exibir("Operação Cancelada");
-                }
-            });
-
-            alert.setPositiveButton("Entrar!", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                    String usuario = usuarioDialog.getText().toString();
-                    String senha = senhaDailog.getText().toString();
-                    if (!usuario.isEmpty() && !senha.isEmpty()) {
-                        parametros = "usuario=" + usuario + "&senha=" + senha + "&adm=" + 1;
-                        new Logar().execute(Rotas.URL_LOGINADM);
-                    } else {
-                        exibir("Informe o Usuario e a Senha para acessar!");
-                    }
-                }
-            });
-            AlertDialog dialog = alert.create();
-            dialog.show();
+            SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
+            adm = prefs.getInt("adm", 0);
+            if (adm == 0) {
+                exibir("Seu Usuario não tem as permissões necessarias!");
+            } else {
+                startActivity(new Intent(BaseActivity.this, NovoUserActivity.class));
+            }
 
         } else if (id == R.id.nav_sair) {
-           menuSair();
+            menuSair();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private class Logar extends AsyncTask<String, Object, String> {
-
-        @Override
-        protected void onProgressUpdate(Object... values) {
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            //exibir(s);
-            try {
-                JSONObject jsonObj = new JSONObject(s);
-                if (!jsonObj.getBoolean("error")) {
-                    startActivity(new Intent(BaseActivity.this, NovoUserActivity.class));
-                } else {
-                    exibir("Este Usuario não é Administrador!");
-                }
-            } catch (JSONException e) {
-                exibir(e.getMessage());
-            }
-        }
-
-        @Override
-        protected String doInBackground(String... url) {
-            return Conexao.postDados(url[0], parametros);
-        }
     }
 
     private class carregaDados extends AsyncTask<String, Object, String> {
@@ -496,7 +432,7 @@ public class BaseActivity extends AppCompatActivity
 
     }
 
-    public void menuSair(){
+    public void menuSair() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle("Deseja encerrar a aplicação?");
         alertDialogBuilder

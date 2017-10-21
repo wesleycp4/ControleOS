@@ -203,6 +203,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> 
                 exibir("abrir tela os");
                 //abre intent jogando tudo pra nova tela todos os dados etc***********************************///********000000000000000000000000000000
 
+
             }
         });
 

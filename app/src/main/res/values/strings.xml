@@ -14,7 +14,7 @@
     <string name="navigation_drawer_open">Abrir Drawer Navegação</string>
     <string name="navigation_drawer_close">Fechar Drawer Navegação</string>
 
-    <string name="cadastrar_cliente">Cadastrar Cliente</string>
+    <string name="cadastrar_cliente">Cadastrar Novo Cliente</string>
     <string name="consultar_cliente">Pesquisar Cliente</string>
 
     <string name="novo_os">Nova O.S.</string>
@@ -86,7 +86,7 @@
     <string name="o_s_s_pronta_s_para_entrega_retirada">O.S.(s) Pronta(s) para Entrega/Retirada</string>
     <string name="o_s_s_com_or_amento_aprovado">O.S.(s) com Orçamento Aprovado</string>
     <string name="vizualiza_o_padrao">Vizualização Padrao</string>
-    <string name="atualizar_cadastro">Atualizar Cadastro</string>
+    <string name="atualizar_cadastro">Consultar/Atualizar Cliente</string>
     <string name="data_acompanhamento">Data Acompanhamento: </string>
     <string name="descricao_acompanhamento">Descricao Acompanhamento: </string>
     <string name="_00_00000_0000">(00)00000-0000</string>
@@ -106,6 +106,7 @@
     <string name="valor_final">Valor Final:</string>
     <string name="valor_or_amento">Valor Orçamento:</string>
     <string name="imagem_equipamento">Imagem Equipamento</string>
+    <string name="novo_cadastro_nclique_aqui">Novo Cadastro \nClique Aqui!</string>
 
     <string-array name="spinner_array">
         <item>MG</item>
