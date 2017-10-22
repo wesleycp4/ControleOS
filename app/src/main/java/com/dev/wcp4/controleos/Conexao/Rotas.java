@@ -10,6 +10,7 @@ public class Rotas {
     public static final String CADASTRAR_CLIENTE = ROOT_URL+"clienteNovo.php";
     public static final String CADASTRAR_OS = ROOT_URL+"osNovo.php";
     public static final String CADASTRAR_ACOMPANHAMENTO = ROOT_URL+"acompanhamentoNovo.php";
+    public static final String CADASTRAR_ACOMPANHAMENTO_STATUS = ROOT_URL+"acompanhamentoNovoStatus.php";
 
     public static final String URL_DADOS_OS = ROOT_URL+"osDados.php";
     public static final String URL_DADOS_OS_TUDO = ROOT_URL+"os.php";

@@ -331,7 +331,7 @@ public class BaseActivity extends AppCompatActivity
     }
 
     public void exibir(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
     private void showPopupMenu(View view) {
@@ -439,6 +439,9 @@ public class BaseActivity extends AppCompatActivity
                 .setCancelable(true)
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                        BaseActivity.super.finish();
+                        BaseActivity.this.finish();
                         System.exit(0);
                     }
                 })
