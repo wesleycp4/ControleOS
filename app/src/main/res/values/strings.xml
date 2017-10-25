@@ -107,6 +107,7 @@
     <string name="valor_or_amento">Valor Orçamento:</string>
     <string name="imagem_equipamento">Imagem Equipamento</string>
     <string name="novo_cadastro_nclique_aqui">Novo Cadastro \nClique Aqui!</string>
+    <string name="adicionado_por">Adicionado Por:</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

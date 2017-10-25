@@ -11,8 +11,6 @@ public class OrdemServico implements Serializable {
     private String dataFechamentoOS;
     private String contato;//*
     private String contato2;//*
-    private float valorOrcamentoOS;
-    private float valorFinalOS;
     private int statusOS;
     private String usuarioNome; //nome usuario sistema
     private String clienteNome;//*
@@ -27,15 +25,13 @@ public class OrdemServico implements Serializable {
     private String clienteCep;//*
     private String imagem;
 
-    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS,String imagem, String dataAberturaOS, String dataFechamentoOS, float valorOrcamentoOS, float valorFinalOS, int statusOS) {
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS,String imagem, String dataAberturaOS, String dataFechamentoOS, int statusOS) {
         this.idOS = idOS;
         this.descricaoOS = descricaoOS;
         this.equipamentosOS = equipamentosOS;
         this.imagem = imagem;
         this.dataAberturaOS = dataAberturaOS;
         this.dataFechamentoOS = dataFechamentoOS;
-        this.valorOrcamentoOS = valorOrcamentoOS;
-        this.valorFinalOS = valorFinalOS;
         this.statusOS = statusOS;
     }
 
@@ -59,7 +55,7 @@ public class OrdemServico implements Serializable {
         this.clienteCep = clienteCep;
     }
 
-    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, String dataFechamentoOS, String contato, String contato2, float valorOrcamentoOS, float valorFinalOS, int statusOS, String usuarioNome, String clienteNome, String clienteCpf, String clienteEmail, String clienteRua, int clienteNumero, String clienteComplemento, String clienteBairro, String clienteCidade, String clienteEstado, String clienteCep, String imagem) {
+    public OrdemServico(int idOS, String descricaoOS, String equipamentosOS, String dataAberturaOS, String dataFechamentoOS, String contato, String contato2, int statusOS, String usuarioNome, String clienteNome, String clienteCpf, String clienteEmail, String clienteRua, int clienteNumero, String clienteComplemento, String clienteBairro, String clienteCidade, String clienteEstado, String clienteCep, String imagem) {
         this.idOS = idOS;
         this.descricaoOS = descricaoOS;
         this.equipamentosOS = equipamentosOS;
@@ -67,8 +63,6 @@ public class OrdemServico implements Serializable {
         this.dataFechamentoOS = dataFechamentoOS;
         this.contato = contato;
         this.contato2 = contato2;
-        this.valorOrcamentoOS = valorOrcamentoOS;
-        this.valorFinalOS = valorFinalOS;
         this.statusOS = statusOS;
         this.usuarioNome = usuarioNome;
         this.clienteNome = clienteNome;
@@ -154,22 +148,6 @@ public class OrdemServico implements Serializable {
 
     public void setContato2(String contato2) {
         this.contato2 = contato2;
-    }
-
-    public float getValorOrcamentoOS() {
-        return valorOrcamentoOS;
-    }
-
-    public void setValorOrcamentoOS(float valorOrcamentoOS) {
-        this.valorOrcamentoOS = valorOrcamentoOS;
-    }
-
-    public float getValorFinalOS() {
-        return valorFinalOS;
-    }
-
-    public void setValorFinalOS(float valorFinalOS) {
-        this.valorFinalOS = valorFinalOS;
     }
 
     public int getStatusOS() {

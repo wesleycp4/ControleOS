@@ -5,21 +5,22 @@ public class Acompanhamento {
     private int idAcompanhamento;
     private String descricaoAcompanhamento;
     private String dataAcompanhamento;
+    private String nomeFunc;
     private int idFunc;
     private int idOs;
 
-    public Acompanhamento(int idAcompanhamento, String descricaoAcompanhamento, String dataAcompanhamento) {
-        this.idAcompanhamento = idAcompanhamento;
+    public Acompanhamento(String descricaoAcompanhamento, String dataAcompanhamento, String nomeFunc) {
         this.descricaoAcompanhamento = descricaoAcompanhamento;
         this.dataAcompanhamento = dataAcompanhamento;
+        this.nomeFunc = nomeFunc;
     }
 
-    public Acompanhamento(int idAcompanhamento, String descricaoAcompanhamento, String dataAcompanhamento, int idFunc, int idOs) {
-        this.idAcompanhamento = idAcompanhamento;
-        this.descricaoAcompanhamento = descricaoAcompanhamento;
-        this.dataAcompanhamento = dataAcompanhamento;
-        this.idFunc = idFunc;
-        this.idOs = idOs;
+    public String getNomeFunc() {
+        return nomeFunc;
+    }
+
+    public void setNomeFunc(String nomeFunc) {
+        this.nomeFunc = nomeFunc;
     }
 
     public int getIdAcompanhamento() {

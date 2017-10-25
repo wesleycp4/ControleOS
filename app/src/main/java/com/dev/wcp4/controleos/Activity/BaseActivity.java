@@ -56,6 +56,10 @@ public class BaseActivity extends AppCompatActivity
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
 
+    public String usuario;
+    public String usuario2;
+    public String[] s;
+
     private int adm;
 
     private com.github.clans.fab.FloatingActionMenu menuFlutuante;
@@ -93,13 +97,9 @@ public class BaseActivity extends AppCompatActivity
 
         //recupera o nome do usuario do sharedpreferences
         SharedPreferences prefs = getSharedPreferences("arq", MODE_PRIVATE);
-        String usuario = prefs.getString("nome", null);
-        String[] s = usuario.split(" ");
-        String usuario2 = s[0];
-        //String usuario2 = s[0]+ " " +s[1];
-
-        /*assert usuario != null;
-        usuario = usuario.substring(0, 1).toUpperCase().concat(usuario.substring(1));*/
+        usuario = prefs.getString("nome", "");
+        s = usuario.split(" ");
+        usuario2 = s[0];
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -112,6 +112,7 @@ public class BaseActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         textUsuario = (TextView) header.findViewById(R.id.textViewOla);
         textUsuario.setText("Olá, " + usuario2);
+
     }
 
     @Override
@@ -185,6 +186,10 @@ public class BaseActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
             //limpar sharedprefs
+            SharedPreferences prefs = getSharedPreferences("arq", 0);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.apply();
             exibir("Logout feito com sucesso.");
             Intent intent = new Intent(this, MainActivity.class);
             BaseActivity.this.finish();
@@ -439,9 +444,7 @@ public class BaseActivity extends AppCompatActivity
                 .setCancelable(true)
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                        BaseActivity.super.finish();
-                        BaseActivity.this.finish();
+                        BaseActivity.super.finishAndRemoveTask();
                         System.exit(0);
                     }
                 })

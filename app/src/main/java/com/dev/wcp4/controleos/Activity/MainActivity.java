@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         param = "usuario=" + usuario;
                         parametros = "usuario=" + usuario + "&senha=" + senha;
 
+                        new carregaDados().execute(Rotas.URL_DADOS_USUARIO);
                         new Logar().execute(Rotas.URL_LOGIN);
 
                     } else {
@@ -165,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject jsonObj = new JSONObject(s);
                 if (!jsonObj.getBoolean("error")) {
-                    new carregaDados().execute(Rotas.URL_DADOS_USUARIO);
                     startActivity(new Intent(MainActivity.this, BaseActivity.class));
                     progressBar.setVisibility(View.INVISIBLE);
                     finish();
@@ -256,12 +256,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("email", usuario.getEmail());
         editor.putInt("adm", usuario.getAdm());
         editor.apply();
-       /* exibir(usuario.getNome());
-        exibir(usuario.getContato1());
-        exibir(usuario.getContato2());
-        exibir(usuario.getEmail());
-        exibir(usuario.getSenha());
-        exibir(Integer.toString(usuario.getAdm()));*/
+        //exibir(usuario.getNome());
+
     }
 
     /*private class LogarAdm extends AsyncTask<String, Object, String> {

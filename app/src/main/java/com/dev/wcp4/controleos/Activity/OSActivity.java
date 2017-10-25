@@ -5,15 +5,21 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dev.wcp4.controleos.Conexao.Conexao;
 import com.dev.wcp4.controleos.Conexao.Rotas;
+import com.dev.wcp4.controleos.Entidade.Acompanhamento;
+import com.dev.wcp4.controleos.Adapter.AcompanhamentoAdapter;
 import com.dev.wcp4.controleos.Entidade.OrdemServico;
 import com.dev.wcp4.controleos.R;
 
@@ -22,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OSActivity extends AppCompatActivity {
 
@@ -32,8 +39,6 @@ public class OSActivity extends AppCompatActivity {
     private TextView txtDataF;
     private TextView txtCont;
     private TextView txtCont2;
-    private TextView txtValOrc;
-    private TextView txtValFinal;
     private TextView txtStatus;
     private TextView txtNomeFunc;
     private TextView txtNomeCliente;
@@ -42,10 +47,20 @@ public class OSActivity extends AppCompatActivity {
     private TextView txtEndComp;
     private ImageView imgImagem;
     private ArrayList<OrdemServico> ordemServicos = new ArrayList<>();
+    private ArrayList<Acompanhamento> acompanhamentos = new ArrayList<>();
+    //private List<Acompanhamento> acompanhamentos = new ArrayList<>();
+
     private String param = "";
     private ProgressBar progressBar;
+    private ProgressBar progressBarList;
     private String status;
-    private String novaData2;
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
+    //ArrayList<Acompanhamento> acompanhamentos;
+    //ListView listView;
+    //private static AcompanhamentoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +70,8 @@ public class OSActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        intent.getExtras();
-        String idpassada = intent.getStringExtra("id");
-        param = "idos=" + idpassada;
-
         progressBar = (ProgressBar) findViewById(R.id.progressBarOs);
+        progressBarList = (ProgressBar) findViewById(R.id.progressBarList);
 
         txtIdOs = (TextView) findViewById(R.id.textViewIdOs);
         txtDesc = (TextView) findViewById(R.id.textViewDescProblem);
@@ -69,8 +80,6 @@ public class OSActivity extends AppCompatActivity {
         txtDataF = (TextView) findViewById(R.id.textViewDataF);
         txtCont = (TextView) findViewById(R.id.textViewCont);
         txtCont2 = (TextView) findViewById(R.id.textViewCont2);
-        txtValOrc = (TextView) findViewById(R.id.textViewValOrc);
-        txtValFinal = (TextView) findViewById(R.id.textViewValFinal);
         txtStatus = (TextView) findViewById(R.id.textViewStatusOs);
         txtNomeFunc = (TextView) findViewById(R.id.textViewAbertaPor);
         txtNomeCliente = (TextView) findViewById(R.id.textViewNomeCl);
@@ -79,7 +88,22 @@ public class OSActivity extends AppCompatActivity {
         txtEndComp = (TextView) findViewById(R.id.textViewEndComp);
         imgImagem = (ImageView) findViewById(R.id.imageViewOs);
 
+        Intent intent = getIntent();
+        intent.getExtras();
+        String idpassada = intent.getStringExtra("id");
+        param = "idos=" + idpassada;
+
         new carregaDados().execute(Rotas.URL_DADOS_OS_TUDO);
+
+        new carregaAcomp().execute(Rotas.URL_DADOS_ACOMPANHAMENTO);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewAcomp);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new AcompanhamentoAdapter(this, acompanhamentos);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -95,6 +119,7 @@ public class OSActivity extends AppCompatActivity {
         txtDataA.setText(novaData);
 
         String data2 = dadosOs.getDataFechamentoOS();
+        String novaData2;
         if (data2 == null || data2.equals("") || data2.length() == 0 || data2 == "null") {
             novaData2 = "O.S. nao finalizada";
         } else {
@@ -115,7 +140,8 @@ public class OSActivity extends AppCompatActivity {
         txtCont2.setText(cont2);
 
 
-        String valor = "";
+/*
+       String valor = "";
         Float val = dadosOs.getValorOrcamentoOS();
         if (val == null || val.equals("") || val == 0) {
             valor = "NC";
@@ -132,6 +158,7 @@ public class OSActivity extends AppCompatActivity {
             valor2 = val2.toString();
         }
         txtValFinal.setText(valor2);
+*/
 
         if (dadosOs.getStatusOS() == 0) {
             status = "Aberto";
@@ -150,7 +177,10 @@ public class OSActivity extends AppCompatActivity {
         }
         txtStatus.setText(status);
 
-        txtNomeFunc.setText(dadosOs.getUsuarioNome());
+        String corte = dadosOs.getUsuarioNome();
+        String[] corte2 = corte.split(" ");
+        corte = corte2[0];
+        txtNomeFunc.setText(corte);
 
         txtNomeCliente.setText(dadosOs.getClienteNome());
 
@@ -167,8 +197,6 @@ public class OSActivity extends AppCompatActivity {
         String end = dadosOs.getClienteRua() + ", " + dadosOs.getClienteNumero() + ", " + comp + ", Bairro: " + dadosOs.getClienteBairro() + "\n" + dadosOs.getClienteCidade() + ", " + dadosOs.getClienteEstado() + ", CEP: " + dadosOs.getClienteCep();
         txtEndComp.setText(end);
 
-
-        progressBar.setVisibility(View.INVISIBLE);
     }
 
     public void exibir(String msg) {
@@ -216,8 +244,6 @@ public class OSActivity extends AppCompatActivity {
                                 obj.getString("datafechamento"),
                                 obj.getString("contato_cliente"),
                                 obj.getString("contato2_cliente"),
-                                obj.getLong("valororcamento"),
-                                obj.getLong("valorfinal"),
                                 obj.getInt("status"),
                                 obj.getString("nome"),
                                 obj.getString("nome_cliente"),
@@ -241,7 +267,7 @@ public class OSActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
+            progressBar.setVisibility(View.INVISIBLE);
         }
 
         @Override
@@ -249,5 +275,56 @@ public class OSActivity extends AppCompatActivity {
             return Conexao.postDados(url[0], param);
         }
     }
+
+    private class carregaAcomp extends AsyncTask<String, Object, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBarList.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onProgressUpdate(Object... values) {
+            progressBarList.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+
+                JSONObject jsonObj = new JSONObject(s);
+                JSONArray jsonArray = jsonObj.getJSONArray("acompanhamentoDados");
+                acompanhamentos.clear();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    try {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        Acompanhamento ac = new Acompanhamento(
+                                //obj.getInt("idacompanhamento"),
+                                obj.getString("descricao_acompanhamento"),
+                                obj.getString("data_acompanhamento"),
+                                obj.getString("nome")
+                                //obj.getInt("os_idos"),
+                                //obj.getInt("funcionario_idfuncionario")
+                        );
+                       // exibir(i+"");
+                        acompanhamentos.add(ac);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            adapter.notifyDataSetChanged();
+            progressBarList.setVisibility(View.INVISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... url) {
+            return Conexao.postDados(url[0], param);
+        }
+    }
+
 
 }

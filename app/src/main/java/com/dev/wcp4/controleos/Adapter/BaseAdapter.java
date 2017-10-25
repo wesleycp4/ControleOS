@@ -44,7 +44,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> 
     private String parametros = "";
     private int novoStatus;
     private List<OrdemServico> list = new ArrayList<>();
-    String TAG = "TESTE";
+    //String TAG = "TESTE";
 
     private EditText editTextAcompanhamento;
     private Spinner spinnerStatus;
@@ -194,7 +194,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> 
 
             String idos = Integer.toString(ordemservico.getIdOS());
 
-            exibir("Abrindo O.S. N: " + idos);
+            //exibir("Abrindo O.S. N: " + idos);
 
             Intent intent = new Intent(mContext, OSActivity.class);
             intent.putExtra("id", idos);
@@ -355,8 +355,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> 
                 JSONObject jsonObj = new JSONObject(s);
                 if (!jsonObj.getBoolean("error")) {
 
-                    exibir("Acompanhamento Adicionado!");
-                    exibir("Favor clicar em atualizar.");
+                    exibir("Acompanhamento Adicionado!\nFavor atualizar.");
                     progressBar.setVisibility(View.INVISIBLE);
 
                     //mContext.startActivity(new Intent(mContext,BaseActivity.class));
