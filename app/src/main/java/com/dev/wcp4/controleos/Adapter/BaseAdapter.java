@@ -203,10 +203,10 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> 
 
         public void adicionaAcompanhamento() {
             OrdemServico ordemservico = list.get(getAdapterPosition());
-            String idos = Integer.toString(ordemservico.getIdOS());
+            final String idos = Integer.toString(ordemservico.getIdOS());
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.base_add_acomp_status, null);
+            final View layout = inflater.inflate(R.layout.base_add_acomp_status, null);
             AlertDialog.Builder alertbox = new AlertDialog.Builder(layout.getRootView().getContext());
             alertbox.setMessage("Atualizar O.S.");
             alertbox.setView(layout);
