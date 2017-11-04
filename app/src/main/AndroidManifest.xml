@@ -36,9 +36,6 @@
             android:name=".Activity.NovaOSActivity"
             android:label="@string/title_activity_nova_os" />
         <activity
-            android:name=".Activity.ConsultarClienteActivity"
-            android:label="@string/title_activity_consultar_cliente" />
-        <activity
             android:name=".Activity.OSActivity"
             android:label="@string/title_activity_os" />
         <activity
