@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#7f0000</color>
     <color name="colorAccent">#000000</color>
     <color name="colorCard">#e0e0e0</color>
+    <color name="colorCardAcomp">#7d14d41d</color>
     <color name="colorCardEscuro">#bdbdbd</color>
     <color name="colorAccent2">#e53935</color>
     <color name="full_branco">#ffffff</color>

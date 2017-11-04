@@ -87,7 +87,7 @@
     <string name="o_s_s_com_or_amento_aprovado">O.S.(s) com Orçamento Aprovado</string>
     <string name="vizualiza_o_padrao">Vizualização Padrao</string>
     <string name="atualizar_cadastro">Consultar/Atualizar Cliente</string>
-    <string name="data_acompanhamento">Data Acompanhamento: </string>
+    <string name="data_acompanhamento">Acompanhamento adicionado em: </string>
     <string name="descricao_acompanhamento">Descricao Acompanhamento: </string>
     <string name="_00_00000_0000">(00)00000-0000</string>
     <string name="contatoCard">Contato: </string>
