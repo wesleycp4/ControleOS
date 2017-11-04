@@ -15,14 +15,12 @@
             android:id="@+id/login_logo"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:adjustViewBounds="false"
-            android:background="@color/colorCardEscuro"
             android:contentDescription="@null"
+            android:tint="@color/colorAccent"
             android:visibility="visible"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -91,9 +89,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
-            android:layout_marginStart="8dp"
             tools:ignore="RtlHardcoded" />
 
         <ProgressBar
@@ -136,9 +135,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="7dp"
+            android:inputType="number"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23"
-            android:layout_marginEnd="7dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
 
         <EditText
@@ -174,11 +173,12 @@
             android:id="@+id/txtAlterCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="RtlHardcoded"
-            android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView15"
             android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"
+            tools:ignore="RtlHardcoded"
+            android:maxLength="14"/>
 
         <TextView
             android:id="@+id/textView19"
@@ -196,9 +196,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="0dp"
+            android:inputType="number"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            android:maxLength="14"/>
 
         <TextView
             android:id="@+id/textView21"
@@ -215,11 +216,11 @@
             android:id="@+id/txtAlterEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textView21"
-            tools:ignore="RtlHardcoded"
             android:layout_marginLeft="8dp"
+            android:inputType="textEmailAddress"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="8dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView21"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/textView24"
@@ -280,9 +281,7 @@
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginRight="7dp"
-            android:layout_marginTop="0dp"
             android:text="@string/numero"
             android:textStyle="bold"
             app:layout_constraintRight_toRightOf="parent"

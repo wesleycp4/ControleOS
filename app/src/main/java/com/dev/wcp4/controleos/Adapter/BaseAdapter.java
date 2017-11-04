@@ -355,7 +355,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.MyViewHolder> 
                 JSONObject jsonObj = new JSONObject(s);
                 if (!jsonObj.getBoolean("error")) {
 
-                    exibir("Acompanhamento Adicionado!\nFavor atualizar.");
+                    exibir("Acompanhamento Adicionado!\n\nFavor atualizar.");
                     progressBar.setVisibility(View.INVISIBLE);
 
                     //mContext.startActivity(new Intent(mContext,BaseActivity.class));

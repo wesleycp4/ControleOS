@@ -183,7 +183,7 @@ public class AtualizarClienteActivity extends AppCompatActivity {
         txtContatoCliente.setText(cliente.getContatoCliente());
         String cont2 = cliente.getContato2Cliente();
         if (cont2 == null || cont2.equals("") || cont2.length() == 0 || cont2 == "null") {
-            cont2 = "Não Informado";
+            cont2 = "";
         } else {
             cont2 = cont2;
         }
@@ -193,9 +193,9 @@ public class AtualizarClienteActivity extends AppCompatActivity {
         txtNumeroCliente.setText(n);
         String comp = cliente.getComplementoCliente();
         if (comp == null || comp.equals("") || comp.length() == 0 || comp == "null") {
-            comp = "Sem Comp.";
+            comp = "";
         } else {
-            comp = "Comp.: " + comp;
+            comp = comp;
         }
         txtCompCliente.setText(comp);
         txtBairroCliente.setText(cliente.getBairroCliente());

@@ -108,6 +108,9 @@
     <string name="imagem_equipamento">Imagem Equipamento</string>
     <string name="novo_cadastro_nclique_aqui">Novo Cadastro \nClique Aqui!</string>
     <string name="adicionado_por">Adicionado Por:</string>
+    <string name="acompanhamento">Acompanhamento:</string>
+    <string name="statusaddacomp">Status</string>
+    <string name="cadastrar">Cadastrar</string>
 
     <string-array name="spinner_array">
         <item>MG</item>

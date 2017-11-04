@@ -2,34 +2,16 @@ package com.dev.wcp4.controleos.Adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.ParseException;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dev.wcp4.controleos.Activity.OSActivity;
-import com.dev.wcp4.controleos.Conexao.Conexao;
-import com.dev.wcp4.controleos.Conexao.Rotas;
 import com.dev.wcp4.controleos.Entidade.Acompanhamento;
 import com.dev.wcp4.controleos.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +120,7 @@ public class AcompanhamentoAdapter extends RecyclerView.Adapter<AcompanhamentoAd
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_linha, parent, false);
+                .inflate(R.layout.item_linha_acompanhamento, parent, false);
         return new MyViewHolder(itemView);
     }
 
