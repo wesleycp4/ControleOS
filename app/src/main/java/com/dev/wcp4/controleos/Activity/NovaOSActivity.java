@@ -133,7 +133,7 @@ public class NovaOSActivity extends AppCompatActivity {
         AutoCompleteTextView mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteClientes);
         ArrayAdapter<Cliente> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, clientes);
         mAutoCompleteTextView.setAdapter(adaptador);
-        mAutoCompleteTextView.setThreshold(3);
+        mAutoCompleteTextView.setThreshold(2);
         mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
