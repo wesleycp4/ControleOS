@@ -41,10 +41,10 @@
         <activity
             android:name=".Activity.NovoUserActivity"
             android:label="@string/title_activity_cadastrar_user" />
-
-        <activity android:name=".Activity.AtualizarClienteActivity"
-            android:label="@string/title_activity_atualizar_cliente"/>
-
+        <activity
+            android:name=".Activity.AtualizarClienteActivity"
+            android:label="@string/title_activity_atualizar_cliente" />
+        <activity android:name=".Activity.ConsultarClienteActivity"></activity>
     </application>
 
 </manifest>
