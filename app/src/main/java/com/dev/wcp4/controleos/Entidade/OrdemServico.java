@@ -78,6 +78,10 @@ public class OrdemServico implements Serializable {
         this.imagem = imagem;
     }
 
+    public OrdemServico(int idOS) {
+        this.idOS = idOS;
+    }
+
     public String getClienteCpf() {
         return clienteCpf;
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Controle O.S. ZN</string>
+    <string name="app_name">Controle O.S.</string>
 
     <string name="title_activity_base">Ordens de Serviço</string>
     <string name="title_activity_consultar_ordem">Pesquisar Ordem de Serviço</string>

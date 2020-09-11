@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
     </android.support.design.widget.AppBarLayout>
 
     <include
@@ -29,41 +29,48 @@
         android:id="@+id/menu_flutuante"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:fabSize="auto"
         android:layout_gravity="center_vertical|center_horizontal"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|right"
+        android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        fab:menu_labels_ellipsize="end"
-        fab:menu_labels_singleLine="true"
+        app:fabSize="auto"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        fab:menu_backgroundColor="@color/cor_desfoque"
         fab:menu_colorNormal="@color/colorPrimary"
-        fab:menu_backgroundColor="@color/cor_desfoque">
+        fab:menu_colorPressed="@color/cardview_shadow_start_color"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_singleLine="true">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/botaoAtualizar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_refresh"
-            fab:fab_size="mini"
-            fab:fab_label="Atualizar Lista" />
+            fab:fab_colorNormal="@color/colorPrimaryDark"
+            fab:fab_colorPressed="@color/cardview_shadow_start_color"
+            fab:fab_label="Atualizar Lista"
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/botaoFiltroLista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_filtro"
-            fab:fab_size="mini"
-            fab:fab_label="Filtrar Ordens" />
+            fab:fab_colorNormal="@color/colorPrimaryDark"
+            fab:fab_colorPressed="@color/cardview_shadow_start_color"
+            fab:fab_label="Filtrar Ordens"
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/botaoAddOs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fab_add"
-            fab:fab_size="mini"
-            fab:fab_label="Nova O.S." />
+            fab:fab_colorNormal="@color/colorPrimaryDark"
+            fab:fab_colorPressed="@color/cardview_shadow_start_color"
+            fab:fab_label="Nova O.S."
+            fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
 

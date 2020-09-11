@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ControleOS-ZN.iml" filepath="$PROJECT_DIR$/ControleOS-ZN.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ControleOS-ZN.iml" filepath="$PROJECT_DIR$/ControleOS-ZN.iml" group="ControleOS-ZN" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ControleOS-ZN/app" />
     </modules>
   </component>
 </project>

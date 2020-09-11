@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#b71c1c</color>
-    <color name="colorPrimaryDark">#7f0000</color>
+    <color name="colorPrimary">#1C43B7</color>
+    <color name="colorPrimaryDark">#00247F</color>
     <color name="colorAccent">#000000</color>
     <color name="colorCard">#e0e0e0</color>
-    <color name="colorCardAcomp">#7d14d41d</color>
+    <color name="colorCardAcomp">#4F00FF0C</color>
     <color name="colorCardEscuro">#bdbdbd</color>
-    <color name="colorAccent2">#e53935</color>
+    <color name="colorAccent2">#3567E5</color>
     <color name="full_branco">#ffffff</color>
     <color name="cor_icone">#ffffff</color>
-    <color name="cor_sair">#ff2800</color>
+    <color name="cor_sair">#0055FF</color>
     <color name="cor_desfoque">#a0ffffff</color>
 
 
